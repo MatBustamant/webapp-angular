@@ -1,0 +1,96 @@
+@media (max-width: 210px){
+    .argprogcr, .socialm-y-login {
+        font-size: small;
+    }
+}
+
+.top-bar {
+    background-color: white;
+}
+
+.argprogcr:hover  p {
+    color: #541824;
+}
+
+.argprogcr:hover  .fa-terminal {
+    background-color: #541824;
+}
+
+.argprogcr {
+    /* width: fit-content; */
+    user-select: none;
+}
+
+.fa-terminal {
+    background-position: center;
+    background-color: #22272e;
+    color: white;
+    padding: 0.2em 0.5em 0.2em 0.3em;
+    margin: 0em 0.3em 0em 0em;
+    border-radius: 11%;
+    transition: background-color 0.4s;
+}
+
+.argprogcr-t p {
+    font-family: 'Encode Sans', sans-serif;
+    font-size: 0.7em;
+    color: #22272e;
+    margin: 2px;
+    line-height: 1em;
+    transition: color 0.4s;
+}
+
+.argprogcr-t p:last-child {
+    padding: 0.44em 0em;
+}
+
+.socialm-l:hover, .login-btn:hover{
+    color: #541824; /* esto capaz cambie el color*/
+    transform: scale(1.2);
+}
+
+.socialm-l, .login-btn {
+    font-size: 2em;
+    color: #22272e;
+    padding: 0px 12px;
+    transition: color 0.4s;
+    transition: transform 0.4s;
+}
+
+.login-btn {
+    padding: 0px 0px 0px 12px;
+}
+
+/* .fa-fw { ------> Si lo implemento debo devolverle la clase .fa-fw a los iconitos
+    width: 1em;
+} */
+
+#banner {
+    background: linear-gradient(to top left,#541824, #FE496D);
+    width: 1600px;
+    height: 500px;
+}
+
+.banner-h { /* Cambiar este h1 a otra cosa para accesibilidad luego.*/
+    font-family: monospace;
+    color: white;
+}
+
+.card-b p, .card p {
+    text-align: justify;
+}
+
+@media (min-width: 576px){
+    .card {
+        width: 300px;
+    }
+}
+
+/* .card {
+    width: 300px;
+} */
+
+.card img {
+    width: auto;
+    /* tex: center; */
+}
