@@ -1,0 +1,52 @@
+@media (max-width: 210px){
+    .argprogcr, .socialm-y-login {
+        font-size: small;
+    }
+}
+
+.top-bar {
+    background-color: white;
+    border-bottom: 1px solid maroon;
+}
+
+.argprogcr:hover  path{
+    fill: #541824;
+}
+
+.argprogcr path {
+    transition: fill 0.4s;
+}
+
+.argprogcr-t1 {
+    margin: 10px 6px 0px 7px;
+}
+
+.argprogcr-t2 {
+    margin-top: 11px;
+}
+
+button, button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.socialm-l:hover, .login-btn:hover{
+    color: #541824; /* esto capaz cambie el color*/
+    transform: scale(1.2);
+}
+
+.socialm-l, .login-btn {
+    font-size: 2em;
+    color: #22272e;
+    padding: 0px 12px;
+    transition: color 0.4s;
+    transition: transform 0.4s;
+}
+
+.login-btn {
+    padding: 0px 0px 0px 12px;
+}
+
+/* .fa-fw { ------> Si lo implemento debo devolverle la clase .fa-fw a los iconitos
+    width: 1em;
+} */

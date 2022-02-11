@@ -1,0 +1,21 @@
+button, button:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.navbar-collapse {
+    top: 49px;
+    background-color:whitesmoke;
+    border-bottom: 1px solid #541824;
+}
+
+.navbar-nav {
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.nav-link {
+    font-family: monospace;
+    color: #22272e;
+}
