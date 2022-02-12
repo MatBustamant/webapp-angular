@@ -5,7 +5,6 @@
 }
 
 .top-bar {
-    background-color: white;
     border-bottom: 1px solid maroon;
 }
 
@@ -28,6 +27,8 @@
 button, button:focus {
     outline: none;
     box-shadow: none;
+    background: none;
+    border: none;
 }
 
 .socialm-l:hover, .login-btn:hover{

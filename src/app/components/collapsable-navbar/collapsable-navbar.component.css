@@ -4,6 +4,10 @@ button, button:focus {
     border: none;
 }
 
+.navbar {
+    padding: 0;
+}
+
 .navbar-collapse {
     top: 49px;
     background-color:whitesmoke;
@@ -18,4 +22,9 @@ button, button:focus {
 .nav-link {
     font-family: monospace;
     color: #22272e;
+    transition: color 0.4s;
+}
+
+.nav-link:hover {
+    color:#541824;
 }
