@@ -4,15 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TopBarComponent } from './components/top-bar/top-bar.component';
-import { CollapsableNavbarComponent } from './components/collapsable-navbar/collapsable-navbar.component';
+import { TopBarComponent } from './components/header/top-bar/top-bar.component';
+import { CollapsableNavbarComponent } from './components/header/collapsable-navbar/collapsable-navbar.component';
+import { ButtonComponent } from './components/button/button.component';
+import { BannerComponent } from './components/header/banner/banner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TopBarComponent,
-    CollapsableNavbarComponent
+    CollapsableNavbarComponent,
+    ButtonComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,53 @@
+button, button:focus {
+    outline: none;
+    box-shadow: none;
+    background: none;
+    border: none;
+    transition: color 0.27s;
+    transition: transform 0.27s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    transform: scale(1.2);
+    color:#541824;
+}
+
+.i-container {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+}
+
+.i-container span {
+    position: absolute;
+    top:  0px;
+    left: 0px;
+}
+
+.fa-circle {
+    opacity: 0;
+    transition: opacity 0.27s;
+}
+
+.fa-circle.on {
+    opacity: 1;
+}
+
+.fa-circle-notch {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.fa-circle-notch.on {
+    opacity: 0;   
+}
+
+.fa-spin {
+    --fa-animation-duration:  0.5s;
+    --fa-animation-iteration-count: 1;
+}
