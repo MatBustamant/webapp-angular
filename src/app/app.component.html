@@ -37,7 +37,7 @@
     </header>
     <hr>
     <main>
-        <section class="acerca-de">
+        <section id="sobre-mi">
             <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
                 <div class="col col-sm-4">
                     <div class="am-card-t text-center">
@@ -54,19 +54,19 @@
             </div>
         </section>
         <hr>
-        <section class="experiencia">
+        <section id="experiencia">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
                 <app-card *ngFor="let n of genArray(3); index as i" [cardTitle]="'Experiencia ' + (i+1)"></app-card>
             </div>
         </section>
         <hr>
-        <section class="educacion">
+        <section id="educacion">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
                 <app-card *ngFor="let n of genArray(3); index as i" [cardTitle]="'Educación ' + (i+1)"></app-card>
             </div>
         </section>
         <hr>
-        <section class="skills">
+        <section id="habilidades">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-6">
                     <h3 class="text-center">SOFT SKILLS</h3>
@@ -93,7 +93,7 @@
             </div>
         </section>
         <hr>
-        <section class="proyectos">
+        <section id="proyectos">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
                 <app-card *ngFor="let n of genArray(3); index as i" [cardTitle]="'Proyecto ' + (i+1)"></app-card>
             </div>
