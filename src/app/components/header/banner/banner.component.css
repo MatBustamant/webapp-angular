@@ -1,0 +1,10 @@
+#banner {
+    background: linear-gradient(to top left,#541824, #FE496D);
+    width: 1600px;
+    height: 500px;
+}
+
+.banner-h { /* Cambiar este h1 a otra cosa para accesibilidad luego.*/
+    font-family: monospace;
+    color: white;
+}
