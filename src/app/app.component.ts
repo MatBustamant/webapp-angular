@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'webapp-angular';
+  
+  genArray(number: number): Array<number> {
+    return Array(number);
+  }
 }

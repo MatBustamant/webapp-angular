@@ -1,0 +1,18 @@
+.card-b p, .card p {
+    text-align: justify;
+}
+
+@media (min-width: 576px){
+    .card {
+        width: 300px;
+    }
+}
+
+/* .card {
+    width: 300px;
+} */
+
+.card img {
+    width: auto;
+    /* tex: center; */
+}
