@@ -8,6 +8,7 @@ import { TopBarComponent } from './components/header/top-bar/top-bar.component';
 import { CollapsableNavbarComponent } from './components/header/collapsable-navbar/collapsable-navbar.component';
 import { ButtonComponent } from './components/button/button.component';
 import { BannerComponent } from './components/header/banner/banner.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BannerComponent } from './components/header/banner/banner.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
