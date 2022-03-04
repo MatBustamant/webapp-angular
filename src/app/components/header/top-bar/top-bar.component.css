@@ -1,6 +1,9 @@
 @media (max-width: 210px){
-    .argprogcr, .socialm-y-login {
+    .socialm-y-login {
         font-size: small;
+    }
+    .argprogcr {
+        transform: scale(0.8);
     }
 }
 

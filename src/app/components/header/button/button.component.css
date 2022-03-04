@@ -1,18 +1,31 @@
+@media (max-width: 576px) {
+    button, button:hover, button:focus {
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        z-index: 999;
+        background: #A93048;
+        color: white;
+        transition: none;
+    }
+}
+@media (min-width: 576px){
+    button, button:focus {
+        background: none;
+        border: none;
+        transition: color 0.27s;
+        transition: transform 0.27s;
+    }
+    
+    button:hover {
+        transform: scale(1.2);
+        color:#541824;
+    }
+}
+
 button, button:focus {
     outline: none;
     box-shadow: none;
-    background: none;
-    border: none;
-    transition: color 0.27s;
-    transition: transform 0.27s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button:hover {
-    transform: scale(1.2);
-    color:#541824;
 }
 
 .i-container {

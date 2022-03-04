@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TopBarComponent } from './components/header/top-bar/top-bar.component';
 import { CollapsableNavbarComponent } from './components/header/collapsable-navbar/collapsable-navbar.component';
-import { ButtonComponent } from './components/button/button.component';
+import { ButtonComponent } from './components/header/button/button.component';
 import { BannerComponent } from './components/header/banner/banner.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
