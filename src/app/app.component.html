@@ -1,9 +1,15 @@
+<app-modal></app-modal>
 <!-- <div class="container-fluid"> -->
     <app-header></app-header>
     <app-banner></app-banner>
     <!-- <header> -->
     <!-- </header> -->
     <hr>
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+    </button>
+    <hr> -->
     <main>
         <section id="sobre-mi">
             <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
@@ -24,77 +30,13 @@
         <hr>
         <section id="experiencia">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Experiencia 1" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Experiencia 1</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Experiencia 2" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Experiencia 2</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Experiencia 3" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Experiencia 3</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
+                <app-card *ngFor="let n of genArray(3); index as i" [cardTitle]="'Experiencia ' + (i+1)"></app-card>
             </div>
         </section>
         <hr>
         <section id="educacion">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Educación 1" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Educación 1</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Educación 2" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Educación 2</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Educación 3" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Educación 3</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
+                <app-card *ngFor="let n of genArray(3); index as i" [cardTitle]="'Educación ' + (i+1)"></app-card>
             </div>
         </section>
         <hr>
@@ -127,42 +69,9 @@
         <hr>
         <section id="proyectos">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Proyecto 1" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Proyecto 1</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Proyecto 2" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Proyecto 2</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <img src="https://via.placeholder.com/150" alt="Imagen Proyecto 3" class="card-img-top">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-center">Proyecto 3</h3>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, repudiandae aliquid! Quos impedit, mollitia similique minus voluptatem cupiditate iure dignissimos.</p>
-                        </div>
-                    </div>
-                </div>
+                <app-card *ngFor="let n of genArray(3); index as i" [cardTitle]="'Proyecto ' + (i+1)"></app-card>
             </div>
         </section>
     </main>
-<!-- </div> -->
 
 <router-outlet></router-outlet>

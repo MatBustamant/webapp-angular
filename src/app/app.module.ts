@@ -8,6 +8,8 @@ import { TopBarComponent } from './components/header/top-bar/top-bar.component';
 import { CollapsableNavbarComponent } from './components/header/collapsable-navbar/collapsable-navbar.component';
 import { ButtonComponent } from './components/header/button/button.component';
 import { BannerComponent } from './components/header/banner/banner.component';
+import { CardComponent } from './components/card/card.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -17,7 +19,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TopBarComponent,
     CollapsableNavbarComponent,
     ButtonComponent,
-    BannerComponent
+    BannerComponent,
+    CardComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
