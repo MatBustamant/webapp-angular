@@ -14,6 +14,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components';
 import { PortfolioComponent } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PersonaService } from './services';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PersonaService,
+  { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

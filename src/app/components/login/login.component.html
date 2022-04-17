@@ -1,59 +1,69 @@
-<form
-    [formGroup]="form"
-    (ngSubmit)="onSubmit()"
-    class="m-5"
->
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Dirección de email</label>
-        <input
-            type="email"
-            formControlName="email"
-            [ngClass]="{'is-invalid': isValidField('email') }"
-            class="form-control"
-            id="exampleInputEmail1"
-            placeholder="Email"
-            aria-describedby="emailHelp"
-        />
-        <div *ngIf="isValidField('email')">
-            <p *ngIf="Email?.hasError('required')" class="text-danger">
-                El email es requerido.
-            </p>
-            <p *ngIf="Email?.hasError('pattern')" class="text-danger">
-                El formato del email debe ser válido.
-            </p>
-        </div>
+<div class="container-fluid">
+    <div class="center">
+        <form
+            [formGroup]="form"
+            (ngSubmit)="onSubmit($event)"
+            class="m-5"
+            id="formcss"
+        >
+            <h1 class="login-title">Login</h1>
+            <div class="input-wrp mb-4">
+                <label for="exampleInputEmail1" class="form-label">Dirección de email</label>
+                <input
+                    type="email"
+                    formControlName="email"
+                    [ngClass]="{'is-invalid': isValidField('email'), 'is-empty' : isEmptyField('email')}"
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    placeholder="Email"
+                    aria-describedby="emailHelp"
+                />
+                <span class="input-dec" data-symbol="&#xf206;"></span>
+                <div class="input-val" *ngIf="isValidField('email')">
+                    <p *ngIf="Email?.hasError('required')" class="text-danger">
+                        El email es requerido.
+                    </p>
+                    <p *ngIf="Email?.hasError('pattern')" class="text-danger">
+                        El formato del email debe ser válido.
+                    </p>
+                </div>
+            </div>
+            <div class="input-wrp mb-4">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input
+                    type="password"
+                    formControlName="password"
+                    [ngClass]="{'is-invalid': isValidField('password'), 'is-empty' : isEmptyField('password')}"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Contraseña"
+                />
+                <span class="input-dec" data-symbol="&#xf190;"></span>
+                <div class="input-val" *ngIf="isValidField('password')">
+                    <p *ngIf="Password?.hasError('required')" class="text-danger">
+                        La contraseña es requerida.
+                    </p>
+                    <p *ngIf="Password?.hasError('minlength')" class="text-danger">
+                        La contraseña debe tener 8 o más caracteres.
+                    </p>
+                </div>
+            </div>
+            <div class="button-wrp mt-5">
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Login</button>
+            </div>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-        <input
-            type="password"
-            formControlName="password"
-            [ngClass]="{'is-invalid': isValidField('password') }"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Contraseña"
-        />
-        <div *ngIf="isValidField('password')">
-            <p *ngIf="Password?.hasError('required')" class="text-danger">
-                La contraseña es requerida.
-            </p>
-            <p *ngIf="Password?.hasError('minlength')" class="text-danger">
-                La contraseña debe tener 8 o más caracteres.
-            </p>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
-</form>
-
-<pre>
-    Value:
-    {{form.value | json}}
-</pre>
-<pre>
-    Status:
-    {{form.status}}
-</pre>
-<pre>
-    Errors:
-    {{Email?.errors | json}}
-</pre>
+<!-- 
+    <pre>
+        Value:
+        {{form.value | json}}
+    </pre>
+    <pre>
+        Status:
+        {{form.status}}
+    </pre>
+    <pre>
+        Errors:
+        {{Email?.errors | json}}
+    </pre> -->
+</div>
