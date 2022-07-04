@@ -6,7 +6,7 @@ body, html {
 div.container-fluid {
     position: absolute;
     height: 100%;
-    background-color: #22272e;
+    background-color: var(--dark-gray-color);
     background-image: url(../../../assets/2_bc3d32a696895f78c19df6c717586a5d.svg);
     background-position: center;
     background-size: cover;
@@ -17,14 +17,14 @@ div.container-fluid {
 }
 
 div.center {
-    background-color: #22272e;
-    height: 23em; /*38em era si quiero poner más cosas en este form.*/
+    background-color: var(--main-dominant-color);
+    height: auto; /*38em era si quiero poner más cosas en este form, 23em era antes de poner más cosas.*/
     width: 21em;
     box-shadow:0 0 6px 2px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
-.login-title {
+.login-title, .welcome {
     display: block;
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
@@ -52,7 +52,11 @@ input {
 }
 
 input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder {
-    color: #adadad;
+    color: var(--light-gray-color);
+}
+
+::-ms-reveal {
+    display: none;
 }
 
 .form-control {
@@ -87,10 +91,35 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     pointer-events: none;
 }
 
+.form-control.is-invalid + .input-dec .zmdi {
+    display: none;
+}
+
+.zmdi {
+    color: var(--light-gray-color);
+    font-size: 0.95em;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: calc(100% - 25px);
+    bottom: 0;
+    right: 0;
+    padding-right: 6.25px;
+    padding-top: 6.25px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
 .input-dec::after {
     content: attr(data-symbol);
     font-family: Material-Design-Iconic-Font;
-    color: #adadad;
+    color: var(--light-gray-color);
     font-size: 0.95em;
   
     display: -webkit-box;
@@ -112,11 +141,11 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     content: "";
     display: block;
     position: absolute;
-    bottom: -2px;
+    bottom: -1px;
     left: 0;
     width: 0;
     height: 2px;
-    background: #a64bf4;
+    background: var(--main-accent-color);
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
@@ -131,16 +160,17 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     width: 100%;
 }
   
-.form-control:focus + .input-dec::after {
-    color: #a64bf4;
+.form-control:focus + .input-dec::after, .form-control:focus + .input-dec .zmdi {
+    color: var(--main-accent-color);
 }
   
-.form-control:not(.form-control.is-empty) + .input-dec::after {
-    color: #a64bf4;
+.form-control:not(.form-control.is-empty) + .input-dec::after, .form-control:not(.form-control.is-empty) + .input-dec .zmdi {
+    color: var(--main-accent-color);
 }
 
 .input-val {
     font-family: 'Poppins', sans-serif;
+    font-weight: bold;
     font-size: 0.7em;
     position: absolute;
     top: 6em;
@@ -156,11 +186,12 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     margin: 0 auto;
 }
   
-.button-wrp button {
+button, button:focus, .guest-btn {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 12px;
     color: #fff;
+    background-color: var(--main-accent-color);
     line-height: 1.2;
     text-transform: uppercase;
   
@@ -174,4 +205,17 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     padding: 0 20px;
     width: 100%;
     height: 30px;
+    border: none;
+}
+
+button:disabled {
+    background-color: var(--light-gray-color);
+}
+
+button:hover, .guest-btn:hover {
+    background-color: #8e0b57;
+}
+
+span.d-block {
+    user-select: none;
 }

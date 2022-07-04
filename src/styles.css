@@ -1,3 +1,10 @@
+:root {
+    --main-dominant-color: #0f1634; /*Un deep blue bonito*/
+    --main-accent-color: #A01D5D; /*Un color pseudovino iluminadito*/
+    --dark-gray-color: #22272e; /*Un color gris oscuro que saqué de git*/
+    --light-gray-color: #adadad; /*Un color gris claro que saqué del templ*/
+}
+
 .card-b p, .card p {
     text-align: justify;
 }

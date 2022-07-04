@@ -6,20 +6,20 @@
             class="m-5"
             id="formcss"
         >
-            <h1 class="login-title">Login</h1>
+            <h2 class="login-title mb-4">Inicia sesión</h2>
             <div class="input-wrp mb-4">
                 <label for="exampleInputEmail1" class="form-label">Dirección de email</label>
                 <input
                     type="email"
                     formControlName="email"
-                    [ngClass]="{'is-invalid': isValidField('email'), 'is-empty' : isEmptyField('email')}"
+                    [ngClass]="{'is-invalid': isInvalidField('email'), 'is-empty' : isEmptyField('email')}"
                     class="form-control"
                     id="exampleInputEmail1"
                     placeholder="Email"
                     aria-describedby="emailHelp"
                 />
                 <span class="input-dec" data-symbol="&#xf206;"></span>
-                <div class="input-val" *ngIf="isValidField('email')">
+                <div class="input-val" *ngIf="isInvalidField('email')">
                     <p *ngIf="Email?.hasError('required')" class="text-danger">
                         El email es requerido.
                     </p>
@@ -31,15 +31,17 @@
             <div class="input-wrp mb-4">
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                 <input
-                    type="password"
+                    [type]="!showPassword ? 'password' : 'text'"
                     formControlName="password"
-                    [ngClass]="{'is-invalid': isValidField('password'), 'is-empty' : isEmptyField('password')}"
+                    [ngClass]="{'is-invalid': isInvalidField('password'), 'is-empty' : isEmptyField('password')}"
                     class="form-control"
                     id="exampleInputPassword1"
                     placeholder="Contraseña"
                 />
-                <span class="input-dec" data-symbol="&#xf190;"></span>
-                <div class="input-val" *ngIf="isValidField('password')">
+                <span class="input-dec" data-symbol="&#xf190;">
+                    <span class="zmdi"[ngClass]="{'zmdi-eye': !showPassword, 'zmdi-eye-off': showPassword}" (click)="showPass()"></span>
+                </span>
+                <div class="input-val" *ngIf="isInvalidField('password')">
                     <p *ngIf="Password?.hasError('required')" class="text-danger">
                         La contraseña es requerida.
                     </p>
@@ -49,21 +51,13 @@
                 </div>
             </div>
             <div class="button-wrp mt-5">
-                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Login</button>
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Enviar</button>
+            </div>
+            <span class="d-block text-center my-4 text-muted">--—————— o ——————--</span>
+            <div class="button-wrp">
+                <a *ngIf="!isLogged" type="button" class="guest-btn btn btn-primary" (click)="broseAsGuest()">Navega como invitado</a>
+                <a *ngIf="isLogged" type="button" class="guest-btn btn btn-primary" href="/portfolio">Volver al portfolio</a>
             </div>
         </form>
     </div>
-<!-- 
-    <pre>
-        Value:
-        {{form.value | json}}
-    </pre>
-    <pre>
-        Status:
-        {{form.status}}
-    </pre>
-    <pre>
-        Errors:
-        {{Email?.errors | json}}
-    </pre> -->
 </div>

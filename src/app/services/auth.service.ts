@@ -1,28 +1,20 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LoginUser } from '../models/login-user';
+import { JwtDTO } from '../models/jwt-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  url:string="https://INSERTEPROVEEDORJWTAQUI/api/auth";
-  currentUserSubject: BehaviorSubject<any>;
+  URL='http://localhost:8080/api/auth/'
 
-  constructor( private http:HttpClient ) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
+  constructor(private http:HttpClient) { }
+
+  public login(loginUser: LoginUser): Observable<JwtDTO>{
+    return this.http.post<JwtDTO>(this.URL + 'login', loginUser);
   }
 
-  login(credenciales:any):Observable<any> {
-    return this.http.post(this.url, credenciales).pipe(map(data=>{
-      sessionStorage.setItem('currentUser', JSON.stringify(data));
-      this.currentUserSubject.next(data);
-      return data;
-    }))
-  }
-
-  get authUser() {
-    return this.currentUserSubject.value;
-  }
 }
