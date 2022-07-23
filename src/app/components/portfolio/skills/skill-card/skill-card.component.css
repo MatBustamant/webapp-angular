@@ -1,0 +1,26 @@
+.skill-card {
+    background-color: var(--light-gray-color);
+    height: 75px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.skill-logo {
+    padding: 12.5px;
+    border-right: 1px solid black;
+}
+
+.skill-description {
+    width: 100%;
+    padding: 0px 12.5px 8px 12.5px;
+}
+
+.skill-description * {
+    margin: 0 12.5px;
+}
+
+.skill-description .progress-bar {
+    background-color: var(--main-accent-color);
+    margin: 0px;
+}

@@ -1,0 +1,11 @@
+<section id={{convertToValid(sectionTitle)}}>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
+            <app-card *ngFor="let item of sectionList"
+                cardTitle="{{item.title}}"
+                cardShort="{{item.description}}"
+                class="col d-flex justify-content-center"
+            ></app-card>
+        </div>
+    </div>
+</section>

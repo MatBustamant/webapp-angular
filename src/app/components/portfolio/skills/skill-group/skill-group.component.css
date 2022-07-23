@@ -1,0 +1,34 @@
+.skill-group {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.skill-card-wrapper {
+  height: 270px;
+}
+  
+ul {
+  list-style: none;
+  padding: 0;
+}
+  
+li {
+  user-select: none;
+}
+  
+button {
+  background-color: #e9ecef;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 4px;
+  color: #007acc;
+  padding: 8px 16px;
+}
+
+button:not([disabled]):hover {
+  background-color: #007acc;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}

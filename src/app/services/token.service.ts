@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { decodedJWT } from '../models';
 
 const TOKEN_KEY = 'AuthToken';
-const USERNAME_KEY = 'AuthUsername';
 const AUTHORITIES_KEY = 'AuthAuthorities';
 
 @Injectable({
@@ -9,7 +10,7 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
 })
 export class TokenService {
 
-  roles: Array<string> = [];
+  helper = new JwtHelperService();
 
   constructor() { }
 
@@ -18,36 +19,39 @@ export class TokenService {
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
-  public getToken(): string {
-    return sessionStorage.getItem(TOKEN_KEY)!;
+  public getToken(): string | null {
+    let token = sessionStorage.getItem(TOKEN_KEY);
+    if (token == null) { return null };
+    let decoded = this.decodeToken(token);
+    if (this.isTokenExpired(decoded)) { return null };
+    return token;
   }
 
-  public setEmail(email: string): void{
-    window.sessionStorage.removeItem(USERNAME_KEY);
-    window.sessionStorage.setItem(USERNAME_KEY, email);
+  public decodeToken(token: string): decodedJWT {
+    return this.helper.decodeToken(token);
   }
 
-  public getEmail(): string {
-    return sessionStorage.getItem(USERNAME_KEY)!;
+  public isTokenExpired(token: decodedJWT): boolean {
+    let exp = new Date(token.exp*1000);
+    let now = new Date();
+    if (now > exp) { return true }
+    else { return false };
   }
 
-  public setAuthorities(authorities: string[]): void{
+  public setAuthorities(authorities: [{authority: string}]): void{
     window.sessionStorage.removeItem(AUTHORITIES_KEY);
     window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
 
   public getAuthorities(): string[] {
-    this.roles = [];
+    let roles: string[] = [];
     if(sessionStorage.getItem(AUTHORITIES_KEY)) {
       JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach
-        ((authority: { authority: string; }) => {
-          this.roles.push(authority.authority);
+        ((authority: {authority: string}) => {
+          roles.push(authority.authority);
       });
     }
-    return this.roles;
+    return roles;
   }
 
-  public logOut(): void{
-    window.sessionStorage.clear();
-  }
 }

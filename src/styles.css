@@ -3,23 +3,25 @@
     --main-accent-color: #A01D5D; /*Un color pseudovino iluminadito*/
     --dark-gray-color: #22272e; /*Un color gris oscuro que saqué de git*/
     --light-gray-color: #adadad; /*Un color gris claro que saqué del templ*/
+    overflow-x: hidden;
 }
 
-.card-b p, .card p {
-    text-align: justify;
+body.modal-open {
+    padding-right: 0px !important;
+    overflow: visible !important;
 }
 
-@media (min-width: 576px){
-    .card {
-        width: 300px;
-    }
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
 }
 
-/* .card {
-    width: 300px;
-} */
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-accent-color);
+    border-radius: 10px;
+}
 
-.card img {
-    width: auto;
-    /* tex: center; */
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px 10px 0px 0px;
 }

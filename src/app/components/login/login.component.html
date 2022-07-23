@@ -2,7 +2,7 @@
     <div class="center">
         <form
             [formGroup]="form"
-            (ngSubmit)="onSubmit($event)"
+            (ngSubmit)="onSubmit(false)"
             class="m-5"
             id="formcss"
         >
@@ -20,10 +20,10 @@
                 />
                 <span class="input-dec" data-symbol="&#xf206;"></span>
                 <div class="input-val" *ngIf="isInvalidField('email')">
-                    <p *ngIf="Email?.hasError('required')" class="text-danger">
+                    <p *ngIf="email?.hasError('required')" class="text-danger">
                         El email es requerido.
                     </p>
-                    <p *ngIf="Email?.hasError('pattern')" class="text-danger">
+                    <p *ngIf="email?.hasError('pattern')" class="text-danger">
                         El formato del email debe ser válido.
                     </p>
                 </div>
@@ -42,10 +42,10 @@
                     <span class="zmdi"[ngClass]="{'zmdi-eye': !showPassword, 'zmdi-eye-off': showPassword}" (click)="showPass()"></span>
                 </span>
                 <div class="input-val" *ngIf="isInvalidField('password')">
-                    <p *ngIf="Password?.hasError('required')" class="text-danger">
+                    <p *ngIf="password?.hasError('required')" class="text-danger">
                         La contraseña es requerida.
                     </p>
-                    <p *ngIf="Password?.hasError('minlength')" class="text-danger">
+                    <p *ngIf="password?.hasError('minlength')" class="text-danger">
                         La contraseña debe tener 8 o más caracteres.
                     </p>
                 </div>
@@ -55,8 +55,8 @@
             </div>
             <span class="d-block text-center my-4 text-muted">--—————— o ——————--</span>
             <div class="button-wrp">
-                <a *ngIf="!isLogged" type="button" class="guest-btn btn btn-primary" (click)="broseAsGuest()">Navega como invitado</a>
-                <a *ngIf="isLogged" type="button" class="guest-btn btn btn-primary" href="/portfolio">Volver al portfolio</a>
+                <a *ngIf="!isLoggedIn" type="button" class="guest-btn btn btn-primary" (click)="onSubmit(true)">Navega como invitado</a>
+                <a *ngIf="isLoggedIn" type="button" class="guest-btn btn btn-primary" routerLink="/portfolio">Volver al portfolio</a>
             </div>
         </form>
     </div>

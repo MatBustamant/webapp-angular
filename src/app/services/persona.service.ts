@@ -1,22 +1,29 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
-import { Persona } from "../models";
+import { Subject } from 'rxjs';
+import { PersonaRead } from '../models';
+import { CRUDService } from './crud.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonaService {
 
-  url:string="https://localhost:8080/api/users";
+  persona: Subject<PersonaRead> = new Subject<PersonaRead>();
 
-  constructor( private http:HttpClient ) { }
+  constructor(private crud: CRUDService) {
+    this.loadPersona();
+   }
 
-  getPersona(): Observable<Persona> {
-    return this.http.get<Persona>(this.url + '/read/1');
+  loadPersona(): void {
+    this.crud.getPersona().subscribe({
+      next: (response: PersonaRead) => {
+        this.persona.next(response);
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
   }
 
-  updatePersona(persona:Persona):Observable<Persona> {
-    return this.http.put<Persona>(this.url + '/update', persona)
-  }
+
 }

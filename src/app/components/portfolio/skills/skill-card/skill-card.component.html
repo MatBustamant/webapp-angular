@@ -1,0 +1,17 @@
+<div class="skill-card d-flex align-items-center">
+    <div class="skill-logo">
+        <img src="{{skillImg}}" alt="">
+    </div>
+    <div class="skill-description">
+        <p>{{skillTitle}}</p>
+        <div class="progress">
+            <div
+                role="progressbar"
+                aria-valuemax="1"
+                attr.aria-valuenow="{{skillLvl}}"
+                class="progress-bar progress-bar-striped"
+                [ngStyle]="progressLvl"
+            ></div>
+        </div>
+    </div>
+</div>

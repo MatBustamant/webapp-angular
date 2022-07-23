@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/models/login-user';
 import { AuthService } from 'src/app/services/auth.service';
-import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -12,20 +10,13 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent implements OnInit {
   showPassword: boolean = false;
-
+  isLoggedIn: boolean = false;
   form:FormGroup;
-
-  isLogged=false;
-  loginUser!: LoginUser;
-  email!: string;
-  password!: string;
-  errMssg!: string;
+  loginUser: LoginUser = {email: "", password: ""};
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private tokenService: TokenService,
-    private authService:AuthService,
-    private router:Router) {
+    private formBuilder: FormBuilder,
+    private authService:AuthService) {
     this.form=this.formBuilder.group(
       {
         email: ['' ,[Validators.required,Validators.pattern(
@@ -44,16 +35,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
-      this.isLogged=true;
+    if (this.authService.checkLoginStatus()) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
     }
-}
+  }
 
-  get Email() {
+  get email() {
     return this.form.get('email');
   }
 
-  get Password() {
+  get password() {
     return this.form.get('password');
   }
 
@@ -64,47 +57,22 @@ export class LoginComponent implements OnInit {
 
   isEmptyField(field:string) {
     const fieldName = this.form.get(field);
-    return (fieldName?.value=="")
+    return (fieldName?.value=="");
   }
 
   showPass() {
     this.showPassword=!this.showPassword;
   }
 
-  onSubmit(event:Event): void {
-    this.loginUser=new LoginUser(this.Email?.value, this.Password?.value);
-    this.authService.login(this.loginUser).subscribe({
-      next: (data: any) => {
-        this.isLogged=true;
-        this.tokenService.setToken(data.token);
-        this.tokenService.setEmail(data.email);
-        this.tokenService.setAuthorities(data.authorities);
-        this.router.navigate(['/portfolio']);
-      },
-      error: (data: any) => {
-        this.router.navigate(['/login']);
-        this.isLogged=false;
-      }
-    });
-  }
-
-  broseAsGuest(): void {
-    console.log("Navegas como invitado.");
-    //lógica TEMPORAL para iniciar sesión como invitado
-    this.loginUser=new LoginUser('guest@portfolio.com', 'guestuser');
-    this.authService.login(this.loginUser).subscribe({
-      next: (data: any) => {
-        this.isLogged=true;
-        this.tokenService.setToken(data.token);
-        this.tokenService.setEmail(data.email);
-        this.tokenService.setAuthorities(data.authorities);
-        this.router.navigate(['/portfolio']);
-      },
-      error: () => {
-        this.isLogged=false;
-        this.router.navigate(['/login']);
-      }
-    });
+  onSubmit(isGuest: boolean): void {
+    if (!isGuest) {
+      this.loginUser.email = this.email?.value;
+      this.loginUser.password = this.password?.value;
+    } else {
+      this.loginUser.email = 'guest@portfolio.com';
+      this.loginUser.password = 'guestuser';
+    }
+    this.authService.login(this.loginUser);
   }
 
 }

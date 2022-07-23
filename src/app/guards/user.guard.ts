@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { TokenService } from '../services/token.service';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { TokenService } from '../services';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserGuardService implements CanActivate{
+export class UserGuard implements CanActivate {
 
   realRole!: string;
 
@@ -13,6 +13,7 @@ export class UserGuardService implements CanActivate{
     private tokenService: TokenService,
     private router: Router
     ) { }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const expectedRole = route.data['expectedRole'];
     const roles = this.tokenService.getAuthorities();
@@ -28,4 +29,5 @@ export class UserGuardService implements CanActivate{
     }
     return true;
   }
+  
 }

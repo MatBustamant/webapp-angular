@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from 'src/app/services/token.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,20 +8,20 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class TopBarComponent implements OnInit {
 
-  isLogged:boolean = false;
+  isLoggedIn: boolean = false;
 
-  constructor(private tokenService: TokenService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken() && this.tokenService.getAuthorities().includes('ADMIN')) {
-      this.isLogged = true;
+    if (this.authService.checkLoginStatus()) {
+      this.isLoggedIn = true;
     } else {
-      this.isLogged = false;
+      this.isLoggedIn = false;
     }
   }
 
-  public onLogOut(): void {
-    this.tokenService.logOut();
+  public logout(): void {
+    this.authService.logout();
   }
 
 }

@@ -11,8 +11,4 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  genArray(number: number): Array<number> {
-    return Array(number);
-  }
 }

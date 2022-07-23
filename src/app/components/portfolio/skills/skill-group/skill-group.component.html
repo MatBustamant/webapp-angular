@@ -1,0 +1,21 @@
+<div class="skill-group" id={{groupType}}>
+    <h3>{{groupTitle}}</h3>
+    <div class="skill-card-wrapper">
+        <app-skill-card *ngFor="let skill of group | slice: (currentPage-1) * pageSize : currentPage * pageSize"
+            skillTitle="{{skill.name}}" skillLvl="{{skill.lvl}}"
+        ></app-skill-card>
+    </div>
+    <nav>
+        <ul class="d-flex justify-content-evenly">
+          <li>
+            <button (click)="onPrevious(currentPage)">Previous</button>
+          </li>
+          <li>
+            <button (click)="onGoBack()">Volver al inicio</button>
+          </li>
+          <li>
+            <button (click)="onNext(currentPage)">Next</button>
+          </li>
+        </ul>
+      </nav>
+</div>

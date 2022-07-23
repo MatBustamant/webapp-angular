@@ -2,19 +2,19 @@
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse fixed-top" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#sobre-mi">Sobre mí</a>
+                <a class="nav-link" [routerLink]="'.'" [fragment]="'sobre-mi'">Sobre mí</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#experiencia">Experiencia</a>
+                <a class="nav-link" [routerLink]="'.'" [fragment]="'experiencia'">Experiencia</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#educacion">Educación</a>
+                <a class="nav-link" [routerLink]="'.'" [fragment]="'educacion'">Educación</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#habilidades">Habilidades</a>
+                <a class="nav-link" [routerLink]="'.'" [fragment]="'habilidades'">Habilidades</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#proyectos">Proyectos</a>
+                <a class="nav-link" [routerLink]="'.'" [fragment]="'proyectos'">Proyectos</a>
             </li>
         </ul>
     </div>
