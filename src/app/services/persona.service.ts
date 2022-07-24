@@ -8,13 +8,13 @@ import { CRUDService } from './crud.service';
 })
 export class PersonaService {
 
-  persona: Subject<PersonaRead> = new Subject<PersonaRead>();
+  public persona: Subject<PersonaRead> = new Subject<PersonaRead>();
 
-  constructor(private crud: CRUDService) {
+  constructor( private crud: CRUDService ) {
     this.loadPersona();
-   }
+  }
 
-  loadPersona(): void {
+  public loadPersona(): void {
     this.crud.getPersona().subscribe({
       next: (response: PersonaRead) => {
         this.persona.next(response);
@@ -24,6 +24,5 @@ export class PersonaService {
       }
     });
   }
-
 
 }

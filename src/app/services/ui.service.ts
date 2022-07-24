@@ -5,17 +5,18 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UiService {
+
   private isNavbarCollapsed: boolean = true;
   private subject = new Subject<any>();
 
   constructor() { }
 
-  toggleCollapse():void{
+  public toggleCollapse():void{
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
     this.subject.next(this.isNavbarCollapsed);
   }
 
-  onToggle():Observable<any>{
+  public onToggle():Observable<any>{
     return this.subject.asObservable();
   }
 

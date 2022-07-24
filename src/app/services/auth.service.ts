@@ -1,25 +1,24 @@
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginUser } from '../models/login-user';
-import { JwtDTO } from '../models/jwt';
-import { TokenService } from './token.service';
 import { Router } from '@angular/router';
-import { BYPASS } from '../interceptors/user-interceptor.service';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { BYPASS } from '../interceptors';
+import { JwtDTO, LoginUser } from '../models';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  URL: string = environment.authURL;
+  private URL: string = environment.authURL;
 
   constructor(
     private http:HttpClient,
     private tokenService:TokenService,
     private router:Router
-    ) { }
+  ) { }
   
   public isLoggedIn(): boolean {
     const token = this.tokenService.getToken();

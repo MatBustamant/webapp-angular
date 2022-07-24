@@ -1,3 +1,3 @@
-export * from './portfolio.component'
-export * from './about-me'
-export * from './skills'
+export * from './about-me';
+export * from './portfolio.component';
+export * from './skills';

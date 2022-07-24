@@ -27,6 +27,6 @@
     <a aria-label="Link a mi perfil de Twitter" class="socialm-l" href="#"><span aria-hidden="true" class="fab fa-twitter-square"></span></a>
     <a aria-label="Link a mi perfil de Github" class="socialm-l" href="#"><span aria-hidden="true" class="fab fa-github-square"></span></a>
     <a aria-label="Link a mi perfil de Linkedin" class="socialm-l" href="#"><span aria-hidden="true" class="fab fa-linkedin"></span></a>
-    <a *ngIf="!isAdmin" aria-label="Click en este botón para iniciar sesión y entrar en modo edición" class="login-btn" routerLink="/login" role="button" ><span aria-hidden="true" class="fas fa-sign-in-alt"></span></a>
+    <a *ngIf="!isAdmin" aria-label="Click en este botón para iniciar sesión y entrar en modo edición" class="login-btn" href="/login" role="button" ><span aria-hidden="true" class="fas fa-sign-in-alt"></span></a>
     <a *ngIf="isAdmin" aria-label="Click en este botón para cerrar sesión" class="login-btn" href="/login" role="button" (click)="logout()"><span aria-hidden="true" class="fa-solid fa-door-open"></span></a>
 </div>

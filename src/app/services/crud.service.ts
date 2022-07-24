@@ -2,14 +2,17 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { BackgroundRead, Persona, About, Institution, Project, Skill, PersonaRead, SkillRead, ProjectRead, Background } from "../models";
+import {
+  About, Background, BackgroundRead, Institution, Persona, PersonaRead,
+  Project, ProjectRead, Skill, SkillRead
+} from "../models";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CRUDService {
 
-  URL: string = environment.crudURL;
+  private URL: string = environment.crudURL;
 
   constructor( private http:HttpClient ) { }
 

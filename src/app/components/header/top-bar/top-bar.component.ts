@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-top-bar',
@@ -10,7 +10,7 @@ export class TopBarComponent implements OnInit {
 
   isAdmin: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor( private authService: AuthService ) { }
 
   ngOnInit(): void {
     this.isAdmin = this.authService.isAdmin();

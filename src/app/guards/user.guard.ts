@@ -10,7 +10,7 @@ export class UserGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
-    ) { }
+  ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const expectedRole = route.data['expectedRole'];

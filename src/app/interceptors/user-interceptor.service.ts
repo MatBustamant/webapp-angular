@@ -2,8 +2,7 @@ import { HttpContextToken, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterc
 import { Injectable } from '@angular/core';
 import { catchError, concatMap, Observable, throwError } from 'rxjs';
 import { JwtDTO } from '../models';
-import { AuthService } from '../services';
-import { TokenService } from '../services/token.service';
+import { AuthService, TokenService } from '../services';
 
 export const BYPASS = new HttpContextToken(() => false);
 
@@ -15,7 +14,7 @@ export class UserInterceptorService implements HttpInterceptor {
   constructor(
     private tokenService: TokenService,
     private authService: AuthService
-    ) { }
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (req.context.get(BYPASS) == true) { return next.handle(req) };
@@ -28,7 +27,7 @@ export class UserInterceptorService implements HttpInterceptor {
     return next.handle(interceptedReq).pipe(catchError(
       (err: HttpErrorResponse) => {
       if (this.tokenService.isTokenExpired(token) || err.status == 401 ) {
-        let dto = {} as JwtDTO;
+        const dto = {} as JwtDTO;
         dto.token = token;
         
         return this.authService.refreshToken(dto).pipe(concatMap(

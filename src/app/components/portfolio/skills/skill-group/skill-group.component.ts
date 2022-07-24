@@ -20,7 +20,7 @@ export class SkillGroupComponent implements OnInit {
   }
 
   public onNext(page: number): void {
-    let total = Math.ceil(this.group.length/this.pageSize);
+    const total = Math.ceil(this.group.length/this.pageSize);
     if (this.currentPage != total) {
       this.currentPage = page + 1;
     } else {
@@ -29,7 +29,7 @@ export class SkillGroupComponent implements OnInit {
   }
 
   public onPrevious(page: number): void {
-    let total = Math.ceil(this.group.length/this.pageSize);
+    const total = Math.ceil(this.group.length/this.pageSize);
     if (this.currentPage != 1) {
       this.currentPage = page - 1;
     } else {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UiService } from 'src/app/services/ui.service';
+import { UiService } from 'src/app/services';
 
 @Component({
   selector: 'app-collapsable-navbar',
@@ -12,12 +12,10 @@ export class CollapsableNavbarComponent implements OnInit {
   isNavbarCollapsed: boolean = true;
   subscription?: Subscription;
 
-  constructor(
-    private uiService: UiService
-  ) {
+  constructor( private uiService: UiService ) {
     this.subscription = this.uiService.onToggle()
                                                   .subscribe(value => this.isNavbarCollapsed = value);
-   }
+  }
 
   ngOnInit(): void {
   }

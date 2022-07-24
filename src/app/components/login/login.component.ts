@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginUser } from 'src/app/models/login-user';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoginUser } from 'src/app/models';
+import { AuthService } from 'src/app/services';
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   showPassword: boolean = false;
   isLoggedIn: boolean = false;
   form:FormGroup;
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService:AuthService) {
+    private authService:AuthService
+  ) {
     this.form=this.formBuilder.group(
       {
         email: ['' ,[Validators.required,Validators.pattern(

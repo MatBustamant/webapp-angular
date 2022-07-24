@@ -5,12 +5,14 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ModalManagementService {
+
   public action: Subject<any> = new Subject<any>();
   public data: Subject<any> = new Subject<any>()
 
   constructor() { }
 
-  openModal(): void {
+  public openModal(): void {
     this.action.next('open');
   }
+
 }

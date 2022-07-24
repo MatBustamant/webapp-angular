@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaRead } from 'src/app/models';
-import { PersonaService } from 'src/app/services/persona.service';
+import { PersonaService } from 'src/app/services';
 
 @Component({
   selector: 'app-about-me',
@@ -9,11 +9,11 @@ import { PersonaService } from 'src/app/services/persona.service';
 })
 export class AboutMeComponent implements OnInit {
 
-  fullname!: string;
-  occupation!: String;
-  description!: string;
+  fullname: string = "";
+  occupation: String = "";
+  description: string = `Bienvenido a mi portfolio web. Me llamo ${this.fullname}.`;
 
-  constructor(private personaService: PersonaService) { }
+  constructor( private personaService: PersonaService ) { }
 
   ngOnInit(): void {
     this.loadSection()
@@ -25,12 +25,14 @@ export class AboutMeComponent implements OnInit {
         console.log("La sección 'Sobre mí' recibió la información.");
         this.fullname = `${persona.name} ${persona.surname}`;
         this.occupation = persona.occupation;
-        this.description = persona.about.description;
+        if (persona.about.description != null) {
+          this.description = persona.about.description;
+        }
       },
       error: (err: any) => {
         console.log(err);
       }
-    })
+    });
   }
 
 }

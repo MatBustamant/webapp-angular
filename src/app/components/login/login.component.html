@@ -16,7 +16,7 @@
                     class="form-control"
                     id="exampleInputEmail1"
                     placeholder="Email"
-                    aria-describedby="emailHelp"
+                    autocomplete="email"
                 />
                 <span class="input-dec" data-symbol="&#xf206;"></span>
                 <div class="input-val" *ngIf="isInvalidField('email')">
@@ -37,6 +37,7 @@
                     class="form-control"
                     id="exampleInputPassword1"
                     placeholder="Contraseña"
+                    autocomplete="current-password"
                 />
                 <span class="input-dec" data-symbol="&#xf190;">
                     <span class="zmdi"[ngClass]="{'zmdi-eye': !showPassword, 'zmdi-eye-off': showPassword}" (click)="showPass()"></span>

@@ -9,7 +9,7 @@ const TOKEN_KEY = 'AuthToken';
 })
 export class TokenService {
 
-  helper = new JwtHelperService();
+  private helper = new JwtHelperService();
 
   constructor() { }
 

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BackgroundRead, PersonaRead, ProjectRead } from 'src/app/models';
-import { PersonaService } from 'src/app/services/persona.service';
+import { PersonaService } from 'src/app/services';
 
 type SectionItem = BackgroundRead | ProjectRead;
 
@@ -15,14 +15,14 @@ export class SectionComponent implements OnInit {
   sectionSwitch!: keyof PersonaRead;
   sectionList!: SectionItem[];
 
-  constructor(private personaService: PersonaService) { }
+  constructor( private personaService: PersonaService ) { }
 
   ngOnInit(): void {
     this.loadSection(); 
   }
 
   convertToValid(string: string): string {
-    let url = string.toLowerCase();
+    const url = string.toLowerCase();
     return url.normalize("NFD").replace(/\p{Diacritic}/gu, "");
   }
 
@@ -33,12 +33,12 @@ export class SectionComponent implements OnInit {
         switch (this.sectionTitle) {
           case "Experiencia":
             this.sectionSwitch = "backgroundList";
-            let experienceList = persona[this.sectionSwitch];
+            const experienceList = persona[this.sectionSwitch];
             this.sectionList = experienceList.filter((background: BackgroundRead) => background.linkedType.id === 2);
             break;
           case "Educación":
             this.sectionSwitch = "backgroundList";
-            let educationList = persona[this.sectionSwitch];
+            const educationList = persona[this.sectionSwitch];
             this.sectionList = educationList.filter((background: BackgroundRead) => background.linkedType.id === 1);
             break;
           case "Proyectos":
@@ -50,7 +50,7 @@ export class SectionComponent implements OnInit {
       error: (err: any) => {
         console.log(err);
       }
-    })
+    });
   }
 
 }

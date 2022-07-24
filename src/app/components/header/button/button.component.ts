@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/services';
 
 @Component({
   selector: 'app-button',
@@ -8,13 +8,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./button.component.css']
 })
 export class ButtonComponent implements OnInit {
+
   switchState: boolean = false;
   isNavbarCollapsed: boolean = true;
   subscription?: Subscription;
 
-  constructor(
-    private uiService: UiService
-  ) {
+  constructor( private uiService: UiService ) {
     this.subscription = this.uiService.onToggle()
                                                   .subscribe(value => this.isNavbarCollapsed = value);
   }
@@ -28,5 +27,3 @@ export class ButtonComponent implements OnInit {
   }
 
 }
-
-

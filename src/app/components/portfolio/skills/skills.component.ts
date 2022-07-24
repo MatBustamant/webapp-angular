@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonaRead, Skill, SkillRead } from 'src/app/models';
-import { PersonaService } from 'src/app/services/persona.service';
+import { PersonaRead, SkillRead } from 'src/app/models';
+import { PersonaService } from 'src/app/services';
 
 @Component({
   selector: 'app-skills',
@@ -14,7 +14,7 @@ export class SkillsComponent implements OnInit {
   lang!: SkillRead[];
   proglang!: SkillRead[];
 
-  constructor(private personaService: PersonaService) { }
+  constructor( private personaService: PersonaService ) { }
 
   ngOnInit(): void {
     this.loadSection();
@@ -24,8 +24,7 @@ export class SkillsComponent implements OnInit {
     this.personaService.persona.subscribe({
       next: (persona: PersonaRead) => {
         console.log("La sección 'Habilidades' recibió la información.");
-        let data: SkillRead[];
-        data = persona.skillList;
+        const data: SkillRead[] = persona.skillList;
         this.hard = data.filter(skill => skill.linkedType.id == 1);
         this.soft = data.filter(skill => skill.linkedType.id == 2);
         this.lang = data.filter(skill => skill.linkedType.id == 3);
@@ -34,7 +33,7 @@ export class SkillsComponent implements OnInit {
       error: (err: any) => {
         console.log(err);
       }
-    })
+    });
   }
 
 }

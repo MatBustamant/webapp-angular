@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
-
+import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalManagementService } from 'src/app/services/modal-management.service';
+import { ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-modal',
@@ -10,6 +9,7 @@ import { ModalManagementService } from 'src/app/services/modal-management.servic
   encapsulation: ViewEncapsulation.None
 })
 export class ModalComponent implements OnInit {
+
   modalData!: {
     img: string,
     title: string,
@@ -20,18 +20,22 @@ export class ModalComponent implements OnInit {
   @ViewChild('content')
   private modalRef?: TemplateRef<any>;
 
-  constructor(private modalManagement: ModalManagementService, private ngbmodal: NgbModal) {
+  constructor(
+    private modalManagement: ModalManagementService,
+    private ngbmodal: NgbModal
+  ) {
     this.modalManagement.data.subscribe((val)=>{this.modalData = val});
     this.modalManagement.action.subscribe((instruction)=>{
       if (instruction === 'open') {
         this.open(this.modalRef);
       }
     });
-   }
+  }
 
   ngOnInit(): void { }
 
   open(content: any) {
     this.ngbmodal.open(content, { ariaLabelledBy: 'modal-basic-title' , size: 'lg' , centered: true , windowClass: 'blured-window' })
   }
+
 }

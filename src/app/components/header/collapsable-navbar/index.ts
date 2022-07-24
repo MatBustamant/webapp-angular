@@ -1,1 +1,1 @@
-export * from './collapsable-navbar.component'
+export * from './collapsable-navbar.component';

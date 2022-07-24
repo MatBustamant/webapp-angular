@@ -1,1 +1,1 @@
-export * from './skill-group.component'
+export * from './skill-group.component';
