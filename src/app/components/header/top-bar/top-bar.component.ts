@@ -8,16 +8,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class TopBarComponent implements OnInit {
 
-  isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    if (this.authService.checkLoginStatus()) {
-      this.isLoggedIn = true;
-    } else {
-      this.isLoggedIn = false;
-    }
+    this.isAdmin = this.authService.isAdmin();
   }
 
   public logout(): void {

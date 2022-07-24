@@ -35,11 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.authService.checkLoginStatus()) {
-      this.isLoggedIn = true;
-    } else {
-      this.isLoggedIn = false;
-    }
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   get email() {

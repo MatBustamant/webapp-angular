@@ -3,7 +3,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { decodedJWT } from '../models';
 
 const TOKEN_KEY = 'AuthToken';
-const AUTHORITIES_KEY = 'AuthAuthorities';
 
 @Injectable({
   providedIn: 'root'
@@ -19,36 +18,33 @@ export class TokenService {
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
-  public getToken(): string | null {
-    let token = sessionStorage.getItem(TOKEN_KEY);
-    if (token == null) { return null };
-    let decoded = this.decodeToken(token);
-    if (this.isTokenExpired(decoded)) { return null };
+  public getToken(): string | undefined {
+    const token = sessionStorage.getItem(TOKEN_KEY);
+    if (token == null) { return undefined };
     return token;
   }
 
   public decodeToken(token: string): decodedJWT {
-    return this.helper.decodeToken(token);
+    return this.helper.decodeToken<decodedJWT>(token);
   }
 
-  public isTokenExpired(token: decodedJWT): boolean {
-    let exp = new Date(token.exp*1000);
-    let now = new Date();
+  public isTokenExpired(token: string): boolean {
+    const decoded = this.decodeToken(token);
+    const exp = new Date(decoded.exp*1000);
+    const now = new Date();
     if (now > exp) { return true }
     else { return false };
   }
 
-  public setAuthorities(authorities: [{authority: string}]): void{
-    window.sessionStorage.removeItem(AUTHORITIES_KEY);
-    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
-  }
+  public getRoles(): string[] {
+    const token = this.getToken();
+    const roles: string[] = [];
+    let decoded = {} as decodedJWT;
 
-  public getAuthorities(): string[] {
-    let roles: string[] = [];
-    if(sessionStorage.getItem(AUTHORITIES_KEY)) {
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach
-        ((authority: {authority: string}) => {
-          roles.push(authority.authority);
+    if (token != null) { 
+      decoded = this.decodeToken(token);
+      decoded.roles.forEach((role: {authority: string}) => {
+          roles.push(role.authority);
       });
     }
     return roles;

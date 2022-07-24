@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 import { BackgroundRead, Persona, About, Institution, Project, Skill, PersonaRead, SkillRead, ProjectRead, Background } from "../models";
 
 @Injectable({
@@ -8,7 +9,7 @@ import { BackgroundRead, Persona, About, Institution, Project, Skill, PersonaRea
 })
 export class CRUDService {
 
-  URL:string="http://localhost:8080/api/portfolio";
+  URL: string = environment.crudURL;
 
   constructor( private http:HttpClient ) { }
 
@@ -19,16 +20,16 @@ export class CRUDService {
   }
 
   updatePersona(persona:Persona):Observable<Persona> {
-    return this.http.put<Persona>(this.URL + '/person/update', persona);
+    return this.http.put<Persona>(`${this.URL}/person/update`, persona);
   }
 
   // MÉTODOS PARA SECCIÓN SOBRE MÍ
   getAbout(): Observable<About> {
-    return this.http.get<About>(this.URL + '/about/read/1');
+    return this.http.get<About>(`${this.URL}/about/read/1`);
   }
 
   updateAbout(about:About):Observable<About> {
-    return this.http.put<About>(this.URL + '/about/update', about);
+    return this.http.put<About>(`${this.URL}/about/update`, about);
   }
 
   deleteAbout(id: number):Observable<any> {

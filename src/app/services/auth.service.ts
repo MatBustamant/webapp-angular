@@ -5,33 +5,32 @@ import { JwtDTO } from '../models/jwt';
 import { TokenService } from './token.service';
 import { Router } from '@angular/router';
 import { BYPASS } from '../interceptors/user-interceptor.service';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private isLoggedIn: boolean = this.checkLoginStatus();
-
-  URL='http://localhost:8080/api/auth'
+  URL: string = environment.authURL;
 
   constructor(
     private http:HttpClient,
     private tokenService:TokenService,
     private router:Router
-    ) {
-      this.checkLoginStatus();
-    }
+    ) { }
   
-  public checkLoginStatus(): boolean {
-    let roles: string[] = this.tokenService.getAuthorities();
-    if (this.tokenService.getToken() == null) { window.sessionStorage.clear(); return false };
-    
-    if (roles.includes('ADMIN')) {
-      return true;
-    } else {
-      return false;
-    }
+  public isLoggedIn(): boolean {
+    const token = this.tokenService.getToken();
+    if (token == null) { return false }
+    else { return true };
+  }
+
+  public isAdmin(): boolean {
+    const roles: string[] = this.tokenService.getRoles();
+    if (roles.includes('ADMIN')) { return true } 
+    else { return false };
   }
 
   public login(loginUser: LoginUser): void {
@@ -39,24 +38,24 @@ export class AuthService {
                               {context: new HttpContext().set(BYPASS, true)}
     ).subscribe({
       next: (response: JwtDTO) => {
-        let decodedToken = this.tokenService.decodeToken(response.token);
         this.tokenService.setToken(response.token);
-        this.tokenService.setAuthorities(decodedToken.roles);
-        if (JSON.stringify(decodedToken.roles).includes('ADMIN')) {
-          this.isLoggedIn = true;
-        }
         this.router.navigate(['/portfolio']);
       },
       error: (err: any) => {
         console.log(err);
-        window.sessionStorage.clear();
-        this.router.navigate(['/login']);
+        this.logout();
       }
     });
   }
 
   public logout(): void {
     window.sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  public refreshToken(dto: JwtDTO): Observable<JwtDTO> {
+    return this.http.post<JwtDTO>(`${this.URL}/refresh`, dto,
+                                    {context: new HttpContext().set(BYPASS, true)});
   }
 
 }
