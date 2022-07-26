@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SkillRead } from 'src/app/models';
 
 @Component({
@@ -7,6 +7,8 @@ import { SkillRead } from 'src/app/models';
   styleUrls: ['./skill-group.component.css']
 })
 export class SkillGroupComponent implements OnInit {
+
+  @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() group!: SkillRead[];
   @Input() groupType!: string;
@@ -39,6 +41,10 @@ export class SkillGroupComponent implements OnInit {
 
   public onGoBack(): void {
     this.currentPage = 1;
+  }
+
+  delete(id: number): void {
+    this.deleteId.emit(id);
   }
 
 }

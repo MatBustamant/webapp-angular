@@ -1,15 +1,14 @@
-import { Institution } from "./institution.model";
-
 export interface Background {
     id?: number;
     linkedType: {id:number};
-    linkedInstitution: {id:number};
+    institution: string;
     linkedPerson: {id:number};
-    title: string;
-    duration: string;
-    description: string;
+    img?: string;
+    title?: string;
+    startDate: Date;
+    endDate: Date;
+    description?: string;
 }
-export interface BackgroundRead extends Omit<Background, "linkedType" | "linkedInstitution" | "linkedPerson">{
+export interface BackgroundRead extends Omit<Background, "linkedType" | "linkedPerson">{
     linkedType: {id:number, name:string};
-    linkedInstitution: Institution;
 }

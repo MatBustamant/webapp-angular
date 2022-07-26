@@ -12,7 +12,8 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     anchorScrolling:'enabled',
-    scrollOffset:[0,0] //LUEGO TOQUETEAR ESTO XFAVOR
+    scrollOffset:[0,0], //LUEGO TOQUETEAR ESTO XFAVOR
+    onSameUrlNavigation:'reload'
   })],
   exports: [RouterModule]
 })

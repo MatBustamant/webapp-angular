@@ -1,10 +1,14 @@
 export interface Project {
-    id?: number;
+    id: number | null;
     linkedPerson: {id: number};
     title: string;
-    duration: string;
+    startDate: String;
+    endDate: String | null;
     description: string;
-    evidence: string;
+    link: string;
+    img: string | null;
 }
-export interface ProjectRead extends Omit<Project, "linkedPerson">{
+export interface ProjectRead extends Omit<Project, "linkedPerson" | "startDate" | "endDate">{
+    startDate: Date;
+    endDate: Date | null;
 }

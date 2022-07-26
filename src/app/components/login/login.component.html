@@ -57,7 +57,7 @@
             <span class="d-block text-center my-4 text-muted">--—————— o ——————--</span>
             <div class="button-wrp">
                 <a *ngIf="!isLoggedIn" type="button" class="guest-btn btn btn-primary" (click)="onSubmit(true)">Navega como invitado</a>
-                <a *ngIf="isLoggedIn" type="button" class="guest-btn btn btn-primary" routerLink="/portfolio">Volver al portfolio</a>
+                <a *ngIf="isLoggedIn" type="button" class="guest-btn btn btn-primary" href="/portfolio">Volver al portfolio</a>
             </div>
         </form>
     </div>

@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BackgroundRead, PersonaRead, ProjectRead } from 'src/app/models';
-import { PersonaService } from 'src/app/services';
-
-type SectionItem = BackgroundRead | ProjectRead;
+import { CRUDService, ModalManagementService, PersonaService } from 'src/app/services';
 
 @Component({
   selector: 'app-section',
@@ -12,10 +11,14 @@ type SectionItem = BackgroundRead | ProjectRead;
 export class SectionComponent implements OnInit {
 
   @Input() sectionTitle!: string;
-  sectionSwitch!: keyof PersonaRead;
-  sectionList!: SectionItem[];
+  typeId!: number;
+  backgroundList!: BackgroundRead[];
 
-  constructor( private personaService: PersonaService ) { }
+  constructor(
+    private personaService:PersonaService,
+    private modalManagement:ModalManagementService,
+    private crud:CRUDService
+  ) { }
 
   ngOnInit(): void {
     this.loadSection(); 
@@ -29,28 +32,50 @@ export class SectionComponent implements OnInit {
   loadSection(): void {
     this.personaService.persona.subscribe({
       next: (persona: PersonaRead) => {
-        console.log(`La sección '${this.sectionTitle}' recibió la información.`)
-        switch (this.sectionTitle) {
-          case "Experiencia":
-            this.sectionSwitch = "backgroundList";
-            const experienceList = persona[this.sectionSwitch];
-            this.sectionList = experienceList.filter((background: BackgroundRead) => background.linkedType.id === 2);
-            break;
-          case "Educación":
-            this.sectionSwitch = "backgroundList";
-            const educationList = persona[this.sectionSwitch];
-            this.sectionList = educationList.filter((background: BackgroundRead) => background.linkedType.id === 1);
-            break;
-          case "Proyectos":
-            this.sectionSwitch = "projectList";
-            this.sectionList = persona[this.sectionSwitch];
-            break;
-        }
+        console.log(`La sección '${this.sectionTitle}' recibió la información.`);
+        this.filterLists(persona);
       },
       error: (err: any) => {
         console.log(err);
       }
     });
+  }
+
+  filterLists(persona: PersonaRead): void {
+    switch (this.sectionTitle) {
+      case "Educación":
+        this.typeId = 1;
+        this.backgroundList = persona.backgroundList.filter((background: BackgroundRead) => background.linkedType.id === 1);
+        break;
+      case "Experiencia":
+        this.typeId = 2;
+        this.backgroundList = persona.backgroundList.filter((background: BackgroundRead) => background.linkedType.id === 2);
+        break;
+    }
+  }
+
+  deleteBackground(id: number): void {
+    this.personaService.deleteBackground(id).subscribe({
+      next: () => {
+        this.backgroundList = this.backgroundList.filter(background => background.id != id);
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
+  }
+
+  createBackground(type: number) {
+    this.modalManagement.openBackground(null, type).subscribe(
+      background => this.crud.createBackground(background).subscribe({
+        next: (background: BackgroundRead) => {
+          this.backgroundList.push(background);
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      })
+    );
   }
 
 }

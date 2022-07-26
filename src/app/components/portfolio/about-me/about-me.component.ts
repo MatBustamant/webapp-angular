@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonaRead } from 'src/app/models';
-import { PersonaService } from 'src/app/services';
+import { Persona, PersonaRead } from 'src/app/models';
+import { ModalManagementService, PersonaService } from 'src/app/services';
 
 @Component({
   selector: 'app-about-me',
@@ -9,11 +9,17 @@ import { PersonaService } from 'src/app/services';
 })
 export class AboutMeComponent implements OnInit {
 
-  fullname: string = "";
-  occupation: String = "";
-  description: string = `Bienvenido a mi portfolio web. Me llamo ${this.fullname}.`;
+  data: Persona = {
+    name: "",
+    surname: "",
+    occupation: "",
+    about: "Bienvenido a mi portfolio web."
+  }
 
-  constructor( private personaService: PersonaService ) { }
+  constructor(
+    private personaService: PersonaService,
+    private modalManagement: ModalManagementService
+    ) { }
 
   ngOnInit(): void {
     this.loadSection()
@@ -23,16 +29,25 @@ export class AboutMeComponent implements OnInit {
     this.personaService.persona.subscribe({
       next: (persona: PersonaRead) => {
         console.log("La sección 'Sobre mí' recibió la información.");
-        this.fullname = `${persona.name} ${persona.surname}`;
-        this.occupation = persona.occupation;
-        if (persona.about.description != null) {
-          this.description = persona.about.description;
-        }
+        this.setData(persona);
       },
       error: (err: any) => {
         console.log(err);
       }
     });
+  }
+
+  setData(persona: Persona): void {
+    this.data = persona;
+    const fullname = `${persona.name} ${persona.surname}`
+    if (persona.about == "") {
+      this.data.about = `Bienvenido a mi portfolio web. Me llamo ${fullname} y esta es una presentación predeterminada.`;
+    }
+  }
+
+  openForm(): void {
+    this.modalManagement.data.next(this.data);
+    this.modalManagement.openAbout();
   }
 
 }

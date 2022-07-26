@@ -3,15 +3,21 @@
         <img src="{{skillImg}}" alt="">
     </div>
     <div class="skill-description">
-        <p>{{skillTitle}}</p>
+        <p>{{data.name}}</p>
         <div class="progress">
             <div
                 role="progressbar"
                 aria-valuemax="1"
-                attr.aria-valuenow="{{skillLvl}}"
+                attr.aria-valuenow="{{data.lvl}}"
                 class="progress-bar progress-bar-striped"
                 [ngStyle]="progressLvl"
             ></div>
         </div>
+        <a type="button" class="cross" (click)="deleteSkill(data.id!)">
+            <span class="fa-solid fa-xmark"></span>
+        </a>
+        <a type="button" class="pen" (click)="openForm()">
+            <span class="fa-solid fa-pen-to-square"></span>
+        </a>
     </div>
 </div>

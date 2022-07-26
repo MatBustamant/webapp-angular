@@ -39,7 +39,6 @@ export class UserInterceptorService implements HttpInterceptor {
       
       } else {
         console.log(err);
-        this.authService.logout();
         return throwError(() => err);
       }
     }));

@@ -2,7 +2,7 @@
     <h3>{{groupTitle}}</h3>
     <div class="skill-card-wrapper">
         <app-skill-card *ngFor="let skill of group | slice: (currentPage-1) * pageSize : currentPage * pageSize"
-            skillTitle="{{skill.name}}" skillLvl="{{skill.lvl}}"
+            [data]=skill (deleteId)="delete($event)"
         ></app-skill-card>
     </div>
     <nav>

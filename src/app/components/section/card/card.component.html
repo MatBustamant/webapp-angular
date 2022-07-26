@@ -1,11 +1,17 @@
-<div class="card" (click)="openModal()">
-    <div class="card-header text-center">
-        <img src={{cardImg}} alt={{cardTitle}} class="card-img-top">
+<div class="d-flex flex-column card-wrp">
+    <div class="card" (click)="openModal()">
+        <div class="card-header text-center">
+            <img src={{img}} alt={{data.title}} class="card-img-top">
+        </div>
+        <div class="card-body">
+            <h3 class="card-title text-center">{{data.title}}</h3>
+            <p class="card-text card-short">{{data.description}}</p>
+        </div>
     </div>
-    <div class="card-body">
-        <h3 class="card-title text-center">{{cardTitle}}</h3>
-        <p class="card-text card-short">{{cardShort}}</p>
-        <!-- <p class="card-text card-long" [innerHTML]="cardLong"></p> -->
-    </div>
-    <!-- <div class="card-footer text-muted text-center"><small [innerHTML]="cardFooter"></small></div> -->
+    <a type="button" class="cross" (click)="deleteBackground(data.id!)">
+        <span class="fa-solid fa-xmark"></span>
+    </a>
+    <a type="button" class="pen" (click)="openForm(data)">
+        <span class="fa-solid fa-pen-to-square"></span>
+    </a>
 </div>

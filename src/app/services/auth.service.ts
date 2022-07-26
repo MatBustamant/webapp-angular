@@ -38,7 +38,7 @@ export class AuthService {
     ).subscribe({
       next: (response: JwtDTO) => {
         this.tokenService.setToken(response.token);
-        this.router.navigate(['/portfolio']);
+        this.router.navigateByUrl('/portfolio');
       },
       error: (err: any) => {
         console.log(err);

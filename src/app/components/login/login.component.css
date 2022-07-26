@@ -24,7 +24,7 @@ div.center {
     border-radius: 10px;
 }
 
-.login-title, .welcome {
+.login-title {
     display: block;
     font-family: sans-serif;
     font-size: 25px;

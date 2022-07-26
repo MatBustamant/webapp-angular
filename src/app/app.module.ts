@@ -8,10 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
   AboutMeComponent, ButtonComponent, CardComponent, CollapsableNavbarComponent, HeaderComponent,
-  LoginComponent, ModalComponent, PortfolioComponent, SectionComponent, SkillCardComponent,
+  LoginComponent, PortfolioComponent, SectionComponent, SkillCardComponent,
   SkillGroupComponent, SkillsComponent, TopBarComponent
 } from './components';
+import { FormComponent } from './components/modal/form/form.component';
+import { AboutFormComponent } from './components/portfolio/about-me/about-form/about-form.component';
+import { ProjectFormComponent } from './components/portfolio/projects/project-form/project-form.component';
+import { ProjectsComponent } from './components/portfolio/projects/projects.component';
+import { SkillFormComponent } from './components/portfolio/skills/skill-form/skill-form.component';
+import { WarningComponent } from './components/warning/warning.component';
 import { interceptorProvider } from './interceptors';
+import { ProjectCardComponent } from './components/portfolio/projects/project-card/project-card.component';
+import { BaseFormComponent } from './components/base-form/base-form.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +29,21 @@ import { interceptorProvider } from './interceptors';
     CollapsableNavbarComponent,
     ButtonComponent,
     CardComponent,
-    ModalComponent,
     LoginComponent,
     PortfolioComponent,
     AboutMeComponent,
     SectionComponent,
     SkillsComponent,
     SkillCardComponent,
-    SkillGroupComponent
+    SkillGroupComponent,
+    FormComponent,
+    SkillFormComponent,
+    AboutFormComponent,
+    WarningComponent,
+    ProjectsComponent,
+    ProjectFormComponent,
+    ProjectCardComponent,
+    BaseFormComponent
   ],
   imports: [
     BrowserModule,

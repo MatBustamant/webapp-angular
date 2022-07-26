@@ -1,4 +1,5 @@
 .skill-card {
+    position: relative;
     background-color: var(--light-gray-color);
     height: 75px;
     margin-bottom: 1rem;
@@ -23,4 +24,27 @@
 .skill-description .progress-bar {
     background-color: var(--main-accent-color);
     margin: 0px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.skill-description .pen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.3em 0em;
+    padding: 0;
+    border: 0;
+}
+
+.skill-description .cross {
+    position: absolute;
+    top: 0;
+    right: 5.5em;
+    margin: 0.3em 0em;
+    padding: 0;
+    border: 0;
 }

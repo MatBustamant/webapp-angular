@@ -1,0 +1,35 @@
+<article class="postcard dark blue">
+    <a class="postcard__img_link" href="/portfolio#proyectos">
+        <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="{{data.title}}" />
+    </a>
+    <div class="postcard__text">
+        <h1 class="postcard__title blue"><a href="#">{{data.title}}</a></h1>
+        <div class="postcard__subtitle small">
+            <time [attr.datetime]="data.startDate">
+                <i class="fas fa-calendar-alt mr-2"></i> {{dateToString(data.startDate)}} -
+                {{dateToString(data.endDate)}}
+            </time>
+        </div>
+        <div class="postcard__bar"></div>
+        <div class="postcard__preview-txt">{{data.description}}</div>
+        <ul class="postcard__tagbox">
+            <span>
+                <li class="tag__item"><i class="fas fa-clock mr-2"></i>&nbsp;&nbsp;{{getPeriod(data.startDate,
+                    data.endDate)}}</li>
+                <li class="tag__item play blue">
+                    <a href="{{data.link}}"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Visitar</a>
+                </li>
+            </span>
+            <span class="ms-auto">
+                <li class="tag__item">
+                    <a type="button" class="cross" (click)="deleteProject(data.id!)"><i
+                            class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Eliminar</a>
+                </li>
+                <li class="tag__item">
+                    <a type="button" class="pen" (click)="openForm(data)"><i
+                            class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar</a>
+                </li>
+            </span>
+        </ul>
+    </div>
+</article>

@@ -25,14 +25,7 @@ export class LoginComponent implements OnInit {
         email: ['' ,[Validators.required,Validators.pattern(
           '^(?=^.{6,254}$)(?![._%+-])(?!.*[._%+-]@)[a-z0-9._%+-]{1,64}@[a-z0-9.-]+[.][a-z]{2,4}$'
           )]],
-        password: ['' ,[Validators.required,Validators.minLength(8)]],
-        deviceInfo:this.formBuilder.group(
-          {
-          deviceId: ["17867868768"],
-          devicetype: ["DEVICE_TYPE_ANDROID"],
-          notificationToken:["67657575eececc34"]
-          }
-        )
+        password: ['' ,[Validators.required,Validators.minLength(8)]]
       }
     )
   }

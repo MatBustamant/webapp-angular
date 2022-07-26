@@ -1,0 +1,74 @@
+<!-- <ng-template #skillmodal let-modal> -->
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-4" id="about-form">
+            <h2 class="login-title mb-4">{{accion}}</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="input-wrp mb-4">
+                        <label for="name-input" class="form-label">Nombre</label>
+                        <input type="text" formControlName="name"
+                            [ngClass]="{'is-invalid': isInvalidField('name'), 'is-empty' : isEmptyField('name')}"
+                            class="form-control" id="name-input" placeholder="Nombre" autocomplete="off"
+                            >
+                        <span class="input-dec"></span>
+                        <div class="input-val" *ngIf="isInvalidField('name')">
+                            <p *ngIf="name?.hasError('required')" class="text-danger">
+                                El nombre es requerido.
+                            </p>
+                            <p *ngIf="name?.hasError('minlength') || name?.hasError('maxlength')" class="text-danger">
+                                El nombre debe tener entre 1 y 30 caracteres.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-wrp mb-4">
+                        <label for="type-input" class="form-label">Tipo</label>
+                        <select formControlName="linkedType"
+                            [ngClass]="{'is-invalid': isInvalidField('linkedType'), 'is-empty' : isEmptyField('linkedType')}"
+                            class="form-control" id="type-input" autocomplete="off" name="types"
+                        >
+                            <option value="">--Elija una opción--</option>
+                            <option value="1">Hard Skill</option>
+                            <option value="2">Soft Skill</option>
+                            <option value="3">Lengua</option>
+                            <option value="4">Programación</option>
+                        </select>
+                        <span class="input-dec"></span>
+                        <div class="input-val" *ngIf="isInvalidField('linkedType')">
+                            <p *ngIf="linkedType?.hasError('required')" class="text-danger">
+                                El tipo es requerido.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-wrp mb-4">
+                        <label for="level-input" class="form-label">Nivel</label>
+                        <input type="text" formControlName="lvl"
+                            [ngClass]="{'is-invalid': isInvalidField('lvl'), 'is-empty' : isEmptyField('lvl')}"
+                            class="form-control" id="level-input" placeholder="Título u ocupación" autocomplete="off"
+                            >
+                        <span class="input-dec"></span>
+                        <div class="input-val" *ngIf="isInvalidField('lvl')">
+                            <p *ngIf="lvl?.hasError('required')" class="text-danger">
+                                El nivel es requerido.
+                            </p>
+                            <p *ngIf="lvl?.hasError('min') || lvl?.hasError('max')" class="text-danger">
+                                El nivel debe ser entre 0 y 1.
+                            </p>
+                            <p *ngIf="lvl?.hasError('pattern')" class="text-danger">
+                                El nivel debe ser un valor numérico de un decimal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-wrp mt-5">
+                <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+<!-- </ng-template> -->

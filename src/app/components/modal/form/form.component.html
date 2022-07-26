@@ -1,0 +1,100 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-5" id="form-modal">
+        <h2 class="login-title mb-4">{{accion}}</h2>
+        <div class="row">
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="title-input" class="form-label">Título</label>
+                    <input type="text" formControlName="title"
+                        [ngClass]="{'is-invalid': isInvalidField('title'), 'is-empty' : isEmptyField('title')}"
+                        class="form-control" id="title-input" placeholder="Título del elemento" autocomplete="off">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('title')">
+                        <p *ngIf="title?.hasError('required')" class="text-danger">
+                            El títutlo es requerido.
+                        </p>
+                        <p *ngIf="title?.hasError('minlength') || title?.hasError('maxlength')" class="text-danger">
+                            El título debe tener entre 5 y 50 caracteres.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="institution-input" class="form-label">Institución</label>
+                    <input list="institutions" formControlName="institution"
+                        [ngClass]="{'is-invalid': isInvalidField('institution'), 'is-empty' : isEmptyField('institution')}"
+                        class="form-control" id="institution-input" autocomplete="off">
+                    <datalist id="institutions">
+                        <option *ngFor="let institution of institutions" value="{{institution}}">
+                            {{institution}}</option>
+                    </datalist>
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('institution')">
+                        <p *ngIf="institution?.hasError('required')" class="text-danger">
+                            Una institución es requerida.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="sdate-input" class="form-label">Fecha de inicio</label>
+                    <input type="date" formControlName="startDate"
+                        [ngClass]="{'is-invalid': isInvalidField('startDate'), 'is-empty' : isEmptyField('startDate')}"
+                        class="form-control" id="sdate-input" placeholder="Fecha de inicio" autocomplete="off"
+                        max="{{today | date: 'yyyy-MM-dd'}}">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('startDate')">
+                        <p *ngIf="startDate?.hasError('required')" class="text-danger">
+                            La fecha de inicio es requerida.
+                        </p>
+                        <p *ngIf="startDate?.hasError('maxDate')" class="text-danger">
+                            La fecha debe ser menor o igual a la fecha actual.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="edate-input" class="form-label">Fecha de fin</label>
+                    <input type="date" formControlName="endDate"
+                        [ngClass]="{'is-invalid': isInvalidField('endDate'), 'is-empty' : isEmptyField('endDate')}"
+                        class="form-control" id="edate-input" placeholder="Fecha de fin" autocomplete="off"
+                        min="{{startDate?.value | date: 'yyyy-MM-dd'}}" max="{{today | date: 'yyyy-MM-dd'}}">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('endDate')">
+                        <p *ngIf="endDate?.hasError('minDate') || endDate?.hasError('maxDate')" class="text-danger">
+                            La fecha debe encontrarse entre la fecha de inicio y la actual.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="textarea-wrp mb-4">
+                    <label for="descri-input" class="form-label">Descripción</label>
+                    <textarea rows="6" type="text" formControlName="description"
+                        [ngClass]="{'is-invalid': isInvalidField('description'), 'is-empty' : isEmptyField('description')}"
+                        class="form-control" id="descri-input" placeholder="Descripción del elemento"
+                        autocomplete="off"></textarea>
+                    <span class="input-dec"></span>
+                    <div class="textarea-val" *ngIf="isInvalidField('description')">
+                        <p *ngIf="description?.hasError('required')" class="text-danger">
+                            El nivel es requerido.
+                        </p>
+                        <p *ngIf="description?.hasError('maxlength')" class="text-danger">
+                            La descripción debe tener hasta 300 caracteres.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrp mt-5">
+            <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Guardar cambios</button>
+        </div>
+    </form>
+</div>

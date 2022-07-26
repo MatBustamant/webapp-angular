@@ -1,10 +1,11 @@
 <section id={{convertToValid(sectionTitle)}}>
     <div class="container">
+        <button><i class="fa-solid fa-plus" (click)="createBackground(typeId)" ></i></button>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
-            <app-card *ngFor="let item of sectionList"
-                cardTitle="{{item.title}}"
-                cardShort="{{item.description}}"
+            <app-card *ngFor="let background of backgroundList"
+                [data]=background
                 class="col d-flex justify-content-center"
+                (deleteId)="deleteBackground($event)"
             ></app-card>
         </div>
     </div>
