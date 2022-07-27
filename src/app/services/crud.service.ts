@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
-import { environment } from "src/environments/environment";
+// import { environment } from "src/environments/environment";
 import {
   Background, BackgroundRead, Persona, PersonaRead,
   Project, ProjectRead, Skill, SkillRead
@@ -12,7 +12,7 @@ import {
 })
 export class CRUDService {
 
-  private URL: string = environment.crudURL;
+  private URL: string = 'https://portfolio-back-s.herokuapp.com/api/portfolio';
 
   constructor( private http:HttpClient ) { }
 

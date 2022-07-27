@@ -3,9 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  authURL: 'https://portfolio-back-s.herokuapp.com/api/auth',
-  crudURL: 'https://portfolio-back-s.herokuapp.com/api/portfolio'
+  production: false
 };
 
 /*
