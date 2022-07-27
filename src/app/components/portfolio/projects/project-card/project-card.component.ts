@@ -10,6 +10,8 @@ import { AuthService, DataHandlerService, ModalManagementService } from 'src/app
 })
 export class ProjectCardComponent implements OnInit, OnDestroy {
 
+  @Input() odd!: boolean;
+
   isAdmin: boolean = false;
 
   subscription: Subscription;
@@ -56,7 +58,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
     else if (months < 12) { return `${months} meses.` }
     else if (months == 12) { return "1 año." }
     else if (months < 21) { return "Alrededor de 1 año." }
-    else { return `Alrededor de ${(months - (months %12))/12} años.` }
+    else { return `${(months - (months %12))/12} años.` }
   }
 
   deleteProject(id: number): void{

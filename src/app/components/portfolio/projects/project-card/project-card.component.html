@@ -1,9 +1,9 @@
-<article class="postcard dark blue">
+<article class="postcard dark" [ngClass]="{'blue odd': odd, 'purple even': !odd}">
     <a class="postcard__img_link" href="/portfolio#proyectos">
         <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="{{data.title}}" />
     </a>
     <div class="postcard__text">
-        <h1 class="postcard__title blue"><a href="#">{{data.title}}</a></h1>
+        <h3 class="postcard__title" [ngClass]="{'blue': odd, 'purple': !odd}"><a href="#">{{data.title}}</a></h3>
         <div class="postcard__subtitle small">
             <time [attr.datetime]="data.startDate">
                 <i class="fas fa-calendar-alt mr-2"></i> {{dateToString(data.startDate)}} -
@@ -13,19 +13,19 @@
         <div class="postcard__bar"></div>
         <div class="postcard__preview-txt">{{data.description}}</div>
         <ul class="postcard__tagbox">
-            <span>
+            <span class="me-auto">
                 <li class="tag__item"><i class="fas fa-clock mr-2"></i>&nbsp;&nbsp;{{getPeriod(data.startDate,
                     data.endDate)}}</li>
-                <li class="tag__item play blue">
+                <li class="tag__item play" [ngClass]="{'blue': odd, 'purple': !odd}">
                     <a href="{{data.link}}"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Visitar</a>
                 </li>
             </span>
             <span *ngIf="isAdmin" class="ms-auto">
-                <li class="tag__item">
+                <li class="tag__item play" [ngClass]="{'blue': odd, 'purple': !odd}">
                     <a type="button" class="cross" (click)="deleteProject(data.id!)"><i
                             class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Eliminar</a>
                 </li>
-                <li class="tag__item">
+                <li class="tag__item play" [ngClass]="{'blue': odd, 'purple': !odd}">
                     <a type="button" class="pen" (click)="openForm(data)"><i
                             class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar</a>
                 </li>

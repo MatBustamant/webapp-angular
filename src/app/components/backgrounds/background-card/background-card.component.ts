@@ -4,11 +4,13 @@ import { BackgroundRead } from 'src/app/models';
 import { AuthService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-background-card',
   templateUrl: './background-card.component.html',
   styleUrls: ['./background-card.component.css']
 })
 export class BackgroundCardComponent implements OnInit, OnDestroy {
+
+  @Input() odd!: boolean;
 
   isAdmin: boolean = false;
 
@@ -17,7 +19,7 @@ export class BackgroundCardComponent implements OnInit, OnDestroy {
   img = 'https://via.placeholder.com/150';
 
   @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
-
+  @Input() type!: string;
   @Input() data!: BackgroundRead;
 
   constructor(
@@ -38,6 +40,27 @@ export class BackgroundCardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  dateToString(date: Date | null): string {
+    if (date == null) { return "Actualidad" }
+    const fecha = new Date(date);
+    return fecha.toLocaleDateString("es-AR", {year: 'numeric', month: 'long', day: 'numeric', timeZone: "UTC"});
+  }
+
+  getPeriod(date: Date, endDate: Date | null): string {
+    const dateFrom = new Date(date);
+    if (endDate == null) { endDate = new Date()}
+    const dateTo = new Date(endDate);
+
+    const months = dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
+
+    if (months < 1) { return "Menos de 1 mes." }
+    else if (months == 1) { return "1 mes." }
+    else if (months < 12) { return `${months} meses.` }
+    else if (months == 12) { return "1 año." }
+    else if (months < 21) { return "Alrededor de 1 año." }
+    else { return `${(months - (months %12))/12} años.` }
   }
 
   openForm(data: BackgroundRead): void {

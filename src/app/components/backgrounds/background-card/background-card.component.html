@@ -1,17 +1,32 @@
-<div class="d-flex flex-column card-wrp">
-    <div class="card">
-        <div class="card-header text-center">
-            <img src={{img}} alt={{data.title}} class="card-img-top">
+<article class="postcard" [ngClass]="{'dark': (type=='experiencia'), 'light': (type=='educacion'), 'blue odd': odd, 'purple even': !odd}">
+    <a class="postcard__img_link" href="/portfolio#{{type}}">
+        <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="{{data.title}}" />
+    </a>
+    <div class="postcard__text" [ngClass]="{'t-dark': (type=='educacion')}">
+        <h3 class="postcard__title" [ngClass]="{'blue': odd, 'purple': !odd}"><a href="#">{{data.title}}</a></h3>
+        <div class="postcard__subtitle small">
+            <time [attr.datetime]="data.startDate">
+                <i class="fas fa-calendar-alt mr-2"></i> {{dateToString(data.startDate)}} -
+                {{dateToString(data.endDate)}}
+            </time>
         </div>
-        <div class="card-body">
-            <h3 class="card-title text-center">{{data.title}}</h3>
-            <p class="card-text card-short">{{data.description}}</p>
-        </div>
+        <div class="postcard__bar"></div>
+        <div class="postcard__preview-txt">{{data.description}}</div>
+        <ul class="postcard__tagbox">
+            <span class="me-auto">
+                <li class="tag__item"><i class="fas fa-clock mr-2"></i>&nbsp;&nbsp;{{getPeriod(data.startDate,
+                    data.endDate)}}</li>
+            </span>
+            <span *ngIf="isAdmin" class="ms-auto admin">
+                <li class="tag__item play" [ngClass]="{'blue': odd, 'purple': !odd}">
+                    <a type="button" class="cross" (click)="deleteBackground(data.id!)"><i
+                            class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Eliminar</a>
+                </li>
+                <li class="tag__item play" [ngClass]="{'blue': odd, 'purple': !odd}">
+                    <a type="button" class="pen" (click)="openForm(data)"><i
+                            class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar</a>
+                </li>
+            </span>
+        </ul>
     </div>
-    <a *ngIf="isAdmin" type="button" class="cross" (click)="deleteBackground(data.id!)">
-        <span class="fa-solid fa-xmark"></span>
-    </a>
-    <a *ngIf="isAdmin" type="button" class="pen" (click)="openForm(data)">
-        <span class="fa-solid fa-pen-to-square"></span>
-    </a>
-</div>
+</article>
