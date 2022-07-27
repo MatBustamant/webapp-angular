@@ -1,0 +1,1 @@
+export * from './background-card.component';

@@ -1,4 +1,4 @@
-#form-modal {
+#about-form, #background-form, #project-form, #skill-form {
     font-family: sans-serif;
     color: white;
 }

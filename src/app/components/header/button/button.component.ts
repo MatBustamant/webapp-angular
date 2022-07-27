@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UiService } from 'src/app/services';
 
@@ -7,18 +7,21 @@ import { UiService } from 'src/app/services';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.css']
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent implements OnInit, OnDestroy {
 
   switchState: boolean = false;
   isNavbarCollapsed: boolean = true;
-  subscription?: Subscription;
+  subscription: Subscription;
 
   constructor( private uiService: UiService ) {
-    this.subscription = this.uiService.onToggle()
-                                                  .subscribe(value => this.isNavbarCollapsed = value);
+    this.subscription = this.uiService.onToggle().subscribe(value => this.isNavbarCollapsed = value);
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   switchOnAndOff() {

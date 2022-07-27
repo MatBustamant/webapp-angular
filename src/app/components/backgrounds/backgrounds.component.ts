@@ -1,24 +1,28 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { BackgroundRead, PersonaRead, ProjectRead } from 'src/app/models';
-import { CRUDService, ModalManagementService, PersonaService } from 'src/app/services';
+import { BackgroundRead, PersonaRead } from 'src/app/models';
+import { AuthService, CRUDService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-section',
-  templateUrl: './section.component.html',
-  styleUrls: ['./section.component.css']
+  templateUrl: './backgrounds.component.html',
+  styleUrls: ['./backgrounds.component.css']
 })
-export class SectionComponent implements OnInit {
+export class BackgroundsComponent implements OnInit {
+
+  isAdmin: boolean = false;
 
   @Input() sectionTitle!: string;
   typeId!: number;
   backgroundList!: BackgroundRead[];
 
   constructor(
-    private personaService:PersonaService,
+    private authService:AuthService,
+    private dataHandler:DataHandlerService,
     private modalManagement:ModalManagementService,
     private crud:CRUDService
-  ) { }
+  ) {
+    this.isAdmin = this.authService.isAdmin();
+  }
 
   ngOnInit(): void {
     this.loadSection(); 
@@ -30,9 +34,9 @@ export class SectionComponent implements OnInit {
   }
 
   loadSection(): void {
-    this.personaService.persona.subscribe({
+    this.dataHandler.persona.subscribe({
       next: (persona: PersonaRead) => {
-        console.log(`La sección '${this.sectionTitle}' recibió la información.`);
+        // console.log(`La sección '${this.sectionTitle}' recibió la información.`);
         this.filterLists(persona);
       },
       error: (err: any) => {
@@ -55,7 +59,7 @@ export class SectionComponent implements OnInit {
   }
 
   deleteBackground(id: number): void {
-    this.personaService.deleteBackground(id).subscribe({
+    this.crud.deleteBackground(id).subscribe({
       next: () => {
         this.backgroundList = this.backgroundList.filter(background => background.id != id);
       },
@@ -69,6 +73,7 @@ export class SectionComponent implements OnInit {
     this.modalManagement.openBackground(null, type).subscribe(
       background => this.crud.createBackground(background).subscribe({
         next: (background: BackgroundRead) => {
+          this.dataHandler.updateInstitutions(background.institution, true);
           this.backgroundList.push(background);
         },
         error: (err: any) => {

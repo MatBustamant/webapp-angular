@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { PersonaRead, Skill, SkillRead } from 'src/app/models';
-import { CRUDService, ModalManagementService, PersonaService } from 'src/app/services';
+import { PersonaRead, SkillRead } from 'src/app/models';
+import { AuthService, CRUDService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent implements OnInit, OnDestroy {
+
+  isAdmin: boolean = false;
 
   subscription: Subscription;
 
@@ -19,15 +20,14 @@ export class SkillsComponent implements OnInit {
   lang!: SkillRead[];
   proglang!: SkillRead[];
 
-  currentPage: number = 1;
-  pageSize: number = 3;
-
   constructor(
-    private personaService: PersonaService,
+    private authService:AuthService,
+    private dataHandler: DataHandlerService,
     private crud: CRUDService,
     private modalManagement: ModalManagementService
     ) {
-    this.subscription = this.personaService.refreshSkill$.subscribe(() => {
+    this.isAdmin = this.authService.isAdmin();
+    this.subscription = this.dataHandler.refreshSkill$.subscribe(() => {
       this.reloadSection();
     })
   }
@@ -36,10 +36,14 @@ export class SkillsComponent implements OnInit {
     this.loadSection();
   }
 
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+  }
+
   loadSection(): void {
-    this.personaService.persona.subscribe({
+    this.dataHandler.persona.subscribe({
       next: (persona: PersonaRead) => {
-        console.log("La sección 'Habilidades' recibió la información.");
+        // console.log("La sección 'Habilidades' recibió la información.");
         this.skillList = persona.skillList;
         this.filterSkillList(persona.skillList);
       },
@@ -50,8 +54,7 @@ export class SkillsComponent implements OnInit {
   }
 
   reloadSection(): void {
-    // console.log('reloading');
-    this.personaService.updateSkills().subscribe({
+    this.crud.getSkills().subscribe({
       next: (response: SkillRead[]) => {
         this.skillList = response;
         this.filterSkillList(response);
@@ -63,7 +66,7 @@ export class SkillsComponent implements OnInit {
   }
 
   deleteSkill(id: number) {
-    this.personaService.deleteSkill(id).subscribe({
+    this.crud.deleteSkill(id).subscribe({
       next: () => {
         this.skillList = this.skillList.filter(skill => skill.id != id);
         this.filterSkillList(this.skillList);

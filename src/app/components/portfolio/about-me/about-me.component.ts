@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Persona, PersonaRead } from 'src/app/models';
-import { ModalManagementService, PersonaService } from 'src/app/services';
+import { AuthService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-about-me',
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.css']
 })
-export class AboutMeComponent implements OnInit {
+export class AboutMeComponent implements OnInit, OnDestroy {
+
+  isAdmin: boolean = false;
+
+  subscription: Subscription;
 
   data: Persona = {
     name: "",
@@ -17,18 +22,28 @@ export class AboutMeComponent implements OnInit {
   }
 
   constructor(
-    private personaService: PersonaService,
+    private authService: AuthService,
+    private dataHandler: DataHandlerService,
     private modalManagement: ModalManagementService
-    ) { }
+    ) {
+      this.isAdmin = this.authService.isAdmin();
+      this.subscription = this.dataHandler.about.subscribe(
+        about => this.setData(about)
+      )
+    }
 
   ngOnInit(): void {
     this.loadSection()
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   loadSection(): void {
-    this.personaService.persona.subscribe({
+    this.dataHandler.persona.subscribe({
       next: (persona: PersonaRead) => {
-        console.log("La sección 'Sobre mí' recibió la información.");
+        // console.log("La sección 'Sobre mí' recibió la información.");
         this.setData(persona);
       },
       error: (err: any) => {
@@ -46,8 +61,7 @@ export class AboutMeComponent implements OnInit {
   }
 
   openForm(): void {
-    this.modalManagement.data.next(this.data);
-    this.modalManagement.openAbout();
+    this.modalManagement.openAbout(this.data);
   }
 
 }

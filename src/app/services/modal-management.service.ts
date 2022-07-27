@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subject } from 'rxjs';
-import { SkillFormComponent } from '../components';
-import { FormComponent } from '../components/modal/form/form.component';
-import { ProjectFormComponent } from '../components/portfolio/projects/project-form/project-form.component';
-import { WarningComponent } from '../components/warning/warning.component';
+import { AboutFormComponent, BackgroundFormComponent, ProjectFormComponent, SkillFormComponent, WarningComponent } from '../components';
 import { BackgroundRead, ProjectRead, SkillRead } from '../models';
 
 const OPTIONS = { size: 'lg' , centered: true , windowClass: 'blured-window' };
@@ -19,14 +16,9 @@ export class ModalManagementService {
 
   constructor( private ngbmodal:NgbModal ) { }
 
-  public openModal(): void {
-    this.action.next('open');
-  }
-
   public openBackground(data: BackgroundRead | null, type: number): Observable<any> {
-    const modalRef = this.ngbmodal.open(FormComponent, OPTIONS);
-    let tipo = "";
-    if (type == 1 ) { tipo = "educación" } else { tipo = "experiencia" }
+    const modalRef = this.ngbmodal.open(BackgroundFormComponent, OPTIONS);
+    let tipo = (type == 1) ? "educación" : "experiencia";
     if (data == null) {
       modalRef.componentInstance.setType(type);
       modalRef.componentInstance.accion = `Crear ${tipo}`;
@@ -37,8 +29,10 @@ export class ModalManagementService {
     return modalRef.closed;
   }
 
-  public openAbout(): void {
-    this.action.next('editAbout');
+  public openAbout(data: any): void {
+    const modalRef = this.ngbmodal.open(AboutFormComponent, OPTIONS);
+    modalRef.componentInstance.setData(data);
+    modalRef.componentInstance.accion = "Editar datos personales";
   }
 
   public openSkill(data: SkillRead | null): Observable<any> {
@@ -47,7 +41,7 @@ export class ModalManagementService {
       modalRef.componentInstance.setData(data);
       modalRef.componentInstance.accion = "Editar skill";
     } else { modalRef.componentInstance.accion = "Crear skill" }
-    return modalRef.closed; //guarda con esto, capaz tenga que editar cosas de mi método de edit skill.
+    return modalRef.closed;
   }
 
   public openProject(data: ProjectRead | null): Observable<any> {

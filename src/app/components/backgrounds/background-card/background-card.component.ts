@@ -1,16 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { BackgroundRead, ProjectRead } from 'src/app/models';
-import { ModalManagementService, PersonaService } from 'src/app/services';
+import { BackgroundRead } from 'src/app/models';
+import { AuthService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  templateUrl: './background-card.component.html',
+  styleUrls: ['./background-card.component.css']
 })
-export class CardComponent implements OnInit {
+export class BackgroundCardComponent implements OnInit, OnDestroy {
 
-  subscription: Subscription
+  isAdmin: boolean = false;
+
+  subscription: Subscription;
 
   img = 'https://via.placeholder.com/150';
 
@@ -19,10 +21,12 @@ export class CardComponent implements OnInit {
   @Input() data!: BackgroundRead;
 
   constructor(
+    private authService: AuthService,
     private modalManagement: ModalManagementService,
-    private personaService: PersonaService
+    private dataHandler: DataHandlerService
   ) {
-    this.subscription = this.personaService.background.subscribe(
+    this.isAdmin = this.authService.isAdmin();
+    this.subscription = this.dataHandler.background.subscribe(
       background => {
         if (background.id == this.data.id) { this.data = background }
       }
@@ -33,11 +37,7 @@ export class CardComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-  }
-
-  openModal(): void {
-    this.modalManagement.data.next(this.data);
-    this.modalManagement.openModal();
+    this.subscription.unsubscribe();
   }
 
   openForm(data: BackgroundRead): void {
@@ -45,6 +45,7 @@ export class CardComponent implements OnInit {
   }
 
   deleteBackground(id: number): void{
+    this.dataHandler.updateInstitutions(this.data.institution, false);
     this.modalManagement.warning().subscribe(
       (value) => {
         if (value == 'Ok') {

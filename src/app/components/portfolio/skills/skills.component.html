@@ -1,14 +1,17 @@
 <section id="habilidades">
     <div class="container">
-        <button><i class="fa-solid fa-plus" (click)="createSkill()" ></i></button>
+        <button *ngIf="isAdmin"><i class="fa-solid fa-plus" (click)="createSkill()"></i></button>
         <div class="row">
-            <app-skill-group (deleteId)="deleteSkill($event)" [group]="hard" [groupType]="'hard'" [groupTitle]="'Hard Skills'" class="col"></app-skill-group>
-            <app-skill-group (deleteId)="deleteSkill($event)" [group]="soft" [groupType]="'soft'" [groupTitle]="'Soft Skills'" class="col"></app-skill-group>
+            <app-skill-group (deleteId)="deleteSkill($event)" [group]="hard" [groupType]="'hard'"
+                [groupTitle]="'Hard Skills'" class="col"></app-skill-group>
+            <app-skill-group (deleteId)="deleteSkill($event)" [group]="soft" [groupType]="'soft'"
+                [groupTitle]="'Soft Skills'" class="col"></app-skill-group>
         </div>
         <div class="row">
-            <app-skill-group (deleteId)="deleteSkill($event)" [group]="lang" [groupType]="'lang'" [groupTitle]="'Lenguas'" class="col"></app-skill-group>
-            <app-skill-group (deleteId)="deleteSkill($event)" [group]="proglang" [groupType]="'proglang'" [groupTitle]="'Programación'" class="col"></app-skill-group>
+            <app-skill-group (deleteId)="deleteSkill($event)" [group]="lang" [groupType]="'lang'"
+                [groupTitle]="'Lenguas'" class="col"></app-skill-group>
+            <app-skill-group (deleteId)="deleteSkill($event)" [group]="proglang" [groupType]="'proglang'"
+                [groupTitle]="'Programación'" class="col"></app-skill-group>
         </div>
     </div>
 </section>
-<!-- <app-skill-form></app-skill-form> -->

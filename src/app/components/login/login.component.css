@@ -1,6 +1,7 @@
-body, html {
-	height: 100%;
-	font-family: sans-serif;
+body,
+html {
+    height: 100%;
+    font-family: sans-serif;
 }
 
 div.container-fluid {
@@ -18,9 +19,10 @@ div.container-fluid {
 
 div.center {
     background-color: var(--main-dominant-color);
-    height: auto; /*38em era si quiero poner más cosas en este form, 23em era antes de poner más cosas.*/
+    height: auto;
+    /*38em era si quiero poner más cosas en este form, 23em era antes de poner más cosas.*/
     width: 21em;
-    box-shadow:0 0 6px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
@@ -47,11 +49,14 @@ div.center {
 }
 
 input {
-	outline: none;
-	border: none;
+    outline: none;
+    border: none;
 }
 
-input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder {
+input::-webkit-input-placeholder,
+input:-moz-placeholder,
+input::-moz-placeholder,
+input:-ms-input-placeholder {
     color: var(--light-gray-color);
 }
 
@@ -65,7 +70,7 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     font-size: 10px;
     color: white;
     line-height: 1.2;
-  
+
     display: block;
     width: 100%;
     height: 30px;
@@ -91,7 +96,7 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     pointer-events: none;
 }
 
-.form-control.is-invalid + .input-dec .zmdi {
+.form-control.is-invalid+.input-dec .zmdi {
     display: none;
 }
 
@@ -121,7 +126,7 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     font-family: Material-Design-Iconic-Font;
     color: var(--light-gray-color);
     font-size: 0.95em;
-  
+
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -136,7 +141,7 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     padding-left: 6.25px;
     padding-top: 3px;
 }
-  
+
 .input-dec::before {
     content: "";
     display: block;
@@ -152,19 +157,21 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     transition: all 0.4s;
 }
 
-.form-control:focus + .input-dec::before {
+.form-control:focus+.input-dec::before {
     width: 100%;
 }
-  
-.form-control:not(.form-control.is-empty) + .input-dec::before {
+
+.form-control:not(.form-control.is-empty)+.input-dec::before {
     width: 100%;
 }
-  
-.form-control:focus + .input-dec::after, .form-control:focus + .input-dec .zmdi {
+
+.form-control:focus+.input-dec::after,
+.form-control:focus+.input-dec .zmdi {
     color: var(--main-accent-color);
 }
-  
-.form-control:not(.form-control.is-empty) + .input-dec::after, .form-control:not(.form-control.is-empty) + .input-dec .zmdi {
+
+.form-control:not(.form-control.is-empty)+.input-dec::after,
+.form-control:not(.form-control.is-empty)+.input-dec .zmdi {
     color: var(--main-accent-color);
 }
 
@@ -175,7 +182,7 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     position: absolute;
     top: 6em;
 }
-  
+
 .button-wrp {
     width: 100%;
     display: block;
@@ -185,8 +192,10 @@ input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholde
     overflow: hidden;
     margin: 0 auto;
 }
-  
-button, button:focus, .guest-btn {
+
+button,
+button:focus,
+.guest-btn {
     font-family: sans-serif;
     font-weight: 500;
     font-size: 12px;
@@ -194,7 +203,7 @@ button, button:focus, .guest-btn {
     background-color: var(--main-accent-color);
     line-height: 1.2;
     text-transform: uppercase;
-  
+
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -212,7 +221,8 @@ button:disabled {
     background-color: var(--light-gray-color);
 }
 
-button:hover, .guest-btn:hover {
+button:hover,
+.guest-btn:hover {
     background-color: #8e0b57;
 }
 

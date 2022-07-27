@@ -7,19 +7,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
-  AboutMeComponent, ButtonComponent, CardComponent, CollapsableNavbarComponent, HeaderComponent,
-  LoginComponent, PortfolioComponent, SectionComponent, SkillCardComponent,
-  SkillGroupComponent, SkillsComponent, TopBarComponent
+  AboutFormComponent, AboutMeComponent, BackgroundCardComponent, BackgroundFormComponent, BackgroundsComponent, 
+  BaseFormComponent, ButtonComponent, CollapsableNavbarComponent, HeaderComponent, LoginComponent,
+  PortfolioComponent, ProjectCardComponent, ProjectFormComponent, ProjectsComponent, SkillCardComponent,
+  SkillFormComponent, SkillGroupComponent, SkillsComponent, TopBarComponent, WarningComponent
 } from './components';
-import { FormComponent } from './components/modal/form/form.component';
-import { AboutFormComponent } from './components/portfolio/about-me/about-form/about-form.component';
-import { ProjectFormComponent } from './components/portfolio/projects/project-form/project-form.component';
-import { ProjectsComponent } from './components/portfolio/projects/projects.component';
-import { SkillFormComponent } from './components/portfolio/skills/skill-form/skill-form.component';
-import { WarningComponent } from './components/warning/warning.component';
 import { interceptorProvider } from './interceptors';
-import { ProjectCardComponent } from './components/portfolio/projects/project-card/project-card.component';
-import { BaseFormComponent } from './components/base-form/base-form.component';
 
 @NgModule({
   declarations: [
@@ -28,15 +21,15 @@ import { BaseFormComponent } from './components/base-form/base-form.component';
     TopBarComponent,
     CollapsableNavbarComponent,
     ButtonComponent,
-    CardComponent,
+    BackgroundCardComponent,
     LoginComponent,
     PortfolioComponent,
     AboutMeComponent,
-    SectionComponent,
+    BackgroundsComponent,
     SkillsComponent,
     SkillCardComponent,
     SkillGroupComponent,
-    FormComponent,
+    BackgroundFormComponent,
     SkillFormComponent,
     AboutFormComponent,
     WarningComponent,

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProjectRead } from 'src/app/models';
-import { ModalManagementService, PersonaService } from 'src/app/services';
+import { AuthService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-project-card',
@@ -10,6 +10,8 @@ import { ModalManagementService, PersonaService } from 'src/app/services';
 })
 export class ProjectCardComponent implements OnInit, OnDestroy {
 
+  isAdmin: boolean = false;
+
   subscription: Subscription;
 
   @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
@@ -17,10 +19,12 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   @Input() data!: ProjectRead;
 
   constructor(
-    private modalManagementService:ModalManagementService,
-    private personaService:PersonaService
+    private authService:AuthService,
+    private modalManagement:ModalManagementService,
+    private dataHandler:DataHandlerService
   ) { 
-      this.subscription = this.personaService.project.subscribe(
+      this.isAdmin = this.authService.isAdmin();
+      this.subscription = this.dataHandler.project.subscribe(
         project => {
           if (project.id == this.data.id) { this.data = project }
         }
@@ -56,7 +60,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
 
   deleteProject(id: number): void{
-    this.modalManagementService.warning().subscribe(
+    this.modalManagement.warning().subscribe(
       (value) => {
         if (value == 'Ok') {
           this.deleteId.emit(id);
@@ -66,7 +70,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
 
   openForm(data: ProjectRead): void{
-    this.modalManagementService.openProject(data);
+    this.modalManagement.openProject(data);
   }
 
 }

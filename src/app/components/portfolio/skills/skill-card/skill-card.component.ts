@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SkillRead } from 'src/app/models';
-import { ModalManagementService, PersonaService } from 'src/app/services';
+import { AuthService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-skill-card',
@@ -9,6 +9,8 @@ import { ModalManagementService, PersonaService } from 'src/app/services';
   styleUrls: ['./skill-card.component.css']
 })
 export class SkillCardComponent implements OnInit, OnDestroy {
+
+  isAdmin: boolean = false;
 
   subscription: Subscription;
 
@@ -26,16 +28,18 @@ export class SkillCardComponent implements OnInit, OnDestroy {
   progressLvl!: Record<string, string>;
 
   constructor(
+    private authService:AuthService,
     private modalManagement:ModalManagementService,
-    private personaService:PersonaService,
+    private dataHandler:DataHandlerService,
   ) {
-    this.subscription = this.personaService.skill.subscribe
+    this.isAdmin = this.authService.isAdmin();
+    this.subscription = this.dataHandler.skill.subscribe
     (skill => {
       if (skill.id == this.data.id) {
         this.data = skill;
         this.setProgressLvl();
       }
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -43,7 +47,7 @@ export class SkillCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   setProgressLvl(): void {

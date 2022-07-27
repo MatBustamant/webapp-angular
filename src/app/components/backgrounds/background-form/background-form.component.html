@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-5" id="form-modal">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-5" id="background-form">
         <h2 class="login-title mb-4">{{accion}}</h2>
         <div class="row">
             <div class="col">
@@ -33,6 +33,9 @@
                     <div class="input-val" *ngIf="isInvalidField('institution')">
                         <p *ngIf="institution?.hasError('required')" class="text-danger">
                             Una institución es requerida.
+                        </p>
+                        <p *ngIf="institution?.hasError('minlength') || institution?.hasError('maxlength')" class="text-danger">
+                            La institución debe tener entre 5 y 100 caracteres.
                         </p>
                     </div>
                 </div>

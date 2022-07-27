@@ -1,6 +1,6 @@
 <section class="dark">
 	<div class="container py-4">
-		<button><i class="fa-solid fa-plus" (click)="createProject()" ></i></button>
+		<button *ngIf="isAdmin"><i class="fa-solid fa-plus" (click)="createProject()"></i></button>
 		<h1 class="h1 text-center text-white" id="proyectos">Proyectos</h1>
 		<app-project-card *ngFor="let project of projectList" [data]=project (deleteId)="delete($event)">
 		</app-project-card>

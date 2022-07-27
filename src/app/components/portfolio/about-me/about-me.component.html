@@ -13,8 +13,7 @@
                     <p class="lh-lg">{{data.about}}</p>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary" (click)="openForm()" >Editar</button>
+            <button *ngIf="isAdmin" type="button" class="btn btn-primary" (click)="openForm()" >Editar</button>
         </div>
     </div>
-    <app-about-form (personaEditada)="setData($event)" ></app-about-form>
 </section>

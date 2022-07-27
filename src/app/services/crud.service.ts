@@ -22,8 +22,8 @@ export class CRUDService {
     return this.http.get<PersonaRead>(`${this.URL}/person/read/1`);
   }
 
-  updatePersona(persona:Persona):Observable<Persona> {
-    return this.http.put<Persona>(`${this.URL}/person/update`, persona);
+  updatePersona(persona:Persona):Observable<PersonaRead> {
+    return this.http.put<PersonaRead>(`${this.URL}/person/update`, persona);
   }
 
 

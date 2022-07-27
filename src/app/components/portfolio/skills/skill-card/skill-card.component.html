@@ -13,10 +13,10 @@
                 [ngStyle]="progressLvl"
             ></div>
         </div>
-        <a type="button" class="cross" (click)="deleteSkill(data.id!)">
+        <a *ngIf="isAdmin" type="button" class="cross" (click)="deleteSkill(data.id!)">
             <span class="fa-solid fa-xmark"></span>
         </a>
-        <a type="button" class="pen" (click)="openForm()">
+        <a *ngIf="isAdmin" type="button" class="pen" (click)="openForm()">
             <span class="fa-solid fa-pen-to-square"></span>
         </a>
     </div>

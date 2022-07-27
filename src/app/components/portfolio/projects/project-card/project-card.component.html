@@ -20,7 +20,7 @@
                     <a href="{{data.link}}"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Visitar</a>
                 </li>
             </span>
-            <span class="ms-auto">
+            <span *ngIf="isAdmin" class="ms-auto">
                 <li class="tag__item">
                     <a type="button" class="cross" (click)="deleteProject(data.id!)"><i
                             class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Eliminar</a>

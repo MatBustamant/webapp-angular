@@ -1,5 +1,5 @@
 <div class="d-flex flex-column card-wrp">
-    <div class="card" (click)="openModal()">
+    <div class="card">
         <div class="card-header text-center">
             <img src={{img}} alt={{data.title}} class="card-img-top">
         </div>
@@ -8,10 +8,10 @@
             <p class="card-text card-short">{{data.description}}</p>
         </div>
     </div>
-    <a type="button" class="cross" (click)="deleteBackground(data.id!)">
+    <a *ngIf="isAdmin" type="button" class="cross" (click)="deleteBackground(data.id!)">
         <span class="fa-solid fa-xmark"></span>
     </a>
-    <a type="button" class="pen" (click)="openForm(data)">
+    <a *ngIf="isAdmin" type="button" class="pen" (click)="openForm(data)">
         <span class="fa-solid fa-pen-to-square"></span>
     </a>
 </div>

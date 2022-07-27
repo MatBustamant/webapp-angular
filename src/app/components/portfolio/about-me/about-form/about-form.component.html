@@ -1,81 +1,75 @@
-<ng-template #formmodal let-modal>
-    <div class="container">
-        <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-4 needs-validation" id="about-form">
-            <h2 class="login-title mb-4">Editar elemento</h2>
-            <div class="row">
-                <div class="col">
-                    <div class="input-wrp mb-4">
-                        <label for="name-input" class="form-label">Nombre</label>
-                        <input type="text" formControlName="name"
-                            [ngClass]="{'is-invalid': isInvalidField('name'), 'is-empty' : isEmptyField('name')}"
-                            class="form-control" id="name-input" placeholder="Nombre" autocomplete="given-name"
-                            >
-                        <span class="input-dec"></span>
-                        <div class="input-val" *ngIf="isInvalidField('name')">
-                            <p *ngIf="name?.hasError('required')" class="text-danger">
-                                El nombre es requerido.
-                            </p>
-                            <p *ngIf="name?.hasError('minlength') || name?.hasError('maxlength')" class="text-danger">
-                                El nombre debe tener entre 2 y 50 caracteres.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-wrp mb-4">
-                        <label for="surname-input" class="form-label">Apellido</label>
-                        <input type="text" formControlName="surname"
-                            [ngClass]="{'is-invalid': isInvalidField('surname'), 'is-empty' : isEmptyField('surname')}"
-                            class="form-control" id="surname-input" placeholder="Apellido" autocomplete="family-name"
-                            >
-                        <span class="input-dec"></span>
-                        <div class="input-val" *ngIf="isInvalidField('surname')">
-                            <p *ngIf="surname?.hasError('required')" class="text-danger">
-                                El apellido es requerido.
-                            </p>
-                            <p *ngIf="surname?.hasError('minlength') || surname?.hasError('maxlength')" class="text-danger">
-                                El apellido debe tener entre 2 y 50 caracteres.
-                            </p>
-                        </div>
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-4 needs-validation" id="about-form">
+        <h2 class="login-title mb-4">{{accion}}</h2>
+        <div class="row">
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="name-input" class="form-label">Nombre</label>
+                    <input type="text" formControlName="name"
+                        [ngClass]="{'is-invalid': isInvalidField('name'), 'is-empty' : isEmptyField('name')}"
+                        class="form-control" id="name-input" placeholder="Nombre" autocomplete="given-name">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('name')">
+                        <p *ngIf="name?.hasError('required')" class="text-danger">
+                            El nombre es requerido.
+                        </p>
+                        <p *ngIf="name?.hasError('minlength') || name?.hasError('maxlength')" class="text-danger">
+                            El nombre debe tener entre 2 y 50 caracteres.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="input-wrp mb-4">
-                        <label for="occupation-input" class="form-label">Título</label>
-                        <input type="text" formControlName="occupation"
-                            [ngClass]="{'is-invalid': isInvalidField('occupation'), 'is-empty' : isEmptyField('occupation')}"
-                            class="form-control" id="occupation-input" placeholder="Título u ocupación" autocomplete="work"
-                            >
-                        <span class="input-dec"></span>
-                        <div class="input-val" *ngIf="isInvalidField('occupation')">
-                            <p *ngIf="occupation?.hasError('required')" class="text-danger">
-                                El título es requerido.
-                            </p>
-                            <p *ngIf="occupation?.hasError('minlength') || occupation?.hasError('maxlength')" class="text-danger">
-                                El título debe tener entre 5 y 50 caracteres.
-                            </p>
-                        </div>
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="surname-input" class="form-label">Apellido</label>
+                    <input type="text" formControlName="surname"
+                        [ngClass]="{'is-invalid': isInvalidField('surname'), 'is-empty' : isEmptyField('surname')}"
+                        class="form-control" id="surname-input" placeholder="Apellido" autocomplete="family-name">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('surname')">
+                        <p *ngIf="surname?.hasError('required')" class="text-danger">
+                            El apellido es requerido.
+                        </p>
+                        <p *ngIf="surname?.hasError('minlength') || surname?.hasError('maxlength')" class="text-danger">
+                            El apellido debe tener entre 2 y 50 caracteres.
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="textarea-wrp mb-4">
-                <label for="about-input" class="form-label">Descripción</label>
-                <textarea rows="6" type="text" formControlName="about"
-                    [ngClass]="{'is-invalid': isInvalidField('about')}"
-                    class="form-control" id="about-input"
-                    placeholder="Presentación o información profesional resumida" autocomplete="off"
-                    ></textarea>
-                <div class="textarea-val" *ngIf="isInvalidField('about')">
-                    <p *ngIf="about?.hasError('maxlength')" class="text-danger">
-                        La descripción debe tener hasta 300 caracteres.
-                    </p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="occupation-input" class="form-label">Título</label>
+                    <input type="text" formControlName="occupation"
+                        [ngClass]="{'is-invalid': isInvalidField('occupation'), 'is-empty' : isEmptyField('occupation')}"
+                        class="form-control" id="occupation-input" placeholder="Título u ocupación" autocomplete="work">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('occupation')">
+                        <p *ngIf="occupation?.hasError('required')" class="text-danger">
+                            El título es requerido.
+                        </p>
+                        <p *ngIf="occupation?.hasError('minlength') || occupation?.hasError('maxlength')"
+                            class="text-danger">
+                            El título debe tener entre 5 y 50 caracteres.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="button-wrp mt-5">
-                <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Guardar cambios</button>
+        </div>
+        <div class="textarea-wrp mb-4">
+            <label for="about-input" class="form-label">Descripción</label>
+            <textarea rows="6" type="text" formControlName="about" [ngClass]="{'is-invalid': isInvalidField('about')}"
+                class="form-control" id="about-input" placeholder="Presentación o información profesional resumida"
+                autocomplete="off"></textarea>
+            <div class="textarea-val" *ngIf="isInvalidField('about')">
+                <p *ngIf="about?.hasError('maxlength')" class="text-danger">
+                    La descripción debe tener hasta 300 caracteres.
+                </p>
             </div>
-        </form>
-    </div>
-</ng-template>
+        </div>
+        <div class="button-wrp mt-5">
+            <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Guardar cambios</button>
+        </div>
+    </form>
+</div>

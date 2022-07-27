@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PersonaRead, ProjectRead } from 'src/app/models';
-import { CRUDService, ModalManagementService, PersonaService } from 'src/app/services';
+import { AuthService, CRUDService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-projects',
@@ -10,15 +10,20 @@ import { CRUDService, ModalManagementService, PersonaService } from 'src/app/ser
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
 
+  isAdmin: boolean = false;
+
   subscription!: Subscription;
 
   projectList!: ProjectRead[];
 
   constructor(
-    private personaService:PersonaService,
+    private authService:AuthService,
+    private dataHandler:DataHandlerService,
     private modalManagement:ModalManagementService,
     private crud:CRUDService
-  ) { }
+  ) {
+    this.isAdmin = this.authService.isAdmin();
+  }
 
   ngOnInit(): void {
     this.loadSection();
@@ -29,18 +34,18 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   loadSection(): void {
-    this.subscription = this.personaService.persona.subscribe({
+    this.subscription = this.dataHandler.persona.subscribe({
       next: (persona: PersonaRead) => {
         this.projectList = persona.projectList;
       },
       error: (err: any) => {
         console.log(err);
       }
-    })
+    });
   }
 
   delete(id: number): void {
-    this.personaService.deleteProject(id).subscribe({
+    this.crud.deleteProject(id).subscribe({
       next: () => {
         this.projectList = this.projectList.filter(skill => skill.id != id);
       },

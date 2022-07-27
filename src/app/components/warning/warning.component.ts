@@ -11,10 +11,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     </button>
   </div>
   <div class="modal-body">
-    <p><strong>¿Estás seguro de que desea borar este elemento?</strong></p>
-    <p>Toda la información asociada a este será eliminada permanentemente.
-    <span class="text-danger">Esta operación no puede revertirse.</span>
-    </p>
+    <p>¿Está seguro de que desea borrar este elemento?</p>
+    <p>Toda la información asociada será eliminada de manera permanente.
+    <strong><span class="text-danger">Esta operación no puede revertirse.</span></strong>
+  </p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('Cancel')">Cancelar</button>
