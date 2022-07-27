@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  authURL: 'http://localhost:8080/api/auth',
-  crudURL: 'http://localhost:8080/api/portfolio'
+  authURL: 'https://portfolio-back-s.herokuapp.com/api/auth',
+  crudURL: 'https://portfolio-back-s.herokuapp.com/api/portfolio'
 };
 
 /*
