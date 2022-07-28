@@ -4,17 +4,14 @@ import { LoginComponent, PortfolioComponent } from './components';
 import { UserGuard } from './guards';
 
 const routes: Routes = [
-  {path: '', redirectTo:'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'portfolio', component: PortfolioComponent, canActivate: [UserGuard], data: { expectedRole: ['admin', 'user'] } },
-  {path: 'login', component: LoginComponent}
+  {path: '', redirectTo:'/login', pathMatch: 'full'},
+  {path: '**', redirectTo:'/portfolio', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    anchorScrolling:'enabled',
-    scrollOffset:[0,0], //LUEGO TOQUETEAR ESTO XFAVOR
-    onSameUrlNavigation:'reload'
-  })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

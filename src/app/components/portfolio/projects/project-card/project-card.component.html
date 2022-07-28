@@ -3,7 +3,7 @@
         <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="{{data.title}}" />
     </a>
     <div class="postcard__text">
-        <h3 class="postcard__title" [ngClass]="{'blue': odd, 'purple': !odd}"><a href="#">{{data.title}}</a></h3>
+        <h3 class="postcard__title" [ngClass]="{'blue': odd, 'purple': !odd}"><a href="/portfolio#proyectos">{{data.title}}</a></h3>
         <div class="postcard__subtitle small">
             <time [attr.datetime]="data.startDate">
                 <i class="fas fa-calendar-alt mr-2"></i> {{dateToString(data.startDate)}} -
@@ -17,7 +17,7 @@
                 <li class="tag__item"><i class="fas fa-clock mr-2"></i>&nbsp;&nbsp;{{getPeriod(data.startDate,
                     data.endDate)}}</li>
                 <li class="tag__item play" [ngClass]="{'blue': odd, 'purple': !odd}">
-                    <a href="{{data.link}}"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Visitar</a>
+                    <a href="{{data.link}}" target="_blank"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Visitar</a>
                 </li>
             </span>
             <span *ngIf="isAdmin" class="ms-auto">

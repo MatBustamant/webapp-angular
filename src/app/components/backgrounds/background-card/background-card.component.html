@@ -3,7 +3,7 @@
         <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="{{data.title}}" />
     </a>
     <div class="postcard__text" [ngClass]="{'t-dark': (type=='educacion')}">
-        <h3 class="postcard__title" [ngClass]="{'blue': odd, 'purple': !odd}"><a href="#">{{data.title}}</a></h3>
+        <h3 class="postcard__title" [ngClass]="{'blue': odd, 'purple': !odd}"><a href="/portfolio#{{type}}">{{data.title}}</a></h3>
         <div class="postcard__subtitle small">
             <time [attr.datetime]="data.startDate">
                 <i class="fas fa-calendar-alt mr-2"></i> {{dateToString(data.startDate)}} -

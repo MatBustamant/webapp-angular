@@ -1,34 +1,50 @@
+.light {
+  background: #f3f5f7;
+  color: black;
+}
+
 .skill-group {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  .skill-card-wrapper {
-    height: 270px;
-  }
-    
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-    
-  li {
-    user-select: none;
-  }
-    
-  button {
-    background-color: #e9ecef;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 4px;
-    color: #007acc;
-    padding: 8px 16px;
-  }
-  
-  button:not([disabled]):hover {
-    background-color: #007acc;
-    color: #fff;
-    cursor: pointer;
-    outline: none;
-  }
+  width: 80%;
+  margin: 0 auto;
+}
+
+.skill-card-wrapper {
+  height: 270px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  user-select: none;
+}
+
+button {
+  background-color: #e9ecef;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 4px;
+  color: #007acc;
+  padding: 8px 16px;
+}
+
+button:not([disabled]):hover {
+  background-color: #007acc;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.title-section {
+  height: 20em;
+}
+
+.title {
+  margin: 2rem 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2.5rem;
+}

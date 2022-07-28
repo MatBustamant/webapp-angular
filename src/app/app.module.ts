@@ -13,6 +13,7 @@ import {
   SkillFormComponent, SkillGroupComponent, SkillsComponent, TopBarComponent, WarningComponent
 } from './components';
 import { interceptorProvider } from './interceptors';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { interceptorProvider } from './interceptors';
     ProjectsComponent,
     ProjectFormComponent,
     ProjectCardComponent,
-    BaseFormComponent
+    BaseFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

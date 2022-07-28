@@ -20,6 +20,7 @@ export class BackgroundCardComponent implements OnInit, OnDestroy {
 
   @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
   @Input() type!: string;
+  @Input() id!: number;
   @Input() data!: BackgroundRead;
 
   constructor(

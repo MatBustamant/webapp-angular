@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   showPassword: boolean = false;
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   form:FormGroup;
   loginUser: LoginUser = {email: "", password: ""};
 
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
+    this.isAdmin = this.authService.isAdmin();
   }
 
   get email() {

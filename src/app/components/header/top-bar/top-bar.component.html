@@ -1,5 +1,5 @@
 <div class="col d-flex justify-content-center justify-content-sm-start">
-    <a href="https://argentinaprograma.inti.gob.ar/" class="navbar-brand argprogcr">
+    <a href="https://argentinaprograma.inti.gob.ar/" target="_blank" class="navbar-brand argprogcr">
         <span>
             <!-- SVG ISOTIPO -->
             <svg version="1.1" height="25" preserveAspectRatio="xMidYMid meet" viewBox="0 0 161.28 125.44" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -23,10 +23,9 @@
     <app-button></app-button>
 </div>
 <div class="col socialm-y-login d-flex justify-content-evenly justify-content-sm-end">
-    <a aria-label="Link a mi perfil de Facebook" class="socialm-l" href="#"><span aria-hidden="true" class="fab fa-facebook-square"></span></a>
-    <a aria-label="Link a mi perfil de Twitter" class="socialm-l" href="#"><span aria-hidden="true" class="fab fa-twitter-square"></span></a>
-    <a aria-label="Link a mi perfil de Github" class="socialm-l" href="#"><span aria-hidden="true" class="fab fa-github-square"></span></a>
-    <a aria-label="Link a mi perfil de Linkedin" class="socialm-l" href="#"><span aria-hidden="true" class="fab fa-linkedin"></span></a>
+    <a aria-label="Link a mi perfil de Facebook" class="socialm-l" href="https://www.facebook.com/BustMatExe" target="_blank"><span aria-hidden="true" class="fab fa-facebook-square"></span></a>
+    <a aria-label="Link a mi perfil de Github" class="socialm-l" href="https://github.com/MatBustamant" target="_blank"><span aria-hidden="true" class="fab fa-github-square"></span></a>
+    <a aria-label="Link a mi perfil de Linkedin" class="socialm-l" href="www.linkedin.com/in/MatBustamant" target="_blank"><span aria-hidden="true" class="fab fa-linkedin"></span></a>
     <a *ngIf="!isAdmin" aria-label="Click en este botón para iniciar sesión y entrar en modo edición" class="login-btn" href="/login" role="button" ><span aria-hidden="true" class="fas fa-sign-in-alt"></span></a>
     <a *ngIf="isAdmin" aria-label="Click en este botón para cerrar sesión" class="login-btn" href="/login" role="button" (click)="logout()"><span aria-hidden="true" class="fa-solid fa-door-open"></span></a>
 </div>

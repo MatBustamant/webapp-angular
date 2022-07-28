@@ -1,13 +1,16 @@
-<section id="habilidades">
-    <div class="container">
-        <button *ngIf="isAdmin"><i class="fa-solid fa-plus" (click)="createSkill()"></i></button>
-        <div class="row">
+<section id="habilidades" class="light">
+    <div class="container-lg">
+        <div class="title-section">
+            <button *ngIf="isAdmin"><i class="fa-solid fa-plus" (click)="createSkill()"></i></button>
+            <h2 class="h2 text-center title">Habilidades</h2>
+        </div>
+        <div class="row row-cols-1 row-cols-lg-2">
             <app-skill-group (deleteId)="deleteSkill($event)" [group]="hard" [groupType]="'hard'"
                 [groupTitle]="'Hard Skills'" class="col"></app-skill-group>
             <app-skill-group (deleteId)="deleteSkill($event)" [group]="soft" [groupType]="'soft'"
                 [groupTitle]="'Soft Skills'" class="col"></app-skill-group>
         </div>
-        <div class="row">
+        <div class="row row-cols-1 row-cols-lg-2">
             <app-skill-group (deleteId)="deleteSkill($event)" [group]="lang" [groupType]="'lang'"
                 [groupTitle]="'Lenguas'" class="col"></app-skill-group>
             <app-skill-group (deleteId)="deleteSkill($event)" [group]="proglang" [groupType]="'proglang'"
