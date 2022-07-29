@@ -5,8 +5,8 @@ export interface Background {
     linkedPerson: {id:number};
     img?: string;
     title?: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string | null;
     description?: string;
 }
 export interface BackgroundRead extends Omit<Background, "linkedType" | "linkedPerson">{

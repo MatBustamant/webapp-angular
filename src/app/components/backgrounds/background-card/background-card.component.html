@@ -6,9 +6,11 @@
         <h3 class="card-title" [ngClass]="{'blue': odd, 'purple': !odd}">{{data.title}}</h3>
         <div class="small">
             <time [attr.datetime]="data.startDate">
-                <i class="fas fa-calendar-alt mr-2"></i> {{dateToString(data.startDate)}} -
+                <i class="fas fa-calendar-alt mr-2"></i>&nbsp;&nbsp;&nbsp;{{dateToString(data.startDate)}} -
                 {{dateToString(data.endDate)}}
             </time>
+            <span class="vr d-none d-lg-inline-block h-25 mx-lg-2"></span>
+            <p><i class="fa-solid fa-building"></i>&nbsp;&nbsp;&nbsp;{{data.institution}}</p>
         </div>
         <div class="card-bar"></div>
         <div class="card-description">{{data.description}}</div>

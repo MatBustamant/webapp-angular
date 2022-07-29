@@ -40,13 +40,13 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  dateToString(date: Date | null): string {
+  dateToString(date: string | null): string {
     if (date == null) { return "Actualidad" }
     const fecha = new Date(date);
     return fecha.toLocaleDateString("es-AR", {year: 'numeric', month: 'long', day: 'numeric', timeZone: "UTC"});
   }
 
-  getPeriod(date: Date, endDate: Date | null): string {
+  getPeriod(date: string, endDate: any): string {
     const dateFrom = new Date(date);
     if (endDate == null) { endDate = new Date()}
     const dateTo = new Date(endDate);

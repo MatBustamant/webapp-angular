@@ -21,10 +21,8 @@ export class SkillCardComponent implements OnInit, OnDestroy {
     linkedType: {id: 0, name:""},
     name: "Skill Sample Title",
     lvl: 0,
-    image: "https://via.placeholder.com/50"
   }
 
-  skillImg: string = "https://via.placeholder.com/50";
   progressLvl!: Record<string, string>;
 
   constructor(

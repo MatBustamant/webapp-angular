@@ -42,7 +42,8 @@ export class AuthService {
       },
       error: (err: any) => {
         console.log(err);
-        this.logout();
+        
+        // this.logout();
       }
     });
   }
