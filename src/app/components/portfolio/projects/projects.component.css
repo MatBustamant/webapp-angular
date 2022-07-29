@@ -1,37 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
-
 body {
-  font-family: "Baloo 2", cursive;
   font-size: 16px;
-  color: #ffffff;
   text-rendering: optimizeLegibility;
   font-weight: initial;
 }
 
 .dark {
   background: #110f16;
-}
-
-a,
-a:hover {
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-
-#pageHeaderTitle {
-  margin: 2rem 0;
-  text-transform: uppercase;
-  text-align: center;
-  font-size: 2.5rem;
+  color: white;
 }
 
 .title-section {
-  height: 20em;
+  position: relative;
 }
 
 .title {
-  margin: 2rem 0;
+  margin-bottom: 3rem;
   text-transform: uppercase;
   text-align: center;
   font-size: 2.5rem;
+}
+
+.tag-plus {
+  font-size: 2rem;
+  background: rgba(83, 83, 83, 0.4);
+  border-radius: 3px;
+  padding: 0px 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tag-plus:hover {
+  background: rgba(83, 83, 83, 0.8);
 }

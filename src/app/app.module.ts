@@ -7,21 +7,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
-  AboutFormComponent, AboutMeComponent, BackgroundCardComponent, BackgroundFormComponent, BackgroundsComponent, 
-  BaseFormComponent, ButtonComponent, CollapsableNavbarComponent, HeaderComponent, LoginComponent,
+  AboutFormComponent, AboutMeComponent, BackgroundCardComponent, BackgroundFormComponent, BackgroundsComponent,
+  BaseFormComponent, LoginComponent,
   PortfolioComponent, ProjectCardComponent, ProjectFormComponent, ProjectsComponent, SkillCardComponent,
-  SkillFormComponent, SkillGroupComponent, SkillsComponent, TopBarComponent, WarningComponent
+  SkillFormComponent, SkillGroupComponent, SkillsComponent, WarningComponent
 } from './components';
-import { interceptorProvider } from './interceptors';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { interceptorProvider } from './interceptors';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    TopBarComponent,
-    CollapsableNavbarComponent,
-    ButtonComponent,
     BackgroundCardComponent,
     LoginComponent,
     PortfolioComponent,

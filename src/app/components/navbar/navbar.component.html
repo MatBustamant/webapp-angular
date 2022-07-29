@@ -1,6 +1,7 @@
 <header class="navbar navbar-expand-lg sticky-top">
     <nav class="container-lg flex-wrap">
-        <a href="https://argentinaprograma.inti.gob.ar/" target="_blank" class="navbar-brand mb-2 me-0 me-lg-2 argprogcr">
+        <a href="https://argentinaprograma.inti.gob.ar/" target="_blank"
+            class="navbar-brand mb-2 me-0 me-lg-2 argprogcr">
             <span>
                 <!-- SVG ISOTIPO -->
                 <svg version="1.1" height="25" preserveAspectRatio="xMidYMid meet" viewBox="0 0 161.28 125.44"
@@ -24,14 +25,14 @@
                 </svg>
             </span>
         </a>
-        <button class="navbar-toggler d-flex d-lg-none p-2" type="button">
+        <button class="navbar-toggler d-flex d-lg-none p-2" type="button" (click)="open(content)">
             <svg id="three-dots" viewBox="0 0 16 16" width="24" height="24">
                 <path
                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z">
                 </path>
             </svg>
         </button>
-        <ul class="navbar-nav flex-row">
+        <ul class="navbar-nav top-nav">
             <li class="nav-item">
                 <a class="nav-link py-2 px-lg-2" href="/portfolio#sobre-mi">Sobre mí</a>
             </li>
@@ -48,30 +49,96 @@
                 <a class="nav-link py-2 px-lg-2" href="/portfolio#proyectos">Proyectos</a>
             </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav top-nav">
             <li class="nav-item">
                 <a aria-label="Link a mi perfil de Facebook" class="nav-link social"
                     href="https://www.facebook.com/BustMatExe" target="_blank"><span aria-hidden="true"
                         class="fab fa-facebook-square"></span></a>
             </li>
             <li class="nav-item">
-                <a aria-label="Link a mi perfil de Github" class="nav-link social" href="https://github.com/MatBustamant"
-                    target="_blank"><span aria-hidden="true" class="fab fa-github-square"></span></a>
+                <a aria-label="Link a mi perfil de Github" class="nav-link social"
+                    href="https://github.com/MatBustamant" target="_blank"><span aria-hidden="true"
+                        class="fab fa-github-square"></span></a>
             </li>
             <li class="nav-item">
-                <a aria-label="Link a mi perfil de Linkedin" class="nav-link social" href="www.linkedin.com/in/MatBustamant"
-                    target="_blank"><span aria-hidden="true" class="fab fa-linkedin"></span></a>
+                <a aria-label="Link a mi perfil de Linkedin" class="nav-link social"
+                    href="www.linkedin.com/in/MatBustamant" target="_blank"><span aria-hidden="true"
+                        class="fab fa-linkedin"></span></a>
             </li>
             <li class="nav-item py-1">
                 <div class="vr h-100 mx-lg-2 text-black"></div>
             </li>
             <li class="nav-item">
-                <a *ngIf="!isAdmin" aria-label="Iniciar sesión"
-                    class="nav-link login" href="/login" role="button"><span aria-hidden="true"
-                        class="fas fa-sign-in-alt"></span></a>
-                <a *ngIf="isAdmin" aria-label="Cerrar sesión" class="nav-link login" href="/login"
-                    role="button" (click)="logout()"><span aria-hidden="true" class="fa-solid fa-door-open"></span></a>
+                <a *ngIf="!isAdmin" aria-label="Iniciar sesión" class="nav-link login" href="/login" role="button"><span
+                        aria-hidden="true" class="fas fa-sign-in-alt"></span></a>
+                <a *ngIf="isAdmin" aria-label="Cerrar sesión" class="nav-link login" href="/login" role="button"
+                    (click)="logout()"><span aria-hidden="true" class="fa-solid fa-door-open"></span></a>
             </li>
         </ul>
     </nav>
 </header>
+<div class="d-flex align-items-center justify-content-center" id="banner">
+    <span class="h1 display-2 fw-light text-white">Bienvenido.</span>
+</div>
+
+
+<ng-template #content let-offcanvas>
+    <div class="offcanvas-header px-4 pb-0">
+        <h2 class="offcanvas-title ms-4">Mi portfolio</h2>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body p-4 pt-0">
+        <hr class="text-black-50">
+        <ul class="navbar-nav flex-column fa-ul">
+            <li class="nav-item">
+                <a class="nav-link" href="/portfolio#sobre-mi"><span class="fa-li fa-solid fa-user"></span><small
+                        class="ms-4">Sobre mí</small></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/portfolio#experiencia"><span
+                        class="fa-li fa-solid fa-briefcase"></span><small class="ms-4">Experiencia</small></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/portfolio#educacion"><span
+                        class="fa-li fa-solid fa-graduation-cap"></span><small class="ms-4">Educación</small></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/portfolio#habilidades"><span class="fa-li fa-solid fa-cubes"></span><small
+                        class="ms-4">Habilidades</small></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/portfolio#proyectos"><span class="fa-li fa-solid fa-code"></span><small
+                        class="ms-4">Proyectos</small></a>
+            </li>
+            <li class="nav-item py-1 col-12">
+                <hr class="text-black-50">
+            </li>
+            <li class="nav-item">
+                <a aria-label="Link a mi perfil de Facebook" class="nav-link" href="https://www.facebook.com/BustMatExe"
+                    target="_blank"><span aria-hidden="true" class="fa-li fab fa-facebook-square"></span><small
+                        class="ms-4">Facebook</small></a>
+            </li>
+            <li class="nav-item">
+                <a aria-label="Link a mi perfil de GitHub" class="nav-link" href="https://github.com/MatBustamant"
+                    target="_blank"><span aria-hidden="true" class="fa-li fab fa-github-square"></span><small
+                        class="ms-4">GitHub</small></a>
+            </li>
+            <li class="nav-item">
+                <a aria-label="Link a mi perfil de LinkedIn" class="nav-link" href="www.linkedin.com/in/MatBustamant"
+                    target="_blank"><span aria-hidden="true" class="fa-li fab fa-linkedin"></span><small
+                        class="ms-4">LinkedIn</small></a>
+            </li>
+            <li class="nav-item py-1 col-12">
+                <hr class="text-black-50">
+            </li>
+            <li class="nav-item">
+                <a *ngIf="!isAdmin" aria-label="Iniciar sesión" class="nav-link" href="/login" role="button"><span
+                        aria-hidden="true" class="fa-li fas fa-sign-in-alt"></span><small class="ms-4">Iniciar
+                        sesión</small></a>
+                <a *ngIf="isAdmin" aria-label="Cerrar sesión" class="nav-link" href="/login" role="button"
+                    (click)="logout()"><span aria-hidden="true" class="fa-li fa-solid fa-door-open"></span><small
+                        class="ms-4">Cerrar sesión</small></a>
+            </li>
+        </ul>
+    </div>
+</ng-template>

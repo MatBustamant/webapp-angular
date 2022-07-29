@@ -1,50 +1,38 @@
+body {
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  font-weight: initial;
+}
+
 .light {
   background: #f3f5f7;
   color: black;
 }
 
-.skill-group {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.skill-card-wrapper {
-  height: 270px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  user-select: none;
-}
-
-button {
-  background-color: #e9ecef;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 4px;
-  color: #007acc;
-  padding: 8px 16px;
-}
-
-button:not([disabled]):hover {
-  background-color: #007acc;
-  color: #fff;
-  cursor: pointer;
-  outline: none;
-}
-
 .title-section {
-  height: 20em;
+  position: relative;
 }
 
 .title {
-  margin: 2rem 0;
+  margin-bottom: 3rem;
   text-transform: uppercase;
   text-align: center;
   font-size: 2.5rem;
+}
+
+.tag-plus {
+  font-size: 2rem;
+  background: rgba(83, 83, 83, 0.4);
+  border-radius: 3px;
+  padding: 0px 10px;
+  transition: background-color 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tag-plus:hover {
+  background: rgba(83, 83, 83, 0.8);
 }

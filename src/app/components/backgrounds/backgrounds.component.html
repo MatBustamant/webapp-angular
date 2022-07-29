@@ -1,10 +1,11 @@
 <section id={{convertToValid(sectionTitle)}} [ngClass]="{'dark': typeId==1, 'light': typeId==2}">
-    <div class="container-lg py-4">
+    <div class="container-lg py-5 px-custom">
         <div class="title-section">
-            <button *ngIf="isAdmin"><i class="fa-solid fa-plus" (click)="createBackground(typeId)"></i></button>
-            <h2 class="h2 text-center title">{{sectionTitle}}</h2>
+            <h2 class="text-center title">{{sectionTitle}}</h2>
+            <a *ngIf="isAdmin" type="button" class="tag-plus" (click)="createBackground(typeId)"><i
+                class="fa-solid fa-plus"></i></a>
         </div>
         <app-background-card *ngFor="let background of backgroundList; index as i" [type]=convertToValid(sectionTitle)
-            [data]=background (deleteId)="deleteBackground($event)" [odd]="i%2!=0" [id]="i"></app-background-card>
+            [data]=background (deleteId)="deleteBackground($event)" [odd]="i%2!=0"></app-background-card>
     </div>
 </section>

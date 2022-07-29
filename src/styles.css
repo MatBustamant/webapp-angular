@@ -1,3 +1,11 @@
+@media (max-width: 991.98px) {
+    .px-custom {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+}
+
 :root {
     --main-dominant-color: #0f1634; /*Un deep blue bonito*/
     --main-accent-color: #A01D5D; /*Un color pseudovino iluminadito*/
@@ -37,4 +45,8 @@ body.modal-open {
 ::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px 10px 0px 0px;
+}
+
+:target {
+    scroll-margin-top: 62px;
 }

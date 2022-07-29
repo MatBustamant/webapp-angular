@@ -1,34 +1,34 @@
 .skill-group {
-  width: 80%;
-  margin: 0 auto;
+  background-color: #e1e5ea;
+  border-radius: 10px;
 }
 
 .skill-card-wrapper {
   height: 270px;
 }
-  
-ul {
-  list-style: none;
+
+.tagbox {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 14px;
   padding: 0;
-}
-  
-li {
-  user-select: none;
-}
-  
-button {
-  background-color: #e9ecef;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 4px;
-  color: #007acc;
-  padding: 8px 16px;
+  justify-content: center;
+  list-style: none;
 }
 
-button:not([disabled]):hover {
-  background-color: #007acc;
-  color: #fff;
-  cursor: pointer;
-  outline: none;
+.tagbox .tag {
+  display: inline-block;
+  color: #18151f;
+  background: rgba(83, 83, 83, 0.4);
+  border-radius: 3px;
+  padding: 2.5px 10px;
+  margin: 0 5px 5px 0;
+  user-select: none;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  list-style: none;
+}
+
+.tagbox .tag:hover {
+  background: rgba(83, 83, 83, 0.8);
 }

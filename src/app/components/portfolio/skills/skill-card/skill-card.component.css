@@ -1,24 +1,26 @@
 .skill-card {
     position: relative;
-    background-color: var(--light-gray-color);
     height: 75px;
     margin-bottom: 1rem;
-    box-sizing: border-box;
-    border: 1px solid black;
-}
-
-.skill-logo {
-    padding: 12.5px;
-    border-right: 1px solid black;
+    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #18151f;
+    color: white;
 }
 
 .skill-description {
     width: 100%;
     padding: 0px 12.5px 8px 12.5px;
+    position: relative;
 }
 
 .skill-description * {
     margin: 0 12.5px;
+}
+
+.progress {
+    height: 0.5em;
 }
 
 .skill-description .progress-bar {
@@ -26,25 +28,22 @@
     margin: 0px;
 }
 
-a {
-    color: black;
+.tagbox {
+    position: absolute;
+    right: 0;
+    top: 1em;
+    font-size: 14px;
+}
+
+.tagbox .tag {
+    display: inline-block;
+    background: rgba(83, 83, 83, 0.4);
+    border-radius: 3px;
+    user-select: none;
+    transition: background-color 0.3s;
     text-decoration: none;
 }
 
-.skill-description .pen {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0.3em 0em;
-    padding: 0;
-    border: 0;
-}
-
-.skill-description .cross {
-    position: absolute;
-    top: 0;
-    right: 5.5em;
-    margin: 0.3em 0em;
-    padding: 0;
-    border: 0;
+.tagbox .tag:hover {
+    background: rgba(83, 83, 83, 0.8);
 }

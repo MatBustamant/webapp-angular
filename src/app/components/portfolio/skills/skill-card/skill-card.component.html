@@ -1,23 +1,17 @@
-<div class="skill-card d-flex align-items-center">
-    <div class="skill-logo">
-        <img src="{{skillImg}}" alt="">
-    </div>
-    <div class="skill-description">
+<div class="skill-card d-flex">
+    <div class="skill-description d-flex flex-column justify-content-evenly">
         <p>{{data.name}}</p>
         <div class="progress">
-            <div
-                role="progressbar"
-                aria-valuemax="1"
-                attr.aria-valuenow="{{data.lvl}}"
-                class="progress-bar progress-bar-striped"
-                [ngStyle]="progressLvl"
-            ></div>
+            <div role="progressbar" aria-valuemin="0" aria-valuemax="1" attr.aria-valuenow="{{data.lvl}}"
+                class="progress-bar" [ngStyle]="progressLvl"></div>
         </div>
-        <a *ngIf="isAdmin" type="button" class="cross" (click)="deleteSkill(data.id!)">
-            <span class="fa-solid fa-xmark"></span>
-        </a>
-        <a *ngIf="isAdmin" type="button" class="pen" (click)="openForm()">
-            <span class="fa-solid fa-pen-to-square"></span>
-        </a>
+        <ul class="tagbox">
+            <li class="tag"><a *ngIf="isAdmin" type="button" (click)="deleteSkill(data.id!)">
+                    <span class="fa-solid fa-xmark"></span>
+                </a></li>
+            <li class="tag"><a *ngIf="isAdmin" type="button" (click)="openForm()">
+                    <span class="fa-solid fa-pen-to-square"></span>
+                </a></li>
+        </ul>
     </div>
 </div>

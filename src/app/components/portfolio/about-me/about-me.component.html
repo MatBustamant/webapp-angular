@@ -1,21 +1,23 @@
-<section id="sobre-mi">
-    <div class="container-lg">
-        <div class="title-section">
-            <button *ngIf="isAdmin" type="button"><i class="fa-solid fa-pen-to-square" (click)="openForm()"></i></button>
-            <h2 class="h2 text-center title">Sobre mí</h2>
-        </div>
-        <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
-            <div class="col col-sm-4">
-                <div class="text-center">
-                    <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="img-thumbnail">
-                    <h3>{{data.name + ' ' + data.surname}}</h3>
-                    <h4>{{data.occupation}}</h4>
+<section id="sobre-mi" class="dark">
+    <div class="container-lg py-5 px-custom">
+        <div class="row g-5 d-flex align-items-center">
+            <div class="col col-md-6">
+                <div class="about-photo">
+                    <div class="ap-inner"></div>
                 </div>
             </div>
-            <div class="col col-sm-4 d-flex align-items-center">
-                <div>
-                    <p class="lh-lg">{{data.about}}</p>
+            <div class="col col-12 col-md-6">
+                <div class="text-break">
+                    <h4 class="fw-light">{{data.occupation}}</h4>
+                    <h1>{{data.name + ' ' + data.surname}}</h1>
+                    <p>{{data.about}}</p>
                 </div>
+                <ul class="tagbox">
+                    <li class="tag" (click)="openForm()">
+                        <a *ngIf="isAdmin" type="button">
+                            <i class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

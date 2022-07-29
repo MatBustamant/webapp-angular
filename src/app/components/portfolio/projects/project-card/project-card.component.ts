@@ -6,7 +6,7 @@ import { AuthService, DataHandlerService, ModalManagementService } from 'src/app
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
-  styleUrls: ['./project-card.component.css']
+  styleUrls: ['./project-card.component.css', '../../../base-card/base-card.css']
 })
 export class ProjectCardComponent implements OnInit, OnDestroy {
 
