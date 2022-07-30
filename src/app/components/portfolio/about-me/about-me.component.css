@@ -1,3 +1,23 @@
+@media (min-width: 768px) {
+    .about-photo .ap-inner {
+        height: calc(80vh - 20px);
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .about-photo .ap-inner {
+        height: calc(60vh - 20px);
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+    }
+}
+
 .dark {
     background: #110f16;
     color: white;
@@ -8,25 +28,7 @@ h1 {
 }
 
 .about-photo {
-    display: block;
-    position: relative;
-    width: 100%;
-    min-height: calc(80vh - 20px);
-    background-color: var(--light-gray-color);
-    overflow: hidden;
-}
-
-.about-photo .ap-inner {
-    background-image: url(https://via.placeholder.com/600x600/303030.com);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-    position: absolute;
-    top: -1.125em;
-    bottom: -1.125em;
-    left: -1.125em;
-    right: -1.125em;
+    display: contents;
 }
 
 .tagbox {

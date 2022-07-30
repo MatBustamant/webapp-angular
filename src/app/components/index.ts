@@ -1,4 +1,3 @@
-export * from './backgrounds';
 export * from './base-form'
 export * from './login';
 export * from './navbar'

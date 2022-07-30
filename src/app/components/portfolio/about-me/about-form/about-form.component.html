@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-4 needs-validation" id="about-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-5" id="about-form">
         <h2 class="title mb-4">{{accion}}</h2>
         <div class="row">
             <div class="col">
@@ -54,6 +54,26 @@
                             El título debe tener entre 5 y 50 caracteres.
                         </p>
                     </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="img-input" class="form-label">Imágen de perfil</label>
+                    <input type="url" formControlName="image"
+                        [ngClass]="{'is-invalid': isInvalidField('image'), 'is-empty' : isEmptyField('image')}"
+                        class="form-control" id="img-input" placeholder="Link o archivo" autocomplete="off">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('image')">
+                        <p *ngIf="image?.hasError('pattern')" class="text-danger">
+                            El formato del link es inválido.
+                        </p>
+                        <p *ngIf="image?.hasError('required')" class="text-danger">
+                            La imágen es requerida.
+                        </p>
+                    </div>
+                    <a type="button" class="file-input" (click)="fileInput.click()"><i class="fa-solid fa-file-arrow-up"></i></a>
+                    <input type="file" accept=".png, .jpg, .jpeg" class="d-none" (change)="uploadImg($event)"
+                        #fileInput>
                 </div>
             </div>
         </div>

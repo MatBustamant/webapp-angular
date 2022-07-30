@@ -67,12 +67,28 @@ textarea {
     padding-right: calc(1.5em + .75rem);
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
-    background-position: right calc(.375em + .1875rem) center;
+    background-position: right calc(.375em + 1.5rem) center;
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
 }
 
-input[type="date"].form-control.is-invalid, input[list="institutions"].form-control.is-invalid {
-    background-position: right calc(.375em + 1.5rem) center;
+input[type="text"].form-control.is-invalid, textarea.form-control.is-invalid {
+    background-position: right calc(.375em + .1875rem) center;
+}
+
+#img-input {
+    padding-right: calc(1.5em + .75rem);
+}
+
+.file-input {
+    color: var(--light-gray-color);
+    position: absolute;
+    height: calc(100% - 25px);
+    bottom: 0;
+    right: 0;
+    padding-right: 6.25px;
+    padding-top: 6.25px;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .input-dec {
@@ -94,17 +110,10 @@ input[type="date"].form-control.is-invalid, input[list="institutions"].form-cont
     width: 0;
     height: 2px;
     background: var(--main-accent-color);
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
     transition: all 0.4s;
 }
 
-.form-control:focus+.input-dec::before {
-    width: 100%;
-}
-
-.form-control:not(.form-control.is-empty)+.input-dec::before {
+.form-control:focus+.input-dec::before, .form-control:not(.form-control.is-empty)+.input-dec::before {
     width: 100%;
 }
 

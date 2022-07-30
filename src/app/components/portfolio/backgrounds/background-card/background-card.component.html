@@ -1,6 +1,6 @@
 <article class="card text-break" [ngClass]="{'dark': (type=='experiencia'), 'light': (type=='educacion'), 'blue odd': odd, 'purple even': !odd}">
     <a class="card-img-wrp">
-        <img class="card-img" src="https://picsum.photos/1000/1000" alt="{{data.title}}" />
+        <img class="card-img" src="{{data.image}}" alt="{{data.title}}" />
     </a>
     <div class="card-text">
         <h3 class="card-title" [ngClass]="{'blue': odd, 'purple': !odd}">{{data.title}}</h3>

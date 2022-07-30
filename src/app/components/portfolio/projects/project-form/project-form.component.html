@@ -1,7 +1,7 @@
 <div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-5" id="project-form">
         <h2 class="title mb-4">{{accion}}</h2>
-        <div class="row row-cols-2">
+        <div class="row">
             <div class="col">
                 <div class="input-wrp mb-4">
                     <label for="title-input" class="form-label">Título</label>
@@ -18,8 +18,10 @@
                         </p>
                     </div>
                 </div>
+            </div>
+            <div class="col">
                 <div class="input-wrp mb-4">
-                    <label for="link-input" class="form-label">Link</label>
+                    <label for="link-input" class="form-label">Link del proyecto</label>
                     <input type="text" formControlName="link"
                         [ngClass]="{'is-invalid': isInvalidField('link'), 'is-empty' : isEmptyField('link')}"
                         class="form-control" id="link-input" placeholder="Link" autocomplete="url">
@@ -28,9 +30,14 @@
                         <p *ngIf="link?.hasError('required')" class="text-danger">
                             El link es requerido.
                         </p>
+                        <p *ngIf="link?.hasError('pattern')" class="text-danger">
+                            El formato del link es inválido.
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <div class="input-wrp mb-4">
                     <label for="sdate-input" class="form-label">Fecha de inicio</label>
@@ -48,6 +55,8 @@
                         </p>
                     </div>
                 </div>
+            </div>
+            <div class="col">
                 <div class="input-wrp mb-4">
                     <label for="edate-input" class="form-label">Fecha de fin</label>
                     <input type="date" formControlName="endDate"
@@ -60,6 +69,28 @@
                             La fecha debe encontrarse entre la fecha de inicio y la actual.
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="img-input" class="form-label">Imágen de perfil</label>
+                    <input type="url" formControlName="image"
+                        [ngClass]="{'is-invalid': isInvalidField('image'), 'is-empty' : isEmptyField('image')}"
+                        class="form-control" id="img-input" placeholder="Link o archivo" autocomplete="off">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('image')">
+                        <p *ngIf="image?.hasError('pattern')" class="text-danger">
+                            El formato del link es inválido.
+                        </p>
+                        <p *ngIf="image?.hasError('required')" class="text-danger">
+                            El link es requerido.
+                        </p>
+                    </div>
+                    <a type="button" class="file-input" (click)="fileInput.click()"><i class="fa-solid fa-file-arrow-up"></i></a>
+                    <input type="file" accept=".png, .jpg, .jpeg" class="d-none" (change)="uploadImg($event)"
+                        #fileInput>
                 </div>
             </div>
         </div>

@@ -25,19 +25,20 @@
                     <input list="institutions" formControlName="institution"
                         [ngClass]="{'is-invalid': isInvalidField('institution'), 'is-empty' : isEmptyField('institution')}"
                         class="form-control" id="institution-input" autocomplete="off">
-                    <datalist id="institutions">
-                        <option *ngFor="let institution of institutions" value="{{institution}}">
-                            {{institution}}</option>
-                    </datalist>
                     <span class="input-dec"></span>
                     <div class="input-val" *ngIf="isInvalidField('institution')">
                         <p *ngIf="institution?.hasError('required')" class="text-danger">
                             Una institución es requerida.
                         </p>
-                        <p *ngIf="institution?.hasError('minlength') || institution?.hasError('maxlength')" class="text-danger">
+                        <p *ngIf="institution?.hasError('minlength') || institution?.hasError('maxlength')"
+                            class="text-danger">
                             La institución debe tener entre 5 y 100 caracteres.
                         </p>
                     </div>
+                    <datalist id="institutions">
+                        <option *ngFor="let institution of institutions" value="{{institution}}">
+                            {{institution}}</option>
+                    </datalist>
                 </div>
             </div>
         </div>
@@ -73,6 +74,28 @@
                             La fecha debe encontrarse entre la fecha de inicio y la actual.
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-wrp mb-4">
+                    <label for="img-input" class="form-label">Imágen de perfil</label>
+                    <input type="url" formControlName="image"
+                        [ngClass]="{'is-invalid': isInvalidField('image'), 'is-empty' : isEmptyField('image')}"
+                        class="form-control" id="img-input" placeholder="Link o archivo" autocomplete="off">
+                    <span class="input-dec"></span>
+                    <div class="input-val" *ngIf="isInvalidField('image')">
+                        <p *ngIf="image?.hasError('pattern')" class="text-danger">
+                            El formato del link es inválido.
+                        </p>
+                        <p *ngIf="image?.hasError('required')" class="text-danger">
+                            La imágen es requerida.
+                        </p>
+                    </div>
+                    <a type="button" class="file-input" (click)="fileInput.click()"><i class="fa-solid fa-file-arrow-up"></i></a>
+                    <input type="file" accept=".png, .jpg, .jpeg" class="d-none" (change)="uploadImg($event)"
+                        #fileInput>
                 </div>
             </div>
         </div>

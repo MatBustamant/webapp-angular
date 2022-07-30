@@ -6,7 +6,7 @@ export interface Project {
     endDate: string | null;
     description: string;
     link: string;
-    img: string | null;
+    image: string;
 }
 export interface ProjectRead extends Omit<Project, "linkedPerson">{
 }

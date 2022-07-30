@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "portfolio-angular-9c08e"
+  },
+  "targets": {
+    "portfolio-angular-9c08e": {
+      "hosting": {
+        "webapp-angular": [
+          "portfolio-angular-9c08e"
+        ]
+      }
+    }
   }
 }

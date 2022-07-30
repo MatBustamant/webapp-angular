@@ -2,7 +2,7 @@ import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-// import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { BYPASS } from '../interceptors';
 import { JwtDTO, LoginUser } from '../models';
 import { TokenService } from './token.service';
@@ -12,7 +12,7 @@ import { TokenService } from './token.service';
 })
 export class AuthService {
 
-  private URL: string = 'https://portfolio-back-s.herokuapp.com/api/auth';
+  private URL: string = environment.authURL;
 
   constructor(
     private http:HttpClient,

@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import { end } from '@popperjs/core';
 import { AuthService } from 'src/app/services';
 
 @Component({

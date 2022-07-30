@@ -6,7 +6,7 @@ import { AuthService, DataHandlerService, ModalManagementService } from 'src/app
 @Component({
   selector: 'app-background-card',
   templateUrl: './background-card.component.html',
-  styleUrls: ['./background-card.component.css', '../../base-card/base-card.css']
+  styleUrls: ['./background-card.component.css', '../../../base-card/base-card.css']
 })
 export class BackgroundCardComponent implements OnInit, OnDestroy {
 
@@ -15,8 +15,6 @@ export class BackgroundCardComponent implements OnInit, OnDestroy {
   isAdmin: boolean = false;
 
   subscription: Subscription;
-
-  img = 'https://via.placeholder.com/150';
 
   @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
   @Input() type!: string;

@@ -23,7 +23,7 @@ body.modal-open {
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     background-color: var(--dark-gray-color);
-    background-image: url(./assets/2_bc3d32a696895f78c19df6c717586a5d.svg);
+    background-image: url(./assets/background.svg);
 }
 
 .modal-content {

@@ -1,0 +1,7 @@
+input::-webkit-inner-spin-button {
+    position: absolute;
+    bottom: 0.4em;
+    right: 0.5em;
+    font-size: small;
+    height: 1rem;
+}

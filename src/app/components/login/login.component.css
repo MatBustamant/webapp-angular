@@ -8,7 +8,7 @@ div.container-fluid {
     position: absolute;
     height: 100%;
     background-color: var(--dark-gray-color);
-    background-image: url(../../../assets/2_bc3d32a696895f78c19df6c717586a5d.svg);
+    background-image: url(../../../assets/background.svg);
     background-position: center;
     background-size: cover;
     display: flex;
@@ -112,10 +112,6 @@ input:-ms-input-placeholder {
     color: var(--light-gray-color);
     font-size: 0.95em;
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     align-items: center;
     justify-content: center;

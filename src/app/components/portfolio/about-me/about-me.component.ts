@@ -12,13 +12,13 @@ export class AboutMeComponent implements OnInit, OnDestroy {
 
   isAdmin: boolean = false;
 
-  subscription: Subscription;
+  subscription!: Subscription;
 
   data: Persona = {
     name: "",
     surname: "",
     occupation: "",
-    about: "Bienvenido a mi portfolio web."
+    image: ""
   }
 
   constructor(
@@ -27,13 +27,13 @@ export class AboutMeComponent implements OnInit, OnDestroy {
     private modalManagement: ModalManagementService
     ) {
       this.isAdmin = this.authService.isAdmin();
-      this.subscription = this.dataHandler.about.subscribe(
-        about => this.setData(about)
-      )
     }
 
   ngOnInit(): void {
-    this.loadSection()
+    this.loadSection();
+    this.subscription = this.dataHandler.about.subscribe(
+      about => this.setData(about)
+    );
   }
 
   ngOnDestroy(): void {

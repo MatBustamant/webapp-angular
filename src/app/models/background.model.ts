@@ -3,7 +3,7 @@ export interface Background {
     linkedType: {id:number};
     institution: string;
     linkedPerson: {id:number};
-    img?: string;
+    image: string;
     title?: string;
     startDate: string;
     endDate: string | null;

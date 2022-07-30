@@ -7,6 +7,7 @@ export interface Persona {
     name:string;
     surname:string;
     occupation:string;
+    image:string,
     about?:string;
 }
 export interface PersonaRead extends Persona {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BaseFormComponent } from 'src/app/components/base-form';
+import { BaseFormComponent } from 'src/app/components';
 import { Project, ProjectRead } from 'src/app/models';
-import { DataHandlerService } from 'src/app/services';
+import { DataHandlerService, StorageService } from 'src/app/services';
 
 @Component({
   selector: 'app-project-form',
@@ -11,6 +11,8 @@ import { DataHandlerService } from 'src/app/services';
   styleUrls: ['./project-form.component.css', '../../../base-form/base-form.component.css']
 })
 export class ProjectFormComponent extends BaseFormComponent implements OnInit {
+
+  imguploaded: boolean = false;
 
   override form: FormGroup = this.formBuilder.group(
     { 
@@ -20,8 +22,10 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
       startDate: ['', [Validators.required, this.maxDate(this.today)]],
       endDate: ['', [this.maxDate(this.today)]],
       description: ['', [Validators.required, Validators.maxLength(300)]],
-      link: ['', [Validators.required]],
-      img: ''
+      link: ['', [Validators.required, Validators.pattern(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i)]],
+      image: ['', [Validators.required, Validators.pattern(
+        /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i
+        )]],
     }
   )
 
@@ -29,7 +33,8 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
     private formBuilder:FormBuilder,
     private ngbmodal:NgbModal,
     private modal:NgbActiveModal,
-    private dataHandler:DataHandlerService
+    private dataHandler:DataHandlerService,
+    private storageService:StorageService
   ) { super() }
 
   ngOnInit(): void {
@@ -52,8 +57,8 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
     return this.form.get('link');
   }
 
-  get img() {
-    return this.form.get('img');
+  get image() {
+    return this.form.get('image');
   }
 
   get description() {
@@ -69,8 +74,27 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
       endDate: data.endDate,
       link: data.link,
       description: data.description,
-      img: data.img
+      image: data.image
     });
+  }
+
+  uploadImg(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.storageService.upload(`img_${Date.now()}`, reader.result).then(
+        url => {
+          this.imguploaded = true;
+          let img = this.image;
+          img?.setValue("...");
+          setTimeout(function()
+          {
+            img?.setValue(url);
+          }, (1 * 1000));
+        });
+    }
   }
 
   onSubmit(event: Event): void {
@@ -79,6 +103,8 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
     if (project.id == 0 && this.form.valid) {
       this.modal.close(project);
     } else if (!this.form.pristine && !this.form.untouched && this.form.valid) {
+      this.dataHandler.editProject(project);
+    } else if (this.imguploaded && this.form.valid) {
       this.dataHandler.editProject(project);
     }
     this.form.reset();

@@ -17,9 +17,9 @@ export class SkillFormComponent extends BaseFormComponent implements OnInit {
   override form: FormGroup = this.formBuilder.group(
     {
       id: 0,
-      linkedType: [0, [Validators.required]],
+      linkedType: [0, [Validators.required, Validators.min(1)]],
       name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
-      lvl: [0, [Validators.required, Validators.min(0), Validators.max(1), Validators.pattern('^(?:0(?:[.][0-9]?)?|1(?:[.]0?)?)$')]],
+      lvl: [0, [Validators.required, Validators.min(10), Validators.max(100), Validators.pattern(/^[1-9][0]?$|^100$/)]],
       image: 'https://via.placeholder.com/50'
     }
   )
@@ -35,13 +35,14 @@ export class SkillFormComponent extends BaseFormComponent implements OnInit {
   }
 
   setData(data: SkillRead) {
+    if (data == null) { this.linkedType?.patchValue(0)} else {
     this.originalSkill = data;
     this.form.patchValue({
       id: data.id,
       linkedType: data.linkedType.id,
       name: data.name,
-      lvl: data.lvl
-    })
+      lvl: data.lvl * 100
+    })}
   }
 
   get linkedType() {
