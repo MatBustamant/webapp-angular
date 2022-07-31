@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Background, BackgroundRead, Persona, PersonaRead, Project, ProjectRead, Skill, SkillRead } from '../models';
 import { CRUDService } from './crud.service';
+import { ToastManagementService } from './toast-management.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,19 @@ export class DataHandlerService {
   public project: Subject<ProjectRead> = new Subject<ProjectRead>();
   private _refreshSkills$ = new Subject<void>();
 
-  constructor( private crud: CRUDService ) {
+  constructor(
+    private crud: CRUDService,
+    private toastService: ToastManagementService
+    ) {
     this.loadPersona();
+  }
+
+  private editSuccess(): void {
+    this.toastService.show("Elemento actualizado con éxito.", {classname: 'success'});
+  }
+
+  private editError(): void {
+    this.toastService.show("Hubo un problema. No se pudo completar su acción.", {classname: 'error'});
   }
 
   get refreshSkill$() {
@@ -48,6 +60,7 @@ export class DataHandlerService {
         this.loadInstitutions(response);
       },
       error: (err: any) => {
+        this.toastService.show("Hubo un problema al traer la información del servidor.", {classname: 'error'});
         console.log(err);
       }
     });
@@ -57,8 +70,10 @@ export class DataHandlerService {
     this.crud.updatePersona(persona).subscribe({
       next: (response: PersonaRead) => {
         this.about.next(response);
+        this.editSuccess();
       },
       error: (err: any) => {
+        this.editError();
         console.log(err);
       }
     });
@@ -68,8 +83,10 @@ export class DataHandlerService {
     this.crud.updateBackground(background).subscribe({
       next: (response: BackgroundRead) => {
         this.background.next(response);
+        this.editSuccess();
       },
       error: (err: any) => {
+        this.editError();
         console.log(err);
       }
     });
@@ -82,8 +99,10 @@ export class DataHandlerService {
         if (skill.linkedType.id != oldSkill.linkedType.id) {
           this._refreshSkills$.next();
         }
+        this.editSuccess();
       },
       error: (err: any) => {
+        this.editError();
         console.log(err);
       }
     });
@@ -93,8 +112,10 @@ export class DataHandlerService {
     this.crud.updateProject(project).subscribe({
       next: (response: ProjectRead) => {
         this.project.next(response);
+        this.editSuccess();
       },
       error: (err: any) => {
+        this.editError();
         console.log(err);
       }
     });

@@ -111,6 +111,10 @@ a:hover {
     text-decoration: none;
 }
 
+.tag.play {
+    cursor: pointer;
+}
+
 .card:before {
     content: "";
     position: absolute;
@@ -185,6 +189,10 @@ a:hover {
 }
 
 @media screen and (min-width: 1024px) {
+    .card {
+        max-height: 380px;
+    }
+
     .card-text {
         padding: 2rem 3.5rem;
     }

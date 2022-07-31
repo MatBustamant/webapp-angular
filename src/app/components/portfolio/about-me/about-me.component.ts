@@ -32,7 +32,7 @@ export class AboutMeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadSection();
     this.subscription = this.dataHandler.about.subscribe(
-      about => this.setData(about)
+      about => this.data = about
     );
   }
 
@@ -44,20 +44,12 @@ export class AboutMeComponent implements OnInit, OnDestroy {
     this.dataHandler.persona.subscribe({
       next: (persona: PersonaRead) => {
         // console.log("La sección 'Sobre mí' recibió la información.");
-        this.setData(persona);
+        this.data = persona;
       },
       error: (err: any) => {
         console.log(err);
       }
     });
-  }
-
-  setData(persona: Persona): void {
-    this.data = persona;
-    const fullname = `${persona.name} ${persona.surname}`
-    if (persona.about == "") {
-      this.data.about = `Bienvenido a mi portfolio web. Me llamo ${fullname} y esta es una presentación predeterminada.`;
-    }
   }
 
   openForm(): void {

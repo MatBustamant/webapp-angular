@@ -3,4 +3,5 @@ export * from './crud.service';
 export * from './data-handler.service';
 export * from './modal-management.service';
 export * from './storage.service';
+export * from './toast-management.service';
 export * from './token.service';

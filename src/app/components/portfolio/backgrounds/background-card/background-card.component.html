@@ -20,12 +20,12 @@
                     data.endDate)}}</li>
             </span>
             <span *ngIf="isAdmin" class="ms-auto">
-                <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}">
-                    <a type="button" (click)="deleteBackground(data.id!)"><i
+                <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}" (click)="deleteBackground(data.id!)">
+                    <a type="button"><i
                             class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Eliminar</a>
                 </li>
-                <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}">
-                    <a type="button" (click)="openForm(data)"><i
+                <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}" (click)="openForm(data)">
+                    <a type="button"><i
                             class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar</a>
                 </li>
             </span>
