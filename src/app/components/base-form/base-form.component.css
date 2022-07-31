@@ -7,7 +7,6 @@
     display: block;
     font-size: 25px;
     font-weight: bold;
-    line-height: 1.2;
     text-align: center;
 }
 
@@ -27,7 +26,6 @@ a.close {
 
 .form-label {
     font-size: 0.6em;
-    line-height: 1.5;
 }
 
 input,
@@ -163,7 +161,6 @@ button:focus {
     font-weight: 500;
     font-size: 12px;
     background-color: var(--main-accent-color);
-    line-height: 1.2;
     text-transform: uppercase;
 
     display: flex;
