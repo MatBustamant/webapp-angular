@@ -53,12 +53,15 @@ export class BackgroundCardComponent implements OnInit, OnDestroy {
 
     const months = dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear()));
 
-    if (months < 1) { return "Menos de 1 mes." }
-    else if (months == 1) { return "1 mes." }
-    else if (months < 12) { return `${months} meses.` }
-    else if (months == 12) { return "1 año." }
-    else if (months < 21) { return "Alrededor de 1 año." }
-    else { return `${(months - (months %12))/12} años.` }
+    if (months < 1) {
+      const days = dateTo.getDate() - dateFrom.getDate() - 1;
+      return days <= 1 ? "1 día" : `${days} días`;
+    }
+    else if (months == 1) { return "1 mes" }
+    else if (months < 12) { return `${months} meses` }
+    else if (months == 12) { return "1 año" }
+    else if (months < 21) { return "Alrededor de 1 año" }
+    else { return `${(months - (months %12))/12} años` }
   }
 
   openForm(data: BackgroundRead): void {
