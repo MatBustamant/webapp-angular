@@ -86,7 +86,7 @@
                             El formato del link es inválido.
                         </p>
                         <p *ngIf="image?.hasError('required')" class="text-danger">
-                            El link es requerido.
+                            La imágen es requerida.
                         </p>
                     </div>
                     <a type="button" class="file-input" (click)="fileInput.click()"><i class="fa-solid fa-file-arrow-up"></i></a>
@@ -106,7 +106,7 @@
                     <span class="input-dec"></span>
                     <div class="textarea-val" *ngIf="isInvalidField('description')">
                         <p *ngIf="description?.hasError('required')" class="text-danger">
-                            El nivel es requerido.
+                            La descripción es requerida.
                         </p>
                         <p *ngIf="description?.hasError('maxlength')" class="text-danger">
                             La descripción debe tener hasta 300 caracteres.

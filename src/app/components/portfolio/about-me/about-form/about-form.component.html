@@ -79,13 +79,13 @@
             </div>
         </div>
         <div class="textarea-wrp mb-4">
-            <label for="about-input" class="form-label">Descripción</label>
+            <label for="about-input" class="form-label">Presentación</label>
             <textarea rows="6" type="text" formControlName="about" [ngClass]="{'is-invalid': isInvalidField('about')}"
                 class="form-control" id="about-input" placeholder="Presentación o información profesional resumida"
                 autocomplete="off"></textarea>
             <div class="textarea-val" *ngIf="isInvalidField('about')">
                 <p *ngIf="about?.hasError('maxlength')" class="text-danger">
-                    La descripción debe tener hasta 300 caracteres.
+                    La presentación debe tener hasta 300 caracteres.
                 </p>
             </div>
         </div>

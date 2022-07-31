@@ -32,3 +32,14 @@
 .tagbox .tag:hover {
   background: rgba(83, 83, 83, 0.8);
 }
+
+.tagbox .tag.current {
+  color: var(--main-accent-color);
+}
+
+.tagbox .tag.disabled {
+  pointer-events: none;
+  background-color: var(--light-gray-color);
+  color: white;
+  opacity: .50;
+}

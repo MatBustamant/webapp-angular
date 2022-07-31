@@ -29,7 +29,7 @@
                     <span class="input-dec"></span>
                     <div class="input-val" *ngIf="isInvalidField('institution')">
                         <p *ngIf="institution?.hasError('required')" class="text-danger">
-                            Una institución es requerida.
+                            La institución es requerida.
                         </p>
                         <p *ngIf="institution?.hasError('minlength') || institution?.hasError('maxlength')"
                             class="text-danger">
@@ -111,7 +111,7 @@
                     <span class="input-dec"></span>
                     <div class="textarea-val" *ngIf="isInvalidField('description')">
                         <p *ngIf="description?.hasError('required')" class="text-danger">
-                            El nivel es requerido.
+                            La descripción es requerida.
                         </p>
                         <p *ngIf="description?.hasError('maxlength')" class="text-danger">
                             La descripción debe tener hasta 300 caracteres.

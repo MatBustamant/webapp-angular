@@ -49,4 +49,8 @@ export class BaseFormComponent {
     }
   }
 
+  preppendHTTP(url: string) {
+    return url.replace(/^(?:(.*:)?\/\/)?(.*)/i, (match, schemma, nonSchemmaUrl) => schemma ? match : `http://${nonSchemmaUrl}`);
+  }
+
 }

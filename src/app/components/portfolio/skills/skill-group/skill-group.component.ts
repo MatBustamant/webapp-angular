@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { SkillRead } from 'src/app/models';
 
 @Component({
@@ -6,7 +6,7 @@ import { SkillRead } from 'src/app/models';
   templateUrl: './skill-group.component.html',
   styleUrls: ['./skill-group.component.css']
 })
-export class SkillGroupComponent implements OnInit {
+export class SkillGroupComponent implements OnInit, OnChanges {
 
   @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
 
@@ -21,8 +21,18 @@ export class SkillGroupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['group'] && changes['group'].currentValue) {
+      if (this.group != undefined) {
+        if (this.group.length <= 3) {
+          this.currentPage = 1;
+        }
+      }
+    }
+  }
+
   public onNext(page: number): void {
-    const total = Math.ceil(this.group.length/this.pageSize);
+    const total = Math.ceil(this.group.length / this.pageSize);
     if (this.currentPage != total) {
       this.currentPage = page + 1;
     } else {
@@ -31,7 +41,7 @@ export class SkillGroupComponent implements OnInit {
   }
 
   public onPrevious(page: number): void {
-    const total = Math.ceil(this.group.length/this.pageSize);
+    const total = Math.ceil(this.group.length / this.pageSize);
     if (this.currentPage != 1) {
       this.currentPage = page - 1;
     } else {

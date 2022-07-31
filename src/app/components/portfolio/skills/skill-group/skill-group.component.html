@@ -8,13 +8,13 @@
     <nav>
         <ul class="tagbox">
             <li>
-                <a type="button" class="tag" (click)="onPrevious(currentPage)">PREV</a>
+                <a type="button" class="tag" (click)="onPrevious(currentPage)" [ngClass]="{'disabled': group == undefined || group.length <= 3}">PREV</a>
             </li>
             <li>
-                <a type="button" class="tag" (click)="onGoBack()"><i class="fa-solid fa-circle"></i></a>
+                <a type="button" class="tag" (click)="onGoBack()" [ngClass]="{'disabled': group == undefined || group.length <= 3, 'current': currentPage == 1}"><i class="fa-solid fa-circle"></i></a>
             </li>
             <li>
-                <a type="button" class="tag" (click)="onNext(currentPage)">NEXT</a>
+                <a type="button" class="tag" (click)="onNext(currentPage)" [ngClass]="{'disabled': group == undefined || group.length <= 3}">NEXT</a>
             </li>
         </ul>
     </nav>

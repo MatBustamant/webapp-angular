@@ -103,7 +103,9 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
 
   onSubmit(event: Event): void {
     event.preventDefault();
+    const URL = this.preppendHTTP(this.link?.value);
     const project: Project = this.form.value;
+    project.link = URL;
     if (project.id == 0 && this.form.valid) {
       this.modal.close(project);
     } else if (!this.form.pristine && !this.form.untouched && this.form.valid) {
