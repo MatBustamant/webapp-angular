@@ -6,8 +6,8 @@
         <h3 class="card-title" [ngClass]="{'blue': odd, 'purple': !odd}">{{data.title}}</h3>
         <div class="small">
             <time [attr.datetime]="data.startDate">
-                <i class="fas fa-calendar-alt mr-2"></i> {{dateToString(data.startDate)}} -
-                {{dateToString(data.endDate)}}
+                <i class="fas fa-calendar-alt mr-2"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;&nbsp;{{dateToString(data.startDate)}} - {{dateToString(data.endDate)}}</span>
+                <span class="d-inline d-lg-none">&nbsp;&nbsp;&nbsp;{{data.startDate}} hasta {{data.endDate || "la actualidad"}}</span>
             </time>
         </div>
         <div class="card-bar"></div>
@@ -17,17 +17,17 @@
                 <li class="tag"><i class="fas fa-clock mr-2"></i>&nbsp;&nbsp;{{getPeriod(data.startDate,
                     data.endDate)}}</li>
                 <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}">
-                    <a href="{{data.link}}" target="_blank"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Visitar</a>
+                    <a href="{{data.link}}" target="_blank"><i class="fa-solid fa-link"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;Visitar</span></a>
                 </li>
             </span>
             <span *ngIf="isAdmin" class="ms-auto">
                 <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}">
                     <a type="button" (click)="deleteProject(data.id!)"><i
-                            class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Eliminar</a>
+                            class="fa-solid fa-xmark"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;Eliminar</span></a>
                 </li>
                 <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}">
                     <a type="button" (click)="openForm(data)"><i
-                            class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar</a>
+                            class="fa-solid fa-pen-to-square"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;Editar</span></a>
                 </li>
             </span>
         </ul>

@@ -1,5 +1,6 @@
-<div class="container">
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-5" id="skill-form">
+<div class="container-lg">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="m-3 m-lg-5" id="skill-form">
+        <a type="button" class="close d-inline d-md-none" (click)="modal.dismiss()"><i class="fa-solid fa-xmark "></i></a>
         <h2 class="title mb-4">{{accion}}</h2>
         <div class="row">
             <div class="col">

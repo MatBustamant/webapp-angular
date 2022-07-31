@@ -8,11 +8,9 @@ import { AuthService, DataHandlerService, ModalManagementService } from 'src/app
   templateUrl: './skill-card.component.html',
   styleUrls: ['./skill-card.component.css']
 })
-export class SkillCardComponent implements OnInit, OnDestroy {
+export class SkillCardComponent implements OnInit {
 
   isAdmin: boolean = false;
-
-  subscription: Subscription;
 
   @Output() deleteId: EventEmitter<number> = new EventEmitter<number>();
 
@@ -27,25 +25,13 @@ export class SkillCardComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService:AuthService,
-    private modalManagement:ModalManagementService,
-    private dataHandler:DataHandlerService,
+    private modalManagement:ModalManagementService
   ) {
     this.isAdmin = this.authService.isAdmin();
-    this.subscription = this.dataHandler.skill.subscribe
-    (skill => {
-      if (skill.id == this.data.id) {
-        this.data = skill;
-        this.setProgressLvl();
-      }
-    });
   }
 
   ngOnInit(): void {
     this.setProgressLvl();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   setProgressLvl(): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseFormComponent } from 'src/app/components';
 import { Persona } from 'src/app/models';
 import { DataHandlerService, StorageService, ToastManagementService } from 'src/app/services';
@@ -30,6 +30,7 @@ export class AboutFormComponent extends BaseFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ngbmodal: NgbModal,
+    public modal: NgbActiveModal,
     private dataHandler: DataHandlerService,
     private storageService: StorageService,
     private toastService: ToastManagementService

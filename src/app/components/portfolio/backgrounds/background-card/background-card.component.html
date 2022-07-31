@@ -6,8 +6,8 @@
         <h3 class="card-title" [ngClass]="{'blue': odd, 'purple': !odd}">{{data.title}}</h3>
         <div class="small">
             <time [attr.datetime]="data.startDate">
-                <i class="fas fa-calendar-alt mr-2"></i>&nbsp;&nbsp;&nbsp;{{dateToString(data.startDate)}} -
-                {{dateToString(data.endDate)}}
+                <i class="fas fa-calendar-alt mr-2"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;&nbsp;{{dateToString(data.startDate)}} - {{dateToString(data.endDate)}}</span>
+                <span class="d-inline d-lg-none">&nbsp;&nbsp;&nbsp;{{data.startDate}} hasta {{data.endDate || "la actualidad"}}</span>
             </time>
             <span class="vr d-none d-lg-inline-block h-25 mx-lg-2"></span>
             <p><i class="fa-solid fa-building"></i>&nbsp;&nbsp;&nbsp;{{data.institution}}</p>
@@ -22,11 +22,11 @@
             <span *ngIf="isAdmin" class="ms-auto">
                 <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}" (click)="deleteBackground(data.id!)">
                     <a type="button"><i
-                            class="fa-solid fa-xmark"></i>&nbsp;&nbsp;Eliminar</a>
+                            class="fa-solid fa-xmark"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;Eliminar</span></a>
                 </li>
                 <li class="tag play" [ngClass]="{'blue': odd, 'purple': !odd}" (click)="openForm(data)">
                     <a type="button"><i
-                            class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;Editar</a>
+                            class="fa-solid fa-pen-to-square"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;Editar</span></a>
                 </li>
             </span>
         </ul>

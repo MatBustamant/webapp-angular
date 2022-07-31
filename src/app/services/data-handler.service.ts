@@ -16,7 +16,6 @@ export class DataHandlerService {
   public background: Subject<BackgroundRead> = new Subject<BackgroundRead>();
   public skill: Subject<SkillRead> = new Subject<SkillRead>();
   public project: Subject<ProjectRead> = new Subject<ProjectRead>();
-  private _refreshSkills$ = new Subject<void>();
 
   constructor(
     private crud: CRUDService,
@@ -31,10 +30,6 @@ export class DataHandlerService {
 
   private editError(): void {
     this.toastService.show("Hubo un problema. No se pudo completar su acción.", {classname: 'error'});
-  }
-
-  get refreshSkill$() {
-    return this._refreshSkills$;
   }
 
   loadInstitutions(persona: PersonaRead): void {
@@ -96,9 +91,6 @@ export class DataHandlerService {
     this.crud.updateSkill(skill).subscribe({
       next: (response: SkillRead) => {
         this.skill.next(response);
-        if (skill.linkedType.id != oldSkill.linkedType.id) {
-          this._refreshSkills$.next();
-        }
         this.editSuccess();
       },
       error: (err: any) => {

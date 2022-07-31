@@ -12,7 +12,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
 
   isAdmin: boolean = false;
 
-  subscription: Subscription;
+  subscription!: Subscription;
 
   skillList!: SkillRead[];
   hard!: SkillRead[];
@@ -28,13 +28,11 @@ export class SkillsComponent implements OnInit, OnDestroy {
     private toastService: ToastManagementService
     ) {
     this.isAdmin = this.authService.isAdmin();
-    this.subscription = this.dataHandler.refreshSkill$.subscribe(() => {
-      this.reloadSection();
-    })
   }
 
   ngOnInit(): void {
     this.loadSection();
+    this.subscription = this.dataHandler.skill.subscribe(skill => this.updateSkill(skill));
   }
 
   ngOnDestroy(): void {
@@ -54,18 +52,6 @@ export class SkillsComponent implements OnInit, OnDestroy {
     });
   }
 
-  reloadSection(): void {
-    this.crud.getSkills().subscribe({
-      next: (response: SkillRead[]) => {
-        this.skillList = response;
-        this.filterSkillList(response);
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    });
-  }
-
   deleteSkill(id: number) {
     this.crud.deleteSkill(id).subscribe({
       next: () => {
@@ -78,6 +64,16 @@ export class SkillsComponent implements OnInit, OnDestroy {
         console.log(err);
       }
     });
+  }
+
+  updateSkill(skill: SkillRead) {
+    for (let i = 0; i < this.skillList.length; i++) {
+      const s = this.skillList[i];
+      if (s.id == skill.id) {
+        this.skillList[i] = skill;
+      }
+    }
+    this.filterSkillList(this.skillList);
   }
 
   createSkill() {

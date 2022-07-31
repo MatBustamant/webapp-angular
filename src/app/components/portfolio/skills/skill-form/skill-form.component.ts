@@ -27,7 +27,7 @@ export class SkillFormComponent extends BaseFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ngbmodal: NgbModal,
-    private modal: NgbActiveModal,
+    public modal: NgbActiveModal,
     private dataHandler: DataHandlerService
   ) { super() }
 

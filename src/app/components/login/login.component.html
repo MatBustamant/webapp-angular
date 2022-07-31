@@ -1,23 +1,23 @@
 <div class="container-fluid">
     <div class="center">
-        <form [formGroup]="form" (ngSubmit)="onSubmit($event, false)" class="m-5">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event, false)" class="m-3 m-lg-5">
             <div *ngIf="!isAdmin">
                 <div *ngIf="processingForm" class="spinner-border text-light" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-                <h2 class="login-title mb-4">Inicia sesión</h2>
+                <h2 class="login-title mb-4">Iniciar sesión</h2>
                 <div class="input-wrp mb-4">
-                    <label for="exampleInputEmail1" class="form-label">Dirección de email</label>
+                    <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
                     <input type="email" formControlName="email"
                         [ngClass]="{'is-invalid': isInvalidField('email'), 'is-empty' : isEmptyField('email')}"
-                        class="form-control" id="exampleInputEmail1" placeholder="Email" autocomplete="email" />
+                        class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico" autocomplete="email" />
                     <span class="input-dec" data-symbol="&#xf206;"></span>
                     <div class="input-val" *ngIf="isInvalidField('email')">
                         <p *ngIf="email?.hasError('required')" class="text-danger">
-                            El email es requerido.
+                            El correo es requerido.
                         </p>
                         <p *ngIf="email?.hasError('pattern')" class="text-danger">
-                            El formato del email debe ser válido.
+                            El formato del correo debe ser válido.
                         </p>
                     </div>
                 </div>

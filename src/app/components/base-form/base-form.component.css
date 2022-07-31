@@ -13,6 +13,13 @@
     text-align: center;
 }
 
+a.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-size: 2rem;
+}
+
 .input-wrp {
     width: 100%;
     position: relative;

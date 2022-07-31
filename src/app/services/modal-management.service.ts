@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { AboutFormComponent, BackgroundFormComponent, ProjectFormComponent, SkillFormComponent, WarningComponent } from '../components';
 import { BackgroundRead, ProjectRead, SkillRead } from '../models';
 
-const OPTIONS = { size: 'lg' , centered: true , windowClass: 'blured-window' };
+const OPTIONS = { size: 'lg' , centered: true , scrollable: true , fullscreen: 'md' , windowClass: 'blured-window' };
 
 @Injectable({
   providedIn: 'root'
