@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BackgroundRead, PersonaRead } from 'src/app/models';
-import { AuthService, CRUDService, DataHandlerService, ModalManagementService, ToastManagementService } from 'src/app/services';
+import { AuthService, CRUDService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-section',
@@ -19,8 +19,7 @@ export class BackgroundsComponent implements OnInit {
     private authService:AuthService,
     private dataHandler:DataHandlerService,
     private modalManagement:ModalManagementService,
-    private crud:CRUDService,
-    private toastService:ToastManagementService
+    private crud:CRUDService
   ) {
     this.isAdmin = this.authService.isAdmin();
   }
@@ -63,10 +62,8 @@ export class BackgroundsComponent implements OnInit {
     this.crud.deleteBackground(id).subscribe({
       next: () => {
         this.backgroundList = this.backgroundList.filter(background => background.id != id);
-        this.toastService.show("Elemento eliminado con éxito.", {classname: 'success'});
       },
       error: (err: any) => {
-        this.toastService.show("Hubo un problema. No se pudo completar su acción.", {classname: 'error'});
         console.log(err);
       }
     });
@@ -78,11 +75,9 @@ export class BackgroundsComponent implements OnInit {
         next: (background: BackgroundRead) => {
           this.dataHandler.updateInstitutions(background.institution, true);
           this.backgroundList.push(background);
-          this.toastService.show("Elemento creado con éxito.", {classname: 'success'});
         },
         error: (err: any) => {
-        this.toastService.show("Hubo un problema. No se pudo completar su acción.", {classname: 'error'});
-        console.log(err);
+          console.log(err);
         }
       })
     );

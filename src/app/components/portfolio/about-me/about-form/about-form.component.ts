@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseFormComponent } from 'src/app/components';
 import { Persona } from 'src/app/models';
-import { DataHandlerService, StorageService, ToastManagementService } from 'src/app/services';
+import { DataHandlerService, StorageService } from 'src/app/services';
 
 @Component({
   selector: 'app-about-form',
@@ -23,7 +23,7 @@ export class AboutFormComponent extends BaseFormComponent implements OnInit {
       image: ['', [Validators.required, Validators.pattern(
         /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i
         )]],
-      about: ['', [Validators.maxLength(500)]]
+      about: ['', [Validators.maxLength(300)]]
     }
   )
 
@@ -31,8 +31,7 @@ export class AboutFormComponent extends BaseFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private ngbmodal: NgbModal,
     private dataHandler: DataHandlerService,
-    private storageService: StorageService,
-    private toastService: ToastManagementService
+    private storageService: StorageService
     ) { super() }
 
   ngOnInit(): void {
@@ -70,7 +69,6 @@ export class AboutFormComponent extends BaseFormComponent implements OnInit {
   }
 
   uploadImg(event: any) {
-    this.toastService.show("Espere un momento.")
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -80,12 +78,10 @@ export class AboutFormComponent extends BaseFormComponent implements OnInit {
         url => {
           this.imguploaded = true;
           let img = this.image;
-          let toast = this.toastService;
           img?.setValue("...");
           setTimeout(function()
           {
             img?.setValue(url);
-            toast.show("Imágen subida con éxito.", {classname: 'success'});
           }, (1 * 1000));
         });
     }

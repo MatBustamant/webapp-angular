@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { LoginUser } from 'src/app/models';
 import { AuthService } from 'src/app/services';
 
@@ -10,11 +9,8 @@ import { AuthService } from 'src/app/services';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
 
-  subscription!: Subscription;
-
-  processingForm!: boolean;
   showPassword: boolean = false;
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
@@ -38,11 +34,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
     this.isAdmin = this.authService.isAdmin();
-    this.subscription = this.authService.processingForm.subscribe((value) => this.processingForm = value);
-  }
-
-  ngOnDestroy(): void {
-      this.subscription.unsubscribe();
   }
 
   get email() {
@@ -67,8 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.showPassword=!this.showPassword;
   }
 
-  onSubmit(event: Event, isGuest: boolean): void {
-    event.preventDefault();
+  onSubmit(isGuest: boolean): void {
     if (!isGuest) {
       this.loginUser.email = this.email?.value;
       this.loginUser.password = this.password?.value;

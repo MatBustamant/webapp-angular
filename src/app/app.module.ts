@@ -14,7 +14,6 @@ import {
   SkillFormComponent, SkillGroupComponent, SkillsComponent, WarningComponent
 } from './components';
 import { interceptorProvider } from './interceptors';
-import { ToastsComponent } from './components/toasts/toasts.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +34,7 @@ import { ToastsComponent } from './components/toasts/toasts.component';
     ProjectFormComponent,
     ProjectCardComponent,
     BaseFormComponent,
-    NavbarComponent,
-    ToastsComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

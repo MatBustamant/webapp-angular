@@ -43,10 +43,6 @@ div.center {
     text-align: center;
 }
 
-.spinner-border {
-    position: absolute;
-}
-
 .input-wrp {
     width: 100%;
     position: relative;

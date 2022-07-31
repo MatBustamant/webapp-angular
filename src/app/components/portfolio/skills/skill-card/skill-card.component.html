@@ -5,11 +5,11 @@
             <div role="progressbar" aria-valuemin="0" aria-valuemax="1" attr.aria-valuenow="{{data.lvl}}"
                 class="progress-bar" [ngStyle]="progressLvl"></div>
         </div>
-        <ul class="tagbox" *ngIf="isAdmin">
-            <li class="tag play" (click)="deleteSkill(data.id!)"><a type="button">
+        <ul class="tagbox">
+            <li class="tag"><a *ngIf="isAdmin" type="button" (click)="deleteSkill(data.id!)">
                     <span class="fa-solid fa-xmark"></span>
                 </a></li>
-            <li class="tag play" (click)="openForm()"><a type="button">
+            <li class="tag"><a *ngIf="isAdmin" type="button" (click)="openForm()">
                     <span class="fa-solid fa-pen-to-square"></span>
                 </a></li>
         </ul>

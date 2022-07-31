@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseFormComponent } from 'src/app/components';
 import { Background, BackgroundRead } from 'src/app/models';
-import { DataHandlerService, StorageService, ToastManagementService } from 'src/app/services';
+import { DataHandlerService, StorageService } from 'src/app/services';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class BackgroundFormComponent extends BaseFormComponent implements OnInit
       title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       startDate: ['', [Validators.required, this.maxDate(this.today)]],
       endDate: ['', [this.maxDate(this.today)]],
-      description: ['', [Validators.required, Validators.maxLength(300)]]
+      description: ['', [Validators.required, Validators.maxLength(500)]]
     }
   )
 
@@ -38,8 +38,7 @@ export class BackgroundFormComponent extends BaseFormComponent implements OnInit
     private ngbmodal: NgbModal,
     private modal: NgbActiveModal,
     private dataHandler: DataHandlerService,
-    private storageService: StorageService,
-    private toastService: ToastManagementService
+    private storageService: StorageService
   ) { super() }
 
   ngOnInit(): void {
@@ -96,7 +95,6 @@ export class BackgroundFormComponent extends BaseFormComponent implements OnInit
   }
 
   uploadImg(event: any) {
-    this.toastService.show("Espere un momento.")
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -106,12 +104,10 @@ export class BackgroundFormComponent extends BaseFormComponent implements OnInit
         url => {
           this.imguploaded = true;
           let img = this.image;
-          let toast = this.toastService;
           img?.setValue("...");
           setTimeout(function()
           {
             img?.setValue(url);
-            toast.show("Imágen subida con éxito.", {classname: 'success'});
           }, (1 * 1000));
         });
     }

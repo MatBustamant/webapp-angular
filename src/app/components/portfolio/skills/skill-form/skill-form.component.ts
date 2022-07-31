@@ -68,7 +68,7 @@ export class SkillFormComponent extends BaseFormComponent implements OnInit {
       linkedType: {id: this.linkedType?.value},
       linkedPerson: {id: 1},
       name: this.name?.value,
-      lvl: this.lvl?.value / 100
+      lvl: this.lvl?.value
     }
     if (skill.id == 0) {
       if (this.form.valid) {

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BaseFormComponent } from 'src/app/components';
 import { Project, ProjectRead } from 'src/app/models';
-import { DataHandlerService, StorageService, ToastManagementService } from 'src/app/services';
+import { DataHandlerService, StorageService } from 'src/app/services';
 
 @Component({
   selector: 'app-project-form',
@@ -34,8 +34,7 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
     private ngbmodal:NgbModal,
     private modal:NgbActiveModal,
     private dataHandler:DataHandlerService,
-    private storageService:StorageService,
-    private toastService:ToastManagementService
+    private storageService:StorageService
   ) { super() }
 
   ngOnInit(): void {
@@ -80,7 +79,6 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
   }
 
   uploadImg(event: any) {
-    this.toastService.show("Espere un momento.");
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -90,12 +88,10 @@ export class ProjectFormComponent extends BaseFormComponent implements OnInit {
         url => {
           this.imguploaded = true;
           let img = this.image;
-          let toast = this.toastService;
           img?.setValue("...");
           setTimeout(function()
           {
             img?.setValue(url);
-            toast.show("Imágen subida con éxito.", {classname: 'success'});
           }, (1 * 1000));
         });
     }

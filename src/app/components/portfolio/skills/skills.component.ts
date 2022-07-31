@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PersonaRead, SkillRead } from 'src/app/models';
-import { AuthService, CRUDService, DataHandlerService, ModalManagementService, ToastManagementService } from 'src/app/services';
+import { AuthService, CRUDService, DataHandlerService, ModalManagementService } from 'src/app/services';
 
 @Component({
   selector: 'app-skills',
@@ -24,8 +24,7 @@ export class SkillsComponent implements OnInit, OnDestroy {
     private authService:AuthService,
     private dataHandler: DataHandlerService,
     private crud: CRUDService,
-    private modalManagement: ModalManagementService,
-    private toastService: ToastManagementService
+    private modalManagement: ModalManagementService
     ) {
     this.isAdmin = this.authService.isAdmin();
     this.subscription = this.dataHandler.refreshSkill$.subscribe(() => {
@@ -71,10 +70,8 @@ export class SkillsComponent implements OnInit, OnDestroy {
       next: () => {
         this.skillList = this.skillList.filter(skill => skill.id != id);
         this.filterSkillList(this.skillList);
-        this.toastService.show("Elemento eliminado con éxito.", {classname: 'success'});
       },
       error: (err: any) => {
-        this.toastService.show("Hubo un problema. No se pudo completar su acción.", {classname: 'error'});
         console.log(err);
       }
     });
@@ -86,11 +83,9 @@ export class SkillsComponent implements OnInit, OnDestroy {
         next: (skill: SkillRead) => {
           this.skillList.push(skill);
           this.filterSkillList(this.skillList);
-          this.toastService.show("Elemento creado con éxito.", {classname: 'success'});
         },
         error: (err: any) => {
           console.log(err);
-          this.toastService.show("Hubo un problema. No se pudo completar su acción.", {classname: 'error'});
         }
       })
     );
