@@ -57,6 +57,8 @@ div.center {
 
 .spinner-border {
     position: absolute;
+    top: 1rem;
+    right: 1.2rem;
 }
 
 .input-wrp {
@@ -88,6 +90,7 @@ input:-ms-input-placeholder {
 
 .form-control {
     font-weight: 500;
+    color: inherit;
     font-size: 10px;
     line-height: 1.2;
 
@@ -143,10 +146,6 @@ input:-ms-input-placeholder {
     color: var(--light-gray-color);
     font-size: 0.95em;
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -249,10 +248,6 @@ button:focus,
     line-height: 1.2;
     text-transform: uppercase;
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -7,9 +7,9 @@
         <div class="small">
             <time [attr.datetime]="data.startDate">
                 <i class="fas fa-calendar-alt mr-2"></i><span class="d-none d-lg-inline">&nbsp;&nbsp;&nbsp;{{dateToString(data.startDate)}} - {{dateToString(data.endDate)}}</span>
-                <span class="d-inline d-lg-none">&nbsp;&nbsp;&nbsp;{{data.startDate}} hasta {{data.endDate || "la actualidad"}}</span>
+                <span class="d-inline d-lg-none">&nbsp;&nbsp;&nbsp;{{data.startDate}} hasta {{data.endDate || "la actualidad"}}&nbsp;&nbsp;&nbsp;</span>
             </time>
-            <span class="vr d-none d-lg-inline-block h-25 mx-lg-2"></span>
+            <span class="vr d-none d-md-inline-block h-25 mx-lg-2"></span>
             <p><i class="fa-solid fa-building"></i>&nbsp;&nbsp;&nbsp;{{data.institution}}</p>
         </div>
         <div class="card-bar"></div>

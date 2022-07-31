@@ -12,6 +12,7 @@
 }
 
 a.close {
+    color: inherit;
     position: absolute;
     top: 1rem;
     right: 1.2rem;
@@ -61,7 +62,7 @@ textarea {
 
 .form-control {
     font-size: 10px;
-
+    color: inherit;
     background: none;
 }
 
@@ -158,20 +159,13 @@ option {
 }
 
 button,
-button:focus,
-.guest-btn {
-    font-family: sans-serif;
+button:focus {
     font-weight: 500;
     font-size: 12px;
-    color: #fff;
     background-color: var(--main-accent-color);
     line-height: 1.2;
     text-transform: uppercase;
 
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -185,11 +179,6 @@ button:disabled {
     background-color: var(--light-gray-color);
 }
 
-button:hover,
-.guest-btn:hover {
+button:hover {
     background-color: #8e0b57;
-}
-
-a {
-    color: white
 }
