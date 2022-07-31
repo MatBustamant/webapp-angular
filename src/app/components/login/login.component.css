@@ -1,41 +1,6 @@
-@media (max-width: 767.98px) {
-    div.center {
-        height: 100%;
-        width: 100%;
-    }
-
-    div.container-fluid {
-        padding: 0;
-    }
-}
-
-@media (min-width: 768px) {
-    div.center {
-        height: auto;
-        width: 21em;
-        box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        padding: .75rem;
-    }
-}
-
 #login-form {
     font-family: sans-serif;
     color: white;
-}
-
-div.container-fluid {
-    position: absolute;
-    height: 100%;
-    background-color: var(--dark-gray-color);
-    background-image: url(../../../assets/background.svg);
-    background-position: center;
-    background-size: cover;
-}
-
-div.center {
-    position: relative;
-    background-color: var(--main-dominant-color);
 }
 
 .admin-ico {

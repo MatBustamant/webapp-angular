@@ -6,6 +6,12 @@
 
 }
 
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .modal-dialog {
+        height: auto;
+    }
+}
+
 :root {
     --main-dominant-color: #0f1634; /*Un deep blue bonito*/
     --main-accent-color: #A01D5D; /*Un color pseudovino iluminadito*/
@@ -24,10 +30,6 @@ body.modal-open {
     backdrop-filter: blur(2px);
     background-color: var(--dark-gray-color);
     background-image: url(./assets/background.svg);
-}
-
-.modal-dialog {
-    height: auto;
 }
 
 .modal-content {
