@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid d-flex justify-content-center align-items-center">
     <div class="center">
-        <form [formGroup]="form" (ngSubmit)="onSubmit($event, false)" class="m-3 m-lg-5">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event, false)" class="m-3 m-lg-5" id="login-form">
             <div *ngIf="!isAdmin">
                 <div *ngIf="processingForm" class="spinner-border text-light" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-                <h2 class="login-title mb-4">Iniciar sesión</h2>
+                <h2 class="login-title mb-4 fw-bold">Iniciar sesión</h2>
                 <div class="input-wrp mb-4">
                     <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
                     <input type="email" formControlName="email"
@@ -31,7 +31,7 @@
                         <span class="zmdi" [ngClass]="{'zmdi-eye': !showPassword, 'zmdi-eye-off': showPassword}"
                             (click)="showPass()"></span>
                     </span>
-                    <div class="input-val" *ngIf="isInvalidField('password')">
+                    <div class="input-val fw-bold" *ngIf="isInvalidField('password')">
                         <p *ngIf="password?.hasError('required')" class="text-danger">
                             La contraseña es requerida.
                         </p>
