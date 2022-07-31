@@ -53,3 +53,7 @@ h1 {
 .tagbox .tag:hover {
     background: rgba(83, 83, 83, 0.8);
 }
+
+.tag.play {
+    cursor: pointer;
+}

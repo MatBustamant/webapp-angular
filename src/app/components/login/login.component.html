@@ -1,7 +1,10 @@
 <div class="container-fluid">
     <div class="center">
-        <form [formGroup]="form" (ngSubmit)="onSubmit(false)" class="m-5">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event, false)" class="m-5">
             <div *ngIf="!isAdmin">
+                <div *ngIf="processingForm" class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
                 <h2 class="login-title mb-4">Inicia sesión</h2>
                 <div class="input-wrp mb-4">
                     <label for="exampleInputEmail1" class="form-label">Dirección de email</label>
@@ -49,7 +52,7 @@
             </div>
             <hr class="hr-text" data-content="O">
             <div class="button-wrp">
-                <a *ngIf="!isLoggedIn" type="button" class="guest-btn btn btn-primary" (click)="onSubmit(true)">Navega
+                <a *ngIf="!isLoggedIn" type="button" class="guest-btn btn btn-primary" (click)="onSubmit($event, true)">Navega
                     como invitado</a>
                 <a *ngIf="isLoggedIn" type="button" class="guest-btn btn btn-primary" href="/portfolio">Volver al
                     portfolio</a>
